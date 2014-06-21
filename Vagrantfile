@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
   # to your host computer, it is cached for future use under the specified box name.
   config.vm.box = "ubuntu/trusty64"
 
-  config.vm.hostname = "wme.dev"
+  config.vm.hostname = "wp-meta.dev"
 
   # Local Machine Hosts
   #
