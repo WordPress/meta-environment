@@ -1,5 +1,4 @@
 ## High priority
-* Setup basic configuration
 * Setup WordCamp.org vhost and code, add vhosts for default sites
 * Add WordCamp.dev sandbox-functionality.php mu-plugin
 * Add WordCamp.org sample data
