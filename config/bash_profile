@@ -27,3 +27,8 @@ eval "$(grunt --completion=bash)"
 
 # add autocomplete for wp-cli
 . /srv/www/wp-cli/utils/wp-completion.bash
+
+# Environmental variables
+export PS1="\u@\h \W: "
+export EDITOR="nano"
+export SVN_EDITOR="nano"
