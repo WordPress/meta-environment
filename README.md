@@ -11,5 +11,12 @@ a lot of documentation and resources upstream.
 The first site to be supported is WordCamp.org, and the goal is to eventually support all of the sites in the
 network.
  
-You can find more information about contributing to to official WordPress websites by visiting [the Meta team's
-blog](http://make.wordpress.org/meta/).
+You can find more information about contributing to the official WordPress websites from [the Meta team's
+handbook](http://make.wordpress.org/meta/handbook/).
+
+### Setup
+
+1. Follow [the Getting Started instructions for VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), but use this
+repository's URL instead of VVV's when cloning.
+1. Visit http://wp-meta.dev for a list of supported sites.
+1. Login to any site with username `admin` and password `password`.
