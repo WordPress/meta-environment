@@ -18,5 +18,6 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 1. Follow [the Getting Started instructions for VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), but use this
 repository's URL instead of VVV's when cloning.
-1. Visit http://wp-meta.dev for a list of supported sites.
+1. add to hosts file, or use vagrant plugin? use vagrant plugin
+1. Visit [http://wp-meta.dev](http://wp-meta.dev) for a list of supported sites.
 1. Login to any site with username `admin` and password `password`.
