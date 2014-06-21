@@ -10,9 +10,9 @@
 /Customfile
 
 # Allow for custom provisioning scripts that are not included with the repo
-/provision/provision-custom.sh
-/provision/provision-pre.sh
-/provision/provision-post.sh
+# /provision/provision-custom.sh
+# /provision/provision-pre.sh
+# /provision/provision-post.sh
 
 # Ignore custom trigger scripts in config/homebin.
 /config/homebin/vagrant_halt_custom
@@ -20,10 +20,10 @@
 /config/homebin/vagrant_destroy_custom
 
 # No need to share individual site configs with each other
-/config/nginx-config/sites/*.conf
+# /config/nginx-config/sites/*.conf
 
 # Ignore anything in the 'custom' directory in config
-/config/custom/*
+# /config/custom/*
 
 # No need to share our mysql data with each other
 /database/data/*
