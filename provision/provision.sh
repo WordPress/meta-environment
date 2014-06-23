@@ -558,6 +558,11 @@ for SITE_CONFIG_FILE in $(find /srv/www -maxdepth 5 -name 'vvv-init.sh'); do
 	)
 done
 
+# Look for site setups scripts in the provision/sites directory too
+for SITE_CONFIG_FILE in $(find /vagrant/provision/sites -maxdepth 5 -name '*.sh'); do
+	source $SITE_CONFIG_FILE
+done
+
 # Look for Nginx vhost files, symlink them into the custom sites dir
 for SITE_CONFIG_FILE in $(find /srv/www -maxdepth 5 -name 'vvv-nginx.conf'); do
 	DEST_CONFIG_FILE=${SITE_CONFIG_FILE//\/srv\/www\//}
