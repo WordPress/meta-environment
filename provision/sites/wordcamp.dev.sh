@@ -3,7 +3,7 @@
 SITE_DIR="/srv/www/wordcamp.dev"
 
 if [ ! -d $SITE_DIR ]; then
-	echo "\nProvisioning wordcamp.dev"
+	printf "\nProvisioning wordcamp.dev\n"
 
 	# Setup WordPress
 	mkdir $SITE_DIR/wp-content/mu-plugins
@@ -26,7 +26,7 @@ if [ ! -d $SITE_DIR ]; then
 	done
 
 else
-	echo "\nUpdating wordcamp.dev"
+	printf "\nUpdating wordcamp.dev\n"
 
 	svn up $SITE_DIR/wp-content
 	svn up $SITE_DIR/wp-content/plugins/camptix
