@@ -3,13 +3,13 @@
 SITE_DIR="/srv/www/wordcamp.dev"
 
 if [ ! -d $SITE_DIR ]; then
-	echo "Provisioning wordcamp.dev"
+	echo "\nProvisioning wordcamp.dev"
 
 	# Setup WordPress
 	mkdir $SITE_DIR/wp-content/mu-plugins
 	wp core download --path=$SITE_DIR/wordpress
-	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/wp-config.php             $SITE_DIR
-	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
+	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/wp-config.php                   $SITE_DIR
+	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/sandbox-functionality.php       $SITE_DIR/wp-content/mu-plugins/
 
 	# Check out WordCamp.org source code
 	svn co https://meta.svn.wordpress.org/sites/trunk/wordcamp.org/public_html/wp-content/ $SITE_DIR/wp-content
