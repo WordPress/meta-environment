@@ -9,4 +9,4 @@
 
 
 ## Low priority
-* Use dashboard-custom.php instead of overriding VVV index.php
+*
