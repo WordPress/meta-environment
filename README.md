@@ -8,10 +8,15 @@ production site.
 WME is based on [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV), and you can find 
 a lot of documentation and resources upstream.
  
-The first supported site is [WordCamp.org](http://wordcamp.org), and the goal is to eventually support all of the sites in the network.
- 
 You can find more information about contributing to the official WordPress websites from [the Meta team's
 handbook](http://make.wordpress.org/meta/handbook/).
+
+### Supported Sites
+
+* [developer.wordpress.org](http://developer.wordpress.org)
+* [wordcamp.org](http://wordcamp.org)
+
+The goal is to eventually support all of the sites in the network.
 
 ### Setup
 

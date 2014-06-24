@@ -8,3 +8,6 @@ DROP DATABASE IF EXISTS `test`;
 
 CREATE DATABASE IF NOT EXISTS `wordcamp_dev`;
 GRANT ALL PRIVILEGES ON `wordcamp_dev`.* TO 'wp_meta'@'localhost' IDENTIFIED BY 'password';
+
+CREATE DATABASE IF NOT EXISTS `developer_wordpress_dev`;
+GRANT ALL PRIVILEGES ON `developer_wordpress_dev`.* TO 'wp_meta'@'localhost' IDENTIFIED BY 'password';
