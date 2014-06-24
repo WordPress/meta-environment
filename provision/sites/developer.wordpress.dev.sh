@@ -16,10 +16,6 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Setup the theme
 	git clone https://github.com/Rarst/wporg-developer $SITE_DIR/content/themes/wporg-developer
-	curl -o $SITE_DIR/content/themes/header.php        http://wordpress.org/header.php
-	curl -o $SITE_DIR/content/themes/footer.php        http://wordpress.org/footer.php
-	echo "<?php wp_head(); ?>" >>                      $SITE_DIR/content/themes/header.php
-	sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/'  $SITE_DIR/content/themes/footer.php
 
 	# Setup plugins
 	cp /vagrant/config/wordpress-config/sites/developer.wordpress.dev/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
@@ -28,9 +24,6 @@ if [ ! -d $SITE_DIR ]; then
 	wp parser create $SITE_DIR/wordpress --user=1 --path=$SITE_DIR/wordpress
 
 	# todo setup cron job to rerun parser?
-
-	scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
-	scss --no-cache --watch  --style=expanded -q $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets &
 
 else
 	printf "\nUpdating developer.wordpress.dev\n"
@@ -42,3 +35,13 @@ else
 	# todo re-run parser here if don't setup automated job during provisioning
 
 fi
+
+# Pull global header/footer
+curl -o $SITE_DIR/content/themes/header.php        http://wordpress.org/header.php
+curl -o $SITE_DIR/content/themes/footer.php        http://wordpress.org/footer.php
+echo "<?php wp_head(); ?>" >>                      $SITE_DIR/content/themes/header.php
+sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/'  $SITE_DIR/content/themes/footer.php
+
+# Compile SASS files
+scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
+scss --no-cache --watch  --style=expanded -q $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets &
