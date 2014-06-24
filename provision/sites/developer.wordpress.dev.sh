@@ -20,7 +20,6 @@ if [ ! -d $SITE_DIR ]; then
 	# Setup plugins
 	cp /vagrant/config/wordpress-config/sites/developer.wordpress.dev/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
-	wp plugin activate wp-parser --path=$SITE_DIR/wordpress
 	wp parser create $SITE_DIR/wordpress --user=1 --path=$SITE_DIR/wordpress
 
 	# todo setup cron job to rerun parser?
