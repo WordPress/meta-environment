@@ -21,6 +21,7 @@ if ( file_exists( 'dashboard-custom.php' ) ) {
 
 <h3>Meta Sites</h3>
 <ul class="nav">
+	<li><a href="http://developer.wordpress.dev">developer.wordpress.dev</a></li>
 	<li><a href="http://wordcamp.dev">wordcamp.dev</a></li>
 </ul>
 
