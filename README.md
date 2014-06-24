@@ -14,6 +14,7 @@ handbook](http://make.wordpress.org/meta/handbook/).
 ### Supported Sites
 
 * [developer.wordpress.org](http://developer.wordpress.org)
+* [jobs.wordpress.net](http://jobs.wordpress.net)
 * [wordcamp.org](http://wordcamp.org)
 
 The goal is to eventually support all of the sites in the network.
