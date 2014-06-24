@@ -5,7 +5,10 @@
 * jobs test with full destroy
 * Add remaining sites in WordPress.org network
 
+
 ## Medium priority
+* developer.wordpress.dev - maybe don't run the parser on provision because takes so long? instead, setup cron and manually run cron in background after provision
+* developer.wordpress.dev - move SASS update/watch to cron job (or login script or whatever) instead of provision, b/c provision doesn't run on every boot  
 * jobs.wordpress.dev - Automate inserting sample jobs because the ones currently in database will be pruned by the time people provision.
 
 
