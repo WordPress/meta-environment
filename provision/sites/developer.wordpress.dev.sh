@@ -29,15 +29,16 @@ if [ ! -d $SITE_DIR ]; then
 
 	# todo setup cron job to rerun parser?
 
-	# todo compile sass to css? that should be done automatically via grunt?
+	scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
+	scss --no-cache --watch  --style=expanded -q $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets &
 
 else
 	printf "\nUpdating developer.wordpress.dev\n"
 
 	svn up $SITE_DIR/wordpress
-	# todo update parser plugin?
+	# composer update rmccue/wp-parser # todo no composer.json file
 	git -C $SITE_DIR/content/themes/wporg-developer pull origin master
 
-	# todo re-run parser?
+	# todo re-run parser here if don't setup automated job during provisioning
 
 fi
