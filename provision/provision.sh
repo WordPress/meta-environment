@@ -521,11 +521,11 @@ if [[ $ping_result == *bytes?from* ]]; then
 #		npm install &>/dev/null
 #	fi
 
-	if [[ ! -d /srv/www/wordpress-develop/build ]]; then
-		echo "Initializing grunt in WordPress develop... This may take a few moments."
-		cd /srv/www/wordpress-develop/
-		grunt
-	fi
+#	if [[ ! -d /srv/www/wordpress-develop/build ]]; then
+#		echo "Initializing grunt in WordPress develop... This may take a few moments."
+#		cd /srv/www/wordpress-develop/
+#		grunt
+#	fi
 
 	# Download phpMyAdmin
 	if [[ ! -d /srv/www/default/database-admin ]]; then
@@ -556,11 +556,6 @@ for SITE_CONFIG_FILE in $(find /srv/www -maxdepth 5 -name 'vvv-init.sh'); do
 		cd $DIR
 		source vvv-init.sh
 	)
-done
-
-# Look for site setups scripts in the provision/sites directory too
-for SITE_CONFIG_FILE in $(find /vagrant/provision/sites -maxdepth 5 -name '*.sh'); do
-	source $SITE_CONFIG_FILE
 done
 
 # Look for Nginx vhost files, symlink them into the custom sites dir
