@@ -1,5 +1,4 @@
 ## High priority
-* devhub home page widget notices. maybe just need to let parser finish.
 * Add remaining sites in WordPress.org network
 
 

@@ -6,7 +6,7 @@ if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning developer.wordpress.dev\n"
 
 	# Setup WordPress
-	svn co https://core.svn.wordpress.org/trunk $SITE_DIR/wordpress
+	wp core download --path=$SITE_DIR/wordpress
 	cp /vagrant/config/wordpress-config/sites/developer.wordpress.dev/wp-config.php $SITE_DIR
 
 	mkdir $SITE_DIR/content
