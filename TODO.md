@@ -1,8 +1,10 @@
 ## High priority
+* Subversion checkouts are incompatible with the version of svn installed on most macs (via Xcode)
 * Add remaining sites in WordPress.org network
 
 
 ## Medium priority
+* Merge fix for VVV #375 when it lands
 * developer.wordpress.dev - remaining provision todos
 * developer.wordpress.dev - maybe don't run the parser on provision because takes so long? instead, setup cron and manually run cron in background after provision
 * developer.wordpress.dev - move SASS update/watch to cron job (or login script or whatever) instead of provision, b/c provision doesn't run on every boot  
