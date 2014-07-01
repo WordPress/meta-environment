@@ -20,9 +20,8 @@ if [ ! -d $SITE_DIR ]; then
 	# Setup plugins
 	cp /vagrant/config/wordpress-config/sites/developer.wordpress.dev/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
-	wp parser create $SITE_DIR/wordpress --user=1 --path=$SITE_DIR/wordpress
 
-	# todo setup cron job to rerun parser?
+	# todo setup cron job to rerun parser, or just let people run it manually?
 
 else
 	printf "\nUpdating developer.wordpress.dev\n"
@@ -30,8 +29,6 @@ else
 	svn up $SITE_DIR/wordpress
 	# composer update rmccue/wp-parser # todo no composer.json file
 	git -C $SITE_DIR/content/themes/wporg-developer pull origin master
-
-	# todo re-run parser here if don't setup automated job during provisioning
 
 fi
 
