@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
   # If you are already on a network using the 192.168.50.x subnet, this should be changed.
   # If you are running more than one VM through VirtualBox, different subnets should be used
   # for those as well. This includes other Vagrant boxes.
-  config.vm.network :private_network, ip: "192.168.50.4"
+  config.vm.network :private_network, ip: "192.168.50.15"
 
   # Drive mapping
   #
