@@ -14,3 +14,6 @@ GRANT ALL PRIVILEGES ON `developer_wordpress_dev`.* TO 'wp_meta'@'localhost' IDE
 
 CREATE DATABASE IF NOT EXISTS `jobs_wordpress_dev`;
 GRANT ALL PRIVILEGES ON `jobs_wordpress_dev`.* TO 'wp_meta'@'localhost' IDENTIFIED BY 'password';
+
+CREATE DATABASE IF NOT EXISTS `global_wordpress_dev`;
+GRANT ALL PRIVILEGES ON `global_wordpress_dev`.* TO 'wp_meta'@'localhost' IDENTIFIED BY 'password';

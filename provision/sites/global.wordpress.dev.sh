@@ -1,0 +1,25 @@
+#!/bin/bash
+
+SITE_DIR="/srv/www/global.wordpress.dev"
+
+if [ ! -d $SITE_DIR ]; then
+	printf "\nProvisioning global.wordpress.dev\n"
+
+	# Setup WordPress
+	svn co https://core.svn.wordpress.org/trunk $SITE_DIR/wordpress
+	cp /vagrant/config/wordpress-config/sites/global.wordpress.dev/wp-config.php $SITE_DIR
+
+	# Setup plugins, themes and localizations
+	svn co https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content $SITE_DIR/wp-content
+	cp /vagrant/config/wordpress-config/sites/jobs.wordpress.dev/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
+	mkdir $SITE_DIR/wp-content/plugins
+	svn export http://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
+	svn export http://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
+
+else
+	printf "\nUpdating global.wordpress.dev\n"
+
+	svn up $SITE_DIR/wordpress
+	svn up $SITE_DIR/wp-content
+
+fi
