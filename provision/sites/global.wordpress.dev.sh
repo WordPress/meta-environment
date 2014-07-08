@@ -28,7 +28,5 @@ else
 fi
 
 # Pull global header/footer
-curl -o $SITE_DIR/header.php                       http://wordpress.org/header.php
-curl -o $SITE_DIR/footer.php                       http://wordpress.org/footer.php
-echo "<?php wp_head(); ?>" >>                      $SITE_DIR/header.php
-sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/'  $SITE_DIR/footer.php
+curl -o $SITE_DIR/header.php  http://wordpress.org/header.php
+echo "<?php wp_head(); ?>" >> $SITE_DIR/header.php
