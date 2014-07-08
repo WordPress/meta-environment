@@ -30,6 +30,7 @@ define( 'BLOG_ID_CURRENT_SITE',  1 );
 define( 'COOKIE_DOMAIN',         '' );
 
 define( 'WPLANG',               '' );
+define( 'WPORGPATH',             __DIR__ . '/' );
 define( 'WP_CONTENT_DIR',        __DIR__ . '/wp-content' );
 define( 'WP_CONTENT_URL',        'http://' . preg_replace( '/[^-_.0-9a-z:]/i', '', $_SERVER['HTTP_HOST'] ) . '/wp-content' );
 
