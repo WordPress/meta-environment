@@ -1,4 +1,5 @@
 ## High priority
+* Add sample content to (en|es|ja).wordpress.dev sites.
 * Subversion checkouts are incompatible with the version of svn installed on most macs (via Xcode)
 * Add remaining sites in WordPress.org network
 
