@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<p><a href="https://github.com/iandunn/wordpress-meta-environment/">WordPress Meta Environment</a> is a turnkey local development environment for contributing to the network of official WordPress websites.</p>
+
 <h3>Meta Sites</h3>
 
 <ul class="nav">
@@ -23,7 +25,6 @@
 	<li><a href="memcached-admin/">phpMemcachedAdmin</a></li>
 	<li><a href="opcache-status/opcache.php">Opcache Status</a></li>
 	<li><a href="webgrind/">Webgrind</a></li>
-	<li><a href="https://github.com/iandunn/wordpress-meta-environment/">WordPress Meta Environment</a></li>
 </ul>
 
 </body>
