@@ -24,6 +24,10 @@ class Rosetta {
 	public function get_latest_release() {
 		return WP_CORE_STABLE_BRANCH;
 	}
+
+	public function get_releases_breakdown() {
+		return array();
+	}
 }
 
 $GLOBALS['rosetta'] = new Rosetta_WordPress();
