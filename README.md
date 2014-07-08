@@ -1,8 +1,8 @@
 # WordPress Meta Environment
 
 WME is a Vagrant configuration that aims to make it easier to contribute to the official WordPress websites by 
-providing a development environment that is already configured with everything you need to get started on a patch. 
-It contains all of the open source code that runs each supported site, as well as some sample data that mimics the
+providing a development environment that is already provisioned with everything you need to get started on a patch. 
+It contains all of the open-source code that runs each supported site, as well as some sample data that mimics the
 production site.
  
 WME is based on [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV), and you can find 
@@ -14,6 +14,7 @@ handbook](http://make.wordpress.org/meta/handbook/).
 ### Supported Sites
 
 * [developer.wordpress.org](http://developer.wordpress.org)
+* [global.wordpress.org](http://global.wordpress.org)
 * [jobs.wordpress.net](http://jobs.wordpress.net)
 * [wordcamp.org](http://wordcamp.org)
 
