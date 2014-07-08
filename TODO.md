@@ -1,6 +1,5 @@
 ## High priority
 
-* global.wordpress.dev - test provisioning after vagrant destroy
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - Add sample content for es, ja sites
 * Subversion checkouts are incompatible with the version of svn installed on most macs (via Xcode)
