@@ -17,7 +17,6 @@ if [ ! -d $SITE_DIR ]; then
 	svn co https://plugins.svn.wordpress.org/tagregator/trunk/                             $SITE_DIR/wp-content/plugins/tagregator
 
 	# Setup mu-plugin for local development
-	mkdir $SITE_DIR/wp-content/mu-plugins
 	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/sandbox-functionality.php       $SITE_DIR/wp-content/mu-plugins/
 
 	# Install 3rd-party plugins
