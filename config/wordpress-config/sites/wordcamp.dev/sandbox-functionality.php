@@ -77,3 +77,17 @@ function tggr_refresh_interval( $refresh_interval ) {
 	return 10;
 }
 add_filter( 'tggr_refresh_interval', 'tggr_refresh_interval' );
+
+/**
+ * De-register functionality that we don't want for one reason for another.
+ *
+ * The Global Login Endpoint plugin is unhooked in order to avoid dealing with self-signed SSL certificates.
+ */
+function wcorg_remove_unwanted_callbacks() {
+	/** @var $wordcamp_gle WordCamp_Global_Login_Endpoint_Plugin */
+	global $wordcamp_gle;
+
+	remove_action( 'login_form_login', array( $wordcamp_gle, 'login_form_login' ) );
+	remove_action( 'login_url',        array( $wordcamp_gle, 'login_url' ), 99, 2 );
+}
+add_action( 'plugins_loaded', 'wcorg_remove_unwanted_callbacks' );
