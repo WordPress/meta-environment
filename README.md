@@ -24,8 +24,9 @@ The goal is to eventually support all of the sites in the network.
 
 ### Setup
 
-1. Follow [the Getting Started instructions for VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), but use this
-repository's URL instead of VVV's when cloning.
+1. Clone this repository to your hard drive.
+1. Follow [the Getting Started instructions for VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), but use the
+   repository you cloned in the previous step instead of VVV's repository.
 1. Visit [http://wp-meta.dev](http://wp-meta.dev) for a list of supported sites and server tools.
 1. Login to any site with username `admin` and password `password`.
 
