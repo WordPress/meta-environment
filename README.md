@@ -11,6 +11,7 @@ a lot of documentation and resources upstream.
 You can find more information about contributing to the official WordPress websites from [the Meta team's
 handbook](http://make.wordpress.org/meta/handbook/).
 
+
 ### Supported Sites
 
 * [developer.wordpress.org](http://developer.wordpress.org)
@@ -20,9 +21,19 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 The goal is to eventually support all of the sites in the network.
 
+
 ### Setup
 
 1. Follow [the Getting Started instructions for VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), but use this
 repository's URL instead of VVV's when cloning.
 1. Visit [http://wp-meta.dev](http://wp-meta.dev) for a list of supported sites and server tools.
 1. Login to any site with username `admin` and password `password`.
+
+
+### Notes
+
+* Subversion repositories are checked out using version 1.8 inside the virtual machine, and the 1.8 repository format
+  is not compatible with the svn 1.7 client. If you have an older client and try to run any svn commands,
+  you'll get a `Working copy is too old` error. Unfortunately there is no way to downgrade the repository format,
+  but you can work around the issue by either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn
+  from inside the virtual machine.
