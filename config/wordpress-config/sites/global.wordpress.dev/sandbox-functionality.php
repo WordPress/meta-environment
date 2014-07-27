@@ -18,6 +18,13 @@ class Rosetta_WordPress {
 		$this->rosetta  = new Rosetta();
 		$this->showcase = new Rosetta_Showcase();
 	}
+
+	function screenshot_url( $url, $size ) {
+		if ( 0 !== strpos( $url, 'http://' ) ) {
+			$url = 'http://' . $url;
+		}
+		return 'http://s.wordpress.com/mshots/v1/' . urlencode( esc_url( $url ) ) . '?w=' . intval( $size );
+	}
 }
 
 class Rosetta {
