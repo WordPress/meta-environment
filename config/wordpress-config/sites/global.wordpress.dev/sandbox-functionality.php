@@ -5,10 +5,6 @@ register_theme_directory( ABSPATH . 'wp-content/themes' );
 
 // Load mu-plugins in subdirectories
 define( 'WP_CORE_STABLE_BRANCH', '3.9' );
-define( 'WP_CORE_ZIP_SIZE', '6.4' );
-define( 'WP_CORE_TAR_URL', 'download.tar.gz' );
-define( 'WP_CORE_ZIP_URL', 'download.zip' );
-define( 'WP_CORE_TAR_SIZE', '5.9' );
 require_once( __DIR__ . '/downloads/rosetta-downloads.php' );
 require_once( __DIR__ . '/roles/rosetta-roles.php' );
 require_once( __DIR__ . '/showcase/rosetta-showcase.php' );
@@ -29,13 +25,12 @@ class Rosetta {
 
 		// Expected to be an array containing version, zip_size_mb, targz_url, zip_url, tar_size_mb
 		return array(
-			'version' 		=> WP_CORE_STABLE_BRANCH,
-			'zip_size_mb' 	=> WP_CORE_ZIP_SIZE,
-			'targz_url' 	=> WP_CORE_TAR_URL,
-			'zip_url' 		=> WP_CORE_ZIP_URL,
-			'tar_size_mb' 	=> WP_CORE_TAR_SIZE
+			'version'     => WP_CORE_STABLE_BRANCH,
+			'zip_size_mb' => '6.4',
+			'targz_url'   => 'download.tar.gz',
+			'zip_url'     => 'download.zip',
+			'tar_size_mb' => '5.9'
 		);
-
 	}
 
 	public function get_releases_breakdown() {
