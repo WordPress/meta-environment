@@ -2,12 +2,12 @@
 
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - Add sample content for es, ja sites
-* Subversion checkouts are incompatible with the version of svn installed on most macs (via Xcode)
 * Add remaining sites in WordPress.org network
 
 
 ## Medium priority
 * Clone CampTix from Github instead of WPORG
+* global.wordpress.dev: svn:ignore things you add to wp-content directory to make patching easier. check other sites too.
 * Merge fix for VVV #375 when it lands
 * global.wordpress.dev - open source the Rosetta plugin to allow contributions and fix theme notices
 * developer.wordpress.dev - remaining provision todos
@@ -18,5 +18,5 @@
 ## Low priority
 * Make a screencast of the setup process.
 * global.wordpress.dev - Contact form displays success message but doesn't insert post into database
-* global.wordpress.dev - update WP_CORE_STABLE_BRANCH automatically from http://api.wordpress.org/core/version-check/1.7/. Use `current` or `version`? Parse for branch only.
+* global.wordpress.dev - update `WP_CORE_STABLE_BRANCH` automatically from http://api.wordpress.org/core/version-check/1.7/. Use `current` or `version`? Parse for branch only.
 * jobs.wordpress.dev - Fix CAPTCHA image on Feedback form. Problem is Nginx config doesn't support running PHP scripts inside wp-content. 
