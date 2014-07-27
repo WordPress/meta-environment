@@ -34,6 +34,6 @@ repository's URL instead of VVV's when cloning.
 
 * Subversion repositories are checked out using version 1.8 inside the virtual machine, and the 1.8 repository format
   is not compatible with the svn 1.7 client. If you have an older client and try to run any svn commands,
-  you'll get a `Working copy is too old` error. Unfortunately there is no way to downgrade the repository format,
+  you'll get a `The client is too old to work with the working copy` error. Unfortunately there is no way to downgrade the repository format,
   but you can work around the issue by either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn
   from inside the virtual machine.
