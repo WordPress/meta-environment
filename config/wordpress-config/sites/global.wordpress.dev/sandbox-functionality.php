@@ -22,7 +22,15 @@ class Rosetta_WordPress {
 
 class Rosetta {
 	public function get_latest_release() {
-		return WP_CORE_STABLE_BRANCH;
+
+		// Expected to be an array containing version, zip_size_mb, targz_url, zip_url, tar_size_mb
+		return array(
+			'version'     => WP_CORE_STABLE_BRANCH,
+			'zip_size_mb' => '6.4',
+			'targz_url'   => 'download.tar.gz',
+			'zip_url'     => 'download.zip',
+			'tar_size_mb' => '5.9'
+		);
 	}
 
 	public function get_releases_breakdown() {
