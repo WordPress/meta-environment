@@ -11,7 +11,7 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Check out WordCamp.org source code
 	svn co https://meta.svn.wordpress.org/sites/trunk/wordcamp.org/public_html/wp-content/ $SITE_DIR/wp-content
-	svn co https://plugins.svn.wordpress.org/camptix/trunk/                                $SITE_DIR/wp-content/plugins/camptix
+	git clone https://github.com/Automattic/camptix.git                                    $SITE_DIR/wp-content/plugins/camptix
 	svn co https://plugins.svn.wordpress.org/camptix-network-tools/trunk/                  $SITE_DIR/wp-content/plugins/camptix-network-tools
 	svn co https://plugins.svn.wordpress.org/email-post-changes/trunk/                     $SITE_DIR/wp-content/plugins/email-post-changes
 	svn co https://plugins.svn.wordpress.org/tagregator/trunk/                             $SITE_DIR/wp-content/plugins/tagregator
