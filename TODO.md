@@ -1,7 +1,7 @@
 ## High priority
 
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
-* global.wordpress.dev - Add sample content for es, ja sites
+* global.wordpress.dev - Add sample content for ja sites
 * Add remaining sites in WordPress.org network
 
 
