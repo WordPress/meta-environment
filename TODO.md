@@ -6,6 +6,7 @@
 
 
 ## Medium priority
+
 * global.wordpress.dev: svn:ignore things you add to wp-content directory to make patching easier. check other sites too.
 * Merge fix for VVV #375 when it lands
 * global.wordpress.dev - open source the Rosetta plugin to allow contributions and fix theme notices
