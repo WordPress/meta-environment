@@ -14,6 +14,7 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 ### Supported Sites
 
+* [apps.wordpress.org](http://apps.wordpress.org)
 * [developer.wordpress.org](http://developer.wordpress.org)
 * [global.wordpress.org](http://global.wordpress.org)
 * [jobs.wordpress.net](http://jobs.wordpress.net)
