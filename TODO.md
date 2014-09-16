@@ -1,5 +1,6 @@
 ## High priority
 
+* wordcamp.dev - intercept outbound mail so support@, etc don't get test emails
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - Add sample content for ja sites
 * Add remaining sites in WordPress.org network
@@ -7,6 +8,7 @@
 
 ## Medium priority
 
+* Move Vagrantfile customizations to Customfile -- https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Customising-your-Vagrant's-attributes-and-parameters
 * global.wordpress.dev: svn:ignore things you add to wp-content directory to make patching easier. check other sites too.
 * Merge fix for VVV #375 when it lands
 * global.wordpress.dev - open source the Rosetta plugin to allow contributions and fix theme notices
