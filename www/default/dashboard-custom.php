@@ -11,6 +11,7 @@
 <h3>Meta Sites</h3>
 
 <ul class="nav">
+	<li><a href="http://apps.wordpress.dev">apps.wordpress.dev</a></li>
 	<li><a href="http://developer.wordpress.dev">developer.wordpress.dev</a></li>
 	<li><a href="http://global.wordpress.dev">global.wordpress.dev</a></li>
 	<li><a href="http://jobs.wordpress.dev">jobs.wordpress.dev</a></li>
