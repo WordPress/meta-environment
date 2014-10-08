@@ -39,3 +39,8 @@ The goal is to eventually support all of the sites in the network.
   you'll get a **`The client is too old to work with the working copy`** error. Unfortunately there is no way to downgrade the repository format,
   but you can work around the issue by either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn
   from inside the virtual machine.
+
+
+### Contributing
+
+Pull requests are welcome. Check out [the TODO file](https://github.com/iandunn/wordpress-meta-environment/blob/master/TODO.md) for things that need to get done.
