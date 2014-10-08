@@ -1,5 +1,6 @@
 ## High priority
 
+* Merge #319 and remove changes to VVV core, making upstream merges easier
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - Add sample content for ja sites
@@ -15,6 +16,7 @@
 * developer.wordpress.dev - remaining provision todos
 * developer.wordpress.dev - move SASS update/watch to cron job (or login script or whatever) instead of provision, b/c provision doesn't run on every boot  
 * jobs.wordpress.dev - Automate inserting sample jobs because the ones currently in database will be pruned by the time people provision.
+* Periodically merge upstream VVV commits
 
 
 ## Low priority
