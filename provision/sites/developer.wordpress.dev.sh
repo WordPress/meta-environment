@@ -33,8 +33,8 @@ else
 fi
 
 # Pull global header/footer
-curl -o $SITE_DIR/content/themes/header.php        http://wordpress.org/header.php
-curl -o $SITE_DIR/content/themes/footer.php        http://wordpress.org/footer.php
+curl -o $SITE_DIR/content/themes/header.php        https://wordpress.org/header.php
+curl -o $SITE_DIR/content/themes/footer.php        https://wordpress.org/footer.php
 echo "<?php wp_head(); ?>" >>                      $SITE_DIR/content/themes/header.php
 sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/'  $SITE_DIR/content/themes/footer.php
 
