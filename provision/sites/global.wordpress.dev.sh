@@ -28,5 +28,5 @@ else
 fi
 
 # Pull global header/footer
-curl -o $SITE_DIR/header.php  http://wordpress.org/header.php
+curl -o $SITE_DIR/header.php  https://wordpress.org/header.php
 echo "<?php wp_head(); ?>" >> $SITE_DIR/header.php
