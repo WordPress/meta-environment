@@ -30,10 +30,10 @@ else
 	printf "\nUpdating wordcamp.dev\n"
 
 	svn up $SITE_DIR/wp-content
-	svn up $SITE_DIR/wp-content/plugins/camptix
 	svn up $SITE_DIR/wp-content/plugins/camptix-network-tools
 	svn up $SITE_DIR/wp-content/plugins/email-post-changes
 	svn up $SITE_DIR/wp-content/plugins/tagregator
+	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
 	wp core   update       --path=$SITE_DIR/wordpress
 	wp plugin update --all --path=$SITE_DIR/wordpress
 	wp theme  update --all --path=$SITE_DIR/wordpress
