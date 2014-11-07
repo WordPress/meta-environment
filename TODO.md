@@ -3,7 +3,6 @@
 * Merge #319 and remove changes to VVV core, making upstream merges easier
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
-* global.wordpress.dev - Add sample content for ja sites
 * Add remaining sites in WordPress.org network
 
 
