@@ -15,8 +15,8 @@ if [ ! -d $SITE_DIR ]; then
 	mkdir $SITE_DIR/wp-content/plugins
 	wp plugin install akismet --path=$SITE_DIR/wordpress
 	wp plugin install jetpack --path=$SITE_DIR/wordpress
-	svn export http://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
-	svn export http://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
+	svn export https://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
+	svn export https://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
 
 else
 	printf "\nUpdating global.wordpress.dev\n"
