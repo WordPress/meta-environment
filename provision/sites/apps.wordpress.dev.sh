@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -ex
 
 SITE_DIR="/srv/www/apps.wordpress.dev"
 
@@ -11,8 +13,8 @@ if [ ! -d $SITE_DIR ]; then
 	mkdir $SITE_DIR/wp-content/plugins
 	mkdir $SITE_DIR/wp-content/themes
 	svn co https://meta.svn.wordpress.org/sites/trunk/wordpress.org/public_html/wp-content/themes/pub/wporg-apps $SITE_DIR/wp-content/themes/wporg-apps
-	cp /vagrant/config/wordpress-config/sites/apps.wordpress.dev/wp-config.php $SITE_DIR
-	cp /vagrant/config/wordpress-config/sites/apps.wordpress.dev/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
+	cp /srv/config/wordpress-config/sites/apps.wordpress.dev/wp-config.php $SITE_DIR
+	cp /srv/config/wordpress-config/sites/apps.wordpress.dev/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 
 else
 	printf "\nUpdating apps.wordpress.dev\n"

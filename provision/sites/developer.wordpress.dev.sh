@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -ex
 
 SITE_DIR="/srv/www/developer.wordpress.dev"
 
@@ -7,7 +9,7 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Setup WordPress
 	wp core download --path=$SITE_DIR/wordpress
-	cp /vagrant/config/wordpress-config/sites/developer.wordpress.dev/wp-config.php $SITE_DIR
+	cp /srv/config/wordpress-config/sites/developer.wordpress.dev/wp-config.php $SITE_DIR
 
 	mkdir $SITE_DIR/content
 	mkdir $SITE_DIR/content/mu-plugins
@@ -18,7 +20,7 @@ if [ ! -d $SITE_DIR ]; then
 	git clone https://github.com/Rarst/wporg-developer $SITE_DIR/content/themes/wporg-developer
 
 	# Setup plugins
-	cp /vagrant/config/wordpress-config/sites/developer.wordpress.dev/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
+	cp /srv/config/wordpress-config/sites/developer.wordpress.dev/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
 
 	# todo setup cron job to rerun parser, or just let people run it manually?
