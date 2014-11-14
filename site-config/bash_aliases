@@ -1,0 +1,21 @@
+# bash_aliases
+#
+# This file is copied into the home directory of the vagrant user on the virtual
+# machine during provisioning and is included in the .bashrc automatically as
+# provisioning is finished. This allows for various scripts and configurations to
+# be available to us.
+#
+
+# Core utils
+alias ls='ls -a --color'
+alias ll='ls -lh'
+alias nano='nano -w'
+alias df='df -h'
+alias du='du -h'
+alias grep='grep -i'
+alias rm='rm -i'
+alias tar='tar --exclude-vcs'
+alias locate='locate -i'
+
+# Other
+alias patch='patch --no-backup-if-mismatch'

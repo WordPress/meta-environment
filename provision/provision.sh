@@ -11,14 +11,17 @@
 # end of this script.
 start_seconds="$(date +%s)"
 
-# Capture a basic ping result to Google's primary DNS server to determine if
-# outside access is available to us. If this does not reply after 2 attempts,
-# we try one of Level3's DNS servers as well. If neither IP replies to a ping,
-# then we'll skip a few things further in provisioning rather than creating a
-# bunch of errors.
-ping_result="$(ping -c 2 8.8.4.4 2>&1)"
-if [[ $ping_result != *bytes?from* ]]; then
-	ping_result="$(ping -c 2 4.2.2.2 2>&1)"
+# Network Detection
+#
+# Make an HTTP request to google.com to determine if outside access is available
+# to us. If 3 attempts with a timeout of 5 seconds are not successful, then we'll
+# skip a few things further in provisioning rather than create a bunch of errors.
+if [[ "$(wget --tries=3 --timeout=5 --spider http://google.com 2>&1 | grep 'connected')" ]]; then
+	echo "Network connection detected..."
+	ping_result="Connected"
+else
+	echo "Network connection not detected. Unable to reach google.com..."
+	ping_result="Not Connected"
 fi
 
 # PACKAGE INSTALLATION
@@ -92,7 +95,6 @@ apt_package_check_list=(
 
 	# nodejs for use by grunt
 	g++
-	npm
 	nodejs
 )
 
@@ -113,11 +115,6 @@ for pkg in "${apt_package_check_list[@]}"; do
 	fi
 done
 
-# There is a naming conflict with the node package (Amateur Packet Radio Node
-# Program), and the nodejs binary has been renamed from node to nodejs. We need
-# to symlink to put it back.
-ln -s /usr/bin/nodejs /usr/bin/node
-
 # MySQL
 #
 # Use debconf-set-selections to specify the default password for the root MySQL
@@ -134,12 +131,14 @@ echo mysql-server mysql-server/root_password_again password root | debconf-set-s
 # able to send mail, even with postfix installed.
 echo postfix postfix/main_mailer_type select Internet Site | debconf-set-selections
 echo postfix postfix/mailname string vvv | debconf-set-selections
+# Disable ipv6 as some ISPs/mail servers have problems with it
+echo "inet_protocols = ipv4" >> /etc/postfix/main.cf
 
 # Provide our custom apt sources before running `apt-get update`
 ln -sf /srv/config/apt-source-append.list /etc/apt/sources.list.d/vvv-sources.list
 echo "Linked custom apt sources"
 
-if [[ $ping_result == *bytes?from* ]]; then
+if [[ $ping_result == "Connected" ]]; then
 	# If there are any packages to be installed in the apt_package_list array,
 	# then we'll run `apt-get update` and then `apt-get install` to proceed.
 	if [[ ${#apt_package_install_list[@]} = 0 ]]; then
@@ -149,9 +148,14 @@ if [[ $ping_result == *bytes?from* ]]; then
 		# the packages that we are installing from non standard sources via
 		# our appended apt source.list
 
-		# Nginx.org nginx key ABF5BD827BD9BF62
-		gpg -q --keyserver keyserver.ubuntu.com --recv-key ABF5BD827BD9BF62
-		gpg -q -a --export ABF5BD827BD9BF62 | apt-key add -
+		# Retrieve the Nginx signing key from nginx.org
+		echo "Applying Nginx signing key..."
+		wget --quiet http://nginx.org/keys/nginx_signing.key -O- | apt-key add -
+
+		# Apply the nodejs assigning key
+		echo "Applying nodejs signing key..."
+		apt-key adv --quiet --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C7917B12 2>&1 | grep "gpg:"
+		apt-key export C7917B12 | apt-key add -
 
 		# update all of the package references before installing anything
 		echo "Running apt-get update..."
@@ -164,6 +168,9 @@ if [[ $ping_result == *bytes?from* ]]; then
 		# Clean up apt caches
 		apt-get clean
 	fi
+
+	# Make sure we have the latest npm version
+	npm install -g npm
 
 	# xdebug
 	#
@@ -185,22 +192,23 @@ if [[ $ping_result == *bytes?from* ]]; then
 
 	# COMPOSER
 	#
-	# Install or Update Composer based on current state. Updates are direct from
-	# master branch on GitHub repository.
-	if [[ -n "$(composer --version | grep -q 'Composer version')" ]]; then
-		echo "Updating Composer..."
-		COMPOSER_HOME=/usr/local/src/composer composer self-update
-		COMPOSER_HOME=/usr/local/src/composer composer global update
-	else
+	# Install Composer if it is not yet available.
+	if [[ ! -n "$(composer --version --no-ansi | grep 'Composer version')" ]]; then
 		echo "Installing Composer..."
 		curl -sS https://getcomposer.org/installer | php
 		chmod +x composer.phar
 		mv composer.phar /usr/local/bin/composer
+	fi
 
-		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update phpunit/phpunit:4.0.*
+	# Update both Composer and any global packages. Updates to Composer are direct from
+	# the master branch on its GitHub repository.
+	if [[ -n "$(composer --version --no-ansi | grep 'Composer version')" ]]; then
+		echo "Updating Composer..."
+		COMPOSER_HOME=/usr/local/src/composer composer self-update
+		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update phpunit/phpunit:4.3.*
 		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update phpunit/php-invoker:1.1.*
-		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update mockery/mockery:0.8.*
-		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update d11wtq/boris:v1.0.2
+		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update mockery/mockery:0.9.*
+		COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update d11wtq/boris:v1.0.8
 		COMPOSER_HOME=/usr/local/src/composer composer -q global config bin-dir /usr/local/bin
 		COMPOSER_HOME=/usr/local/src/composer composer global update
 	fi
@@ -220,6 +228,14 @@ if [[ $ping_result == *bytes?from* ]]; then
 		npm install -g grunt-sass &>/dev/null
 		npm install -g grunt-cssjanus &>/dev/null
 	fi
+
+	# Graphviz
+	#
+	# Set up a symlink between the Graphviz path defined in the default Webgrind
+	# config and actual path.
+	echo "Adding graphviz symlink for Webgrind..."
+	ln -sf /usr/bin/dot /usr/local/bin/dot
+
 else
 	echo -e "\nNo network connection available, skipping package installation"
 fi
@@ -300,6 +316,12 @@ echo " * /srv/config/vimrc                             -> /home/vagrant/.vimrc"
 echo " * /srv/config/subversion-servers                -> /home/vagrant/.subversion/servers"
 echo " * /srv/config/homebin                           -> /home/vagrant/bin"
 
+# If a bash_prompt file exists in the VVV config/ directory, copy to the VM.
+if [[ -f /srv/config/bash_prompt ]]; then
+	cp /srv/config/bash_prompt /home/vagrant/.bash_prompt
+	echo " * /srv/config/bash_prompt                       -> /home/vagrant/.bash_prompt"
+fi
+
 # RESTART SERVICES
 #
 # Make sure the services we expect to be running are running.
@@ -362,7 +384,7 @@ if (( $EUID == 0 )); then
     wp() { sudo -EH -u vagrant -- wp "$@"; }
 fi
 
-if [[ $ping_result == *bytes?from* ]]; then
+if [[ $ping_result == "Connected" ]]; then
 	# WP-CLI Install
 	if [[ ! -d /srv/www/wp-cli ]]; then
 		echo -e "\nDownloading wp-cli, see http://wp-cli.org"
@@ -430,7 +452,7 @@ if [[ $ping_result == *bytes?from* ]]; then
 
 	# Sniffs WordPress Coding Standards
 	if [[ ! -d /srv/www/phpcs/CodeSniffer/Standards/WordPress ]]; then
-		echo -e "\nDownloading WordPress-Coding-Standards, snifs for PHP_CodeSniffer, see https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards"
+		echo -e "\nDownloading WordPress-Coding-Standards, sniffs for PHP_CodeSniffer, see https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards"
 		git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git /srv/www/phpcs/CodeSniffer/Standards/WordPress
 	else
 		cd /srv/www/phpcs/CodeSniffer/Standards/WordPress
@@ -441,26 +463,29 @@ if [[ $ping_result == *bytes?from* ]]; then
 			echo -e "\nSkipped updating PHPCS WordPress Coding Standards since not on master branch"
 		fi
 	fi
+	# Install the standards in PHPCS
+	/srv/www/phpcs/scripts/phpcs --config-set installed_paths ./CodeSniffer/Standards/WordPress/
+	/srv/www/phpcs/scripts/phpcs -i
 
 	# Install and configure the latest stable version of WordPress
-#	if [[ ! -d /srv/www/wordpress-default ]]; then
-#		echo "Downloading WordPress Stable, see http://wordpress.org/"
-#		cd /srv/www/
-#		curl -O http://wordpress.org/latest.tar.gz
-#		tar -xvf latest.tar.gz
-#		mv wordpress wordpress-default
-#		rm latest.tar.gz
-#		cd /srv/www/wordpress-default
-#		echo "Configuring WordPress Stable..."
-#		wp core config --dbname=wordpress_default --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-#define( 'WP_DEBUG', true );
-#PHP
-#		wp core install --url=local.wordpress.dev --quiet --title="Local WordPress Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
-#	else
-#		echo "Updating WordPress Stable..."
-#		cd /srv/www/wordpress-default
-#		wp core upgrade
-#	fi
+	if [[ ! -d /srv/www/wordpress-default ]]; then
+		echo "Downloading WordPress Stable, see http://wordpress.org/"
+		cd /srv/www/
+		curl -L -O https://wordpress.org/latest.tar.gz
+		tar -xvf latest.tar.gz
+		mv wordpress wordpress-default
+		rm latest.tar.gz
+		cd /srv/www/wordpress-default
+		echo "Configuring WordPress Stable..."
+		wp core config --dbname=wordpress_default --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
+define( 'WP_DEBUG', true );
+PHP
+		wp core install --url=local.wordpress.dev --quiet --title="Local WordPress Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
+	else
+		echo "Updating WordPress Stable..."
+		cd /srv/www/wordpress-default
+		wp core upgrade
+	fi
 
 	# Test to see if an svn upgrade is needed
 	svn_test=$( svn status -u /srv/www/wordpress-develop/ 2>&1 );
@@ -472,68 +497,68 @@ if [[ $ping_result == *bytes?from* ]]; then
 	fi;
 
 	# Checkout, install and configure WordPress trunk via core.svn
-#	if [[ ! -d /srv/www/wordpress-trunk ]]; then
-#		echo "Checking out WordPress trunk from core.svn, see http://core.svn.wordpress.org/trunk"
-#		svn checkout http://core.svn.wordpress.org/trunk/ /srv/www/wordpress-trunk
-#		cd /srv/www/wordpress-trunk
-#		echo "Configuring WordPress trunk..."
-#		wp core config --dbname=wordpress_trunk --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-#define( 'WP_DEBUG', true );
-#PHP
-#		wp core install --url=local.wordpress-trunk.dev --quiet --title="Local WordPress Trunk Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
-#	else
-#		echo "Updating WordPress trunk..."
-#		cd /srv/www/wordpress-trunk
-#		svn up --ignore-externals
-#	fi
+	if [[ ! -d /srv/www/wordpress-trunk ]]; then
+		echo "Checking out WordPress trunk from core.svn, see http://core.svn.wordpress.org/trunk"
+		svn checkout http://core.svn.wordpress.org/trunk/ /srv/www/wordpress-trunk
+		cd /srv/www/wordpress-trunk
+		echo "Configuring WordPress trunk..."
+		wp core config --dbname=wordpress_trunk --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
+define( 'WP_DEBUG', true );
+PHP
+		wp core install --url=local.wordpress-trunk.dev --quiet --title="Local WordPress Trunk Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
+	else
+		echo "Updating WordPress trunk..."
+		cd /srv/www/wordpress-trunk
+		svn up --ignore-externals
+	fi
 
 	# Checkout, install and configure WordPress trunk via develop.svn
-#	if [[ ! -d /srv/www/wordpress-develop ]]; then
-#		echo "Checking out WordPress trunk from develop.svn, see http://develop.svn.wordpress.org/trunk"
-#		svn checkout http://develop.svn.wordpress.org/trunk/ /srv/www/wordpress-develop
-#		cd /srv/www/wordpress-develop/src/
-#		echo "Configuring WordPress develop..."
-#		wp core config --dbname=wordpress_develop --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-#// Allow (src|build).wordpress-develop.dev to share the same database
-#if ( 'build' == basename( dirname( __FILE__) ) ) {
-#	define( 'WP_HOME', 'http://build.wordpress-develop.dev' );
-#	define( 'WP_SITEURL', 'http://build.wordpress-develop.dev' );
-#}
-#
-#define( 'WP_DEBUG', true );
-#PHP
-#		wp core install --url=src.wordpress-develop.dev --quiet --title="WordPress Develop" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
-#		cp /srv/config/wordpress-config/wp-tests-config.php /srv/www/wordpress-develop/
-#		cd /srv/www/wordpress-develop/
-#		npm install &>/dev/null
-#	else
-#		echo "Updating WordPress develop..."
-#		cd /srv/www/wordpress-develop/
-#		if [[ -e .svn ]]; then
-#			svn up
-#		else
-#			if [[ $(git rev-parse --abbrev-ref HEAD) == 'master' ]]; then
-#				git pull --no-edit git://develop.git.wordpress.org/ master
-#			else
-#				echo "Skip auto git pull on develop.git.wordpress.org since not on master branch"
-#			fi
-#		fi
-#		npm install &>/dev/null
-#	fi
+	if [[ ! -d /srv/www/wordpress-develop ]]; then
+		echo "Checking out WordPress trunk from develop.svn, see http://develop.svn.wordpress.org/trunk"
+		svn checkout http://develop.svn.wordpress.org/trunk/ /srv/www/wordpress-develop
+		cd /srv/www/wordpress-develop/src/
+		echo "Configuring WordPress develop..."
+		wp core config --dbname=wordpress_develop --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
+// Allow (src|build).wordpress-develop.dev to share the same database
+if ( 'build' == basename( dirname( __FILE__) ) ) {
+	define( 'WP_HOME', 'http://build.wordpress-develop.dev' );
+	define( 'WP_SITEURL', 'http://build.wordpress-develop.dev' );
+}
 
-#	if [[ ! -d /srv/www/wordpress-develop/build ]]; then
-#		echo "Initializing grunt in WordPress develop... This may take a few moments."
-#		cd /srv/www/wordpress-develop/
-#		grunt
-#	fi
+define( 'WP_DEBUG', true );
+PHP
+		wp core install --url=src.wordpress-develop.dev --quiet --title="WordPress Develop" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
+		cp /srv/config/wordpress-config/wp-tests-config.php /srv/www/wordpress-develop/
+		cd /srv/www/wordpress-develop/
+		npm install &>/dev/null
+	else
+		echo "Updating WordPress develop..."
+		cd /srv/www/wordpress-develop/
+		if [[ -e .svn ]]; then
+			svn up
+		else
+			if [[ $(git rev-parse --abbrev-ref HEAD) == 'master' ]]; then
+				git pull --no-edit git://develop.git.wordpress.org/ master
+			else
+				echo "Skip auto git pull on develop.git.wordpress.org since not on master branch"
+			fi
+		fi
+		npm install &>/dev/null
+	fi
+
+	if [[ ! -d /srv/www/wordpress-develop/build ]]; then
+		echo "Initializing grunt in WordPress develop... This may take a few moments."
+		cd /srv/www/wordpress-develop/
+		grunt
+	fi
 
 	# Download phpMyAdmin
 	if [[ ! -d /srv/www/default/database-admin ]]; then
-		echo "Downloading phpMyAdmin 4.1.14..."
+		echo "Downloading phpMyAdmin 4.2.11..."
 		cd /srv/www/default
-		wget -q -O phpmyadmin.tar.gz 'http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/4.1.14/phpMyAdmin-4.1.14-all-languages.tar.gz/download'
+		wget -q -O phpmyadmin.tar.gz 'http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/4.2.11/phpMyAdmin-4.2.11-all-languages.tar.gz/download'
 		tar -xf phpmyadmin.tar.gz
-		mv phpMyAdmin-4.1.14-all-languages database-admin
+		mv phpMyAdmin-4.2.11-all-languages database-admin
 		rm phpmyadmin.tar.gz
 	else
 		echo "PHPMyAdmin already installed."
@@ -601,9 +626,9 @@ done
 end_seconds="$(date +%s)"
 echo "-----------------------------"
 echo "Provisioning complete in "$(expr $end_seconds - $start_seconds)" seconds"
-if [[ $ping_result == *bytes?from* ]]; then
+if [[ $ping_result == "Connected" ]]; then
 	echo "External network connection established, packages up to date."
 else
 	echo "No external network available. Package installation and maintenance skipped."
 fi
-echo "For further setup instructions, visit http://wp-meta.dev"
+echo "For further setup instructions, visit http://vvv.dev"
