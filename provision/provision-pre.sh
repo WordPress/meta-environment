@@ -12,7 +12,3 @@ if [ -e /vagrant/site-database ]; then
 	/usr/bin/rsync -avz /vagrant/site-database/ /srv/database/
 fi
 
-if [ -e /vagrant/site-www ]; then
-	echo "rsyncing site-www to www..."
-	/usr/bin/rsync -avz /vagrant/site-www/ /srv/www/
-fi
