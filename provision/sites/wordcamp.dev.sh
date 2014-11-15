@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -ex
 
 SITE_DIR="/srv/www/wordcamp.dev"
 
@@ -7,7 +9,7 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Setup WordPress
 	wp core download --path=$SITE_DIR/wordpress
-	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/wp-config.php                   $SITE_DIR
+	cp /srv/config/wordpress-config/sites/wordcamp.dev/wp-config.php                   $SITE_DIR
 
 	# Check out WordCamp.org source code
 	svn co https://meta.svn.wordpress.org/sites/trunk/wordcamp.org/public_html/wp-content/ $SITE_DIR/wp-content
@@ -17,7 +19,7 @@ if [ ! -d $SITE_DIR ]; then
 	svn co https://plugins.svn.wordpress.org/tagregator/trunk/                             $SITE_DIR/wp-content/plugins/tagregator
 
 	# Setup mu-plugin for local development
-	cp /vagrant/config/wordpress-config/sites/wordcamp.dev/sandbox-functionality.php       $SITE_DIR/wp-content/mu-plugins/
+	cp /srv/config/wordpress-config/sites/wordcamp.dev/sandbox-functionality.php       $SITE_DIR/wp-content/mu-plugins/
 
 	# Install 3rd-party plugins
 	PLUGINS=( akismet buddypress bbpress camptix-pagseguro camptix-payfast-gateway core-control debug-bar debug-bar-console debug-bar-cron jetpack wp-multibyte-patch wordpress-importer )

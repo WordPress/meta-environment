@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -ex
 
 SITE_DIR="/srv/www/global.wordpress.dev"
 
@@ -7,11 +9,11 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Setup WordPress
 	svn co https://core.svn.wordpress.org/trunk $SITE_DIR/wordpress
-	cp /vagrant/config/wordpress-config/sites/global.wordpress.dev/wp-config.php $SITE_DIR
+	cp /srv/config/wordpress-config/sites/global.wordpress.dev/wp-config.php $SITE_DIR
 
 	# Setup plugins, themes and localizations
 	svn co https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content $SITE_DIR/wp-content
-	cp /vagrant/config/wordpress-config/sites/global.wordpress.dev/sandbox-functionality.php      $SITE_DIR/wp-content/mu-plugins/
+	cp /srv/config/wordpress-config/sites/global.wordpress.dev/sandbox-functionality.php      $SITE_DIR/wp-content/mu-plugins/
 	mkdir $SITE_DIR/wp-content/plugins
 	wp plugin install akismet --path=$SITE_DIR/wordpress
 	wp plugin install jetpack --path=$SITE_DIR/wordpress
