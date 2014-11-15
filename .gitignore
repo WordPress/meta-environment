@@ -42,13 +42,9 @@
 
 # And we do have a default SQL file that should be included
 !/database/init.sql
-!/site-database/*
-
 
 # And we provide our default host names in a dat file.
 !/www/vvv-hosts
-!/www/hosts
-!/www/hosts/vvv-hosts
 
 # And a few of our web directories are important to share.
 /www/default/*
