@@ -42,6 +42,8 @@
 
 # And we do have a default SQL file that should be included
 !/database/init.sql
+!/site-database/*
+
 
 # And we provide our default host names in a dat file.
 !/www/vvv-hosts
