@@ -19,6 +19,7 @@ if [ ! -d $SITE_DIR ]; then
 	svn export https://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
 	svn export https://i18n.svn.wordpress.org/ja/rosetta/           --force $SITE_DIR/wp-content/languages
 	svn export https://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
+	svn export https://i18n.svn.wordpress.org/es_ES/rosetta/        --force $SITE_DIR/wp-content/languages
 
 else
 	printf "\nUpdating global.wordpress.dev\n"
