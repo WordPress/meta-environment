@@ -1,9 +1,9 @@
 # WordPress Meta Environment
 
-WME aims to make it easier to contribute to the network of official WordPress websites by giving you a local 
-development environment that is already provisioned with everything you need to get started on a patch. It 
-contains all of the open-source code that runs each supported site, as well as some sample data that mimics the
-production site.
+WME aims to make it easier to contribute to the network of official WordPress.org websites by automatically setting
+up a local development environment that is already provisioned with everything you need to get started on a patch.
+The environment will contain all of the open-source code that runs each supported site, as well as some sample data
+that mimics the production site.
  
 WME is built on top of [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV), and works by
 provisioning the WordPress.org sites into an existing VVV installation. You can find a lot of documentation and
