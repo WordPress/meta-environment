@@ -26,7 +26,9 @@ The goal is to eventually support all of the sites in the network.
 
 ### Setup
 
-1. [Setup Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV).
+1. [Setup Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV). If you choose to not install
+   the `vagrant-hostsupdater` plugin then you will need to manually add each of the site's hostnames to your local
+   hosts file.
 1. Clone this repository into VVV's `www` directory -- e.g., 
    `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www/wporg-sites`
 1. Re-provision VVV with `vagrant provision` if VVV is already running, or `vagrant up --provision` if it's halted.
@@ -36,17 +38,19 @@ The goal is to eventually support all of the sites in the network.
 
 ### Notes
 
-* **Subversion version conflicts:** Subversion repositories are checked out using version 1.8 inside the virtual machine, and the 1.8 repository format
-  is not compatible with the svn 1.7 client. If you have an older client and try to run any svn commands,
-  you'll get a *`The client is too old to work with the working copy`* error. Unfortunately there is no way to
-  downgrade the repository format,  but you can work around the issue by either, 1) Upgrading your svn client to
-  version 1.8+; or 2) Work with svn from inside the virtual machine.
-* **WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual machine has in order to run the parser for 
-  `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`, locate the line that contains 
-  `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once you've done that, run
-  `vagrant halt && vagrant up` to make the change take effect.
+* **Subversion client version conflicts:** Subversion repositories are checked out using version 1.8 inside the 
+  virtual machine, and the 1.8 repository format is not compatible with the svn 1.7 client. If you have an older
+  client and try to run any svn commands, you'll get a *`The client is too old to work with the working copy`*
+  error. Unfortunately there is no way to downgrade the repository format, but you can work around the issue by
+  either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn from inside the virtual machine.
+* **WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual machine has in order
+  to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`, locate the line that
+  contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once you've done that,
+  run `vagrant halt && vagrant up` to make the change take effect.
 
 
 ### Contributing
 
-Pull requests are welcome. Check out [the TODO file](https://github.com/iandunn/wordpress-meta-environment/blob/master/TODO.md) for things that need some help, or [open an issue](https://github.com/iandunn/wordpress-meta-environment/issues) to suggest something that's not on the list.
+Pull requests are welcome. Check out [the TODO file](https://github.com/iandunn/wordpress-meta-environment/blob/master/TODO.md)
+for things that need some help, or [open an issue](https://github.com/iandunn/wordpress-meta-environment/issues)
+to suggest something that's not on the list.
