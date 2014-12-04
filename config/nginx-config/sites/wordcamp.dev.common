@@ -1,9 +1,0 @@
-listen       80;
-listen       443 ssl;
-root         /srv/www/wordcamp.dev/wordpress;
-include      /etc/nginx/nginx-wp-common.conf;
-
-location /wp-content/ {
-	root /srv/www/wordcamp.dev/;
-	try_files $uri $uri/ /wordpress/$uri /wordpress/index.php?$args;
-}
