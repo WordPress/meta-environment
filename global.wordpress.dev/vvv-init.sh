@@ -43,4 +43,4 @@ fi
 
 # Pull global header/footer
 source $BASE_DIR/helper-functions.sh
-pull_wporg_global_header $SITE_DIR
+wme_pull_wporg_global_header $SITE_DIR
