@@ -10,11 +10,7 @@ if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning global.wordpress.dev\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
-
-	# Import the database
-	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS global_wordpress_dev;"
-	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON global_wordpress_dev.* TO wp@localhost IDENTIFIED BY 'wp';"
-	mysql -u root --password=root global_wordpress_dev < $SCRIPT_DIR/global_wordpress_dev.sql
+	wme_import_database   "global_wordpress_dev" $SCRIPT_DIR
 
 	# Setup WordPress
 	svn co https://core.svn.wordpress.org/trunk $SITE_DIR/wordpress
