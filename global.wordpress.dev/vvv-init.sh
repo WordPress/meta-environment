@@ -1,5 +1,6 @@
 #!/bin/bash
-SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
+SCRIPT_DIR="$BASE_DIR/global.wordpress.dev"
 SITE_DIR="/srv/www/global.wordpress.dev"
 LOG_DIR="/srv/log/global.wordpress.dev"
 
@@ -41,5 +42,5 @@ else
 fi
 
 # Pull global header/footer
-curl -o $SITE_DIR/header.php  https://wordpress.org/header.php
-echo "<?php wp_head(); ?>" >> $SITE_DIR/header.php
+source $BASE_DIR/helper-functions.sh
+pull_wporg_global_header $SITE_DIR
