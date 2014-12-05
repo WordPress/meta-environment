@@ -10,11 +10,7 @@ if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning developer.wordpress.dev\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
-
-	# Import the database
-	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS developer_wordpress_dev;"
-	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON developer_wordpress_dev.* TO wp@localhost IDENTIFIED BY 'wp';"
-	mysql -u root --password=root developer_wordpress_dev < $SCRIPT_DIR/developer_wordpress_dev.sql
+	wme_import_database   "developer_wordpress_dev" $SCRIPT_DIR
 
 	# Setup WordPress
 	wp core download --path=$SITE_DIR/wordpress

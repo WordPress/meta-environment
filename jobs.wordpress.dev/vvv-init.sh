@@ -10,11 +10,7 @@ if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning jobs.wordpress.dev\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
-
-	# Import the database
-	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS jobs_wordpress_dev;"
-	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON jobs_wordpress_dev.* TO wp@localhost IDENTIFIED BY 'wp';"
-	mysql -u root --password=root jobs_wordpress_dev < $SCRIPT_DIR/jobs_wordpress_dev.sql
+	wme_import_database   "jobs_wordpress_dev" $SCRIPT_DIR
 
 	# Setup WordPress and plugins
 	svn co https://core.svn.wordpress.org/trunk                                                 $SITE_DIR/wordpress
