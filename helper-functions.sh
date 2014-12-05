@@ -28,3 +28,13 @@ function wme_create_nginx_logs {
 	sudo touch $1/access.log
 	sudo touch $1/error.log
 }
+
+# Import a MySQL database
+#
+# $1 - the name of the database
+# $2 - the absolute path to the folder where the $1.sql file is stored
+function wme_import_database {
+	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS $1;"
+	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON $1.* TO wp@localhost IDENTIFIED BY 'wp';"
+	mysql -u root --password=root $1 < $2/$1.sql
+}
