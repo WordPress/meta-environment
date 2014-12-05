@@ -1,5 +1,6 @@
 #!/bin/bash
-SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
+SCRIPT_DIR="$BASE_DIR/developer.wordpress.dev"
 SITE_DIR="/srv/www/developer.wordpress.dev"
 LOG_DIR="/srv/log/developer.wordpress.dev"
 
@@ -49,10 +50,9 @@ else
 fi
 
 # Pull global header/footer
-curl -o $SITE_DIR/content/themes/header.php        https://wordpress.org/header.php
-curl -o $SITE_DIR/content/themes/footer.php        https://wordpress.org/footer.php
-echo "<?php wp_head(); ?>" >>                      $SITE_DIR/content/themes/header.php
-sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/'  $SITE_DIR/content/themes/footer.php
+source $BASE_DIR/helper-functions.sh
+pull_wporg_global_header $SITE_DIR/content/themes
+pull_wporg_global_footer $SITE_DIR/content/themes
 
 # Compile SASS files
 scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
