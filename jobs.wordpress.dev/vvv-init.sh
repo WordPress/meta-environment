@@ -1,15 +1,15 @@
 #!/bin/bash
-SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+SITE_DOMAIN="jobs.wordpress.dev"
+BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
+SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
 SITE_DIR="/srv/www/jobs.wordpress.dev"
-LOG_DIR="/srv/log/jobs.wordpress.dev"
+
+source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning jobs.wordpress.dev\n"
 
-	# Create Nginx logs
-	sudo mkdir $LOG_DIR
-	sudo touch $LOG_DIR/access.log
-	sudo touch $LOG_DIR/error.log
+	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 
 	# Import the database
 	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS jobs_wordpress_dev;"
