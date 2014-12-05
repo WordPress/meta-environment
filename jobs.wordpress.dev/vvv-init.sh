@@ -2,12 +2,12 @@
 SITE_DOMAIN="jobs.wordpress.dev"
 BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
 SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
-SITE_DIR="/srv/www/jobs.wordpress.dev"
+SITE_DIR="/srv/www/$SITE_DOMAIN"
 
 source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
-	printf "\nProvisioning jobs.wordpress.dev\n"
+	printf "\nProvisioning $SITE_DOMAIN\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 	wme_import_database   "jobs_wordpress_dev" $SCRIPT_DIR
@@ -21,7 +21,7 @@ if [ ! -d $SITE_DIR ]; then
 	wp plugin install si-contact-form --path=$SITE_DIR/wordpress
 
 else
-	printf "\nUpdating jobs.wordpress.dev\n"
+	printf "\nUpdating $SITE_DOMAIN\n"
 
 	svn up $SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content
