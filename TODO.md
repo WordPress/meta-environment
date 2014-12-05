@@ -1,17 +1,22 @@
 ## High priority
 
 * wordpress.tv - add provision scripts and sample content
+* checkout site into subdir instead of www root
+	* ignore contents of public_html
+	* then move error logs into wporg-sites/apps.wporg.dev/logsj
+* get rid of unnecessary variables site_url script_url
+* make db prefixs match production - wpconfig and db backups
 * transition wporg sites to be an actual multi-network, multisite install rather than individual sites
    - match network/site ids w/ production
 * add translate.wordpress.org - add provision scripts and sample content (after wporg re-organization). integrate w/ global.wporg for permissions
-* wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
-* global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
-* global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
 * Add remaining sites in WordPress.org network
 
 
 ## Medium priority
 
+* wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
+* global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
+* global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
 * global.wordpress.dev: svn:ignore things you add to wp-content directory to make patching easier. check other sites too.
 * global.wordpress.dev - open source the Rosetta plugin to allow contributions and fix theme notices
 * developer.wordpress.dev - remaining provision todos
@@ -20,6 +25,7 @@
 
 
 ## Low priority
+
 * Make a screencast of the setup process.
 * global.wordpress.dev - Contact form displays success message but doesn't insert post into database
 * global.wordpress.dev - update `WP_CORE_STABLE_BRANCH` automatically from http://api.wordpress.org/core/version-check/1.7/. Use `current` or `version`? Parse for branch only.
