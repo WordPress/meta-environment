@@ -1,6 +1,9 @@
 ## High priority
 
 * wordpress.tv - add provision scripts and sample content
+* transition wporg sites to be an actual multi-network, multisite install rather than individual sites
+   - match network/site ids w/ production
+* add translate.wordpress.org - add provision scripts and sample content (after wporg re-organization). integrate w/ global.wporg for permissions
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
