@@ -2,12 +2,12 @@
 SITE_DOMAIN="wordcamp.dev"
 BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
 SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
-SITE_DIR="/srv/www/wordcamp.dev"
+SITE_DIR="/srv/www/$SITE_DOMAIN"
 
 source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
-	printf "\nProvisioning wordcamp.dev\n"
+	printf "\nProvisioning $SITE_DOMAIN\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 	wme_import_database   "wordcamp_dev" $SCRIPT_DIR
@@ -31,7 +31,7 @@ if [ ! -d $SITE_DIR ]; then
 
 
 else
-	printf "\nUpdating wordcamp.dev\n"
+	printf "\nUpdating $SITE_DOMAIN\n"
 
 	svn up $SITE_DIR/wp-content
 	svn up $SITE_DIR/wp-content/plugins/camptix-network-tools

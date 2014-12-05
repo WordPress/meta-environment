@@ -1,13 +1,13 @@
 #!/bin/bash
 SITE_DOMAIN="global.wordpress.dev"
 BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
-SCRIPT_DIR="$BASE_DIR/global.wordpress.dev"
-SITE_DIR="/srv/www/global.wordpress.dev"
+SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
+SITE_DIR="/srv/www/$SITE_DOMAIN"
 
 source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
-	printf "\nProvisioning global.wordpress.dev\n"
+	printf "\nProvisioning $SITE_DOMAIN\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 	wme_import_database   "global_wordpress_dev" $SCRIPT_DIR
@@ -28,7 +28,7 @@ if [ ! -d $SITE_DIR ]; then
 
 
 else
-	printf "\nUpdating global.wordpress.dev\n"
+	printf "\nUpdating $SITE_DOMAIN\n"
 
 	svn up $SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content
