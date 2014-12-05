@@ -1,16 +1,15 @@
 #!/bin/bash
+SITE_DOMAIN="developer.wordpress.dev"
 BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
 SCRIPT_DIR="$BASE_DIR/developer.wordpress.dev"
 SITE_DIR="/srv/www/developer.wordpress.dev"
-LOG_DIR="/srv/log/developer.wordpress.dev"
+
+source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning developer.wordpress.dev\n"
 
-	# Create Nginx logs
-	sudo mkdir $LOG_DIR
-	sudo touch $LOG_DIR/access.log
-	sudo touch $LOG_DIR/error.log
+	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 
 	# Import the database
 	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS developer_wordpress_dev;"
@@ -50,7 +49,6 @@ else
 fi
 
 # Pull global header/footer
-source $BASE_DIR/helper-functions.sh
 wme_pull_wporg_global_header $SITE_DIR/content/themes
 wme_pull_wporg_global_footer $SITE_DIR/content/themes
 
