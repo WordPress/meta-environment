@@ -51,8 +51,8 @@ fi
 
 # Pull global header/footer
 source $BASE_DIR/helper-functions.sh
-pull_wporg_global_header $SITE_DIR/content/themes
-pull_wporg_global_footer $SITE_DIR/content/themes
+wme_pull_wporg_global_header $SITE_DIR/content/themes
+wme_pull_wporg_global_footer $SITE_DIR/content/themes
 
 # Compile SASS files
 scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
