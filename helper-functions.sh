@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Download the global WordPress.org header into the given directory and insert `wp_head()`
+#
 # This is a workaround because the header isn't open-sourced yet
+#
 # $1 - the absolute path to the folder where the header should be placed
 function pull_wporg_global_header {
 	curl -o $1/header.php https://wordpress.org/header.php
@@ -9,7 +11,9 @@ function pull_wporg_global_header {
 }
 
 # Download the global WordPress.org footer into the given directory and insert `wp_footer()`
+#
 # This is a workaround because the footer isn't open-sourced yet
+#
 # $1 - the absolute path to the folder where the footer should be placed
 function pull_wporg_global_footer {
 	curl -o $1/footer.php https://wordpress.org/footer.php
