@@ -32,6 +32,7 @@ The goal is to eventually support all of the sites in the network.
 1. Clone this repository into VVV's `www` directory -- e.g., 
    `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www/wporg-sites`
 1. Re-provision VVV with `vagrant provision` if VVV is already running, or `vagrant up --provision` if it's halted.
+   The sites will be created in the root of the `www` folder. 
 1. Visit any of the supported sites listed above using the local equivalent of their domain name -- e.g., 
    `wordcamp.org` becomes `wordcamp.dev`. You can login with username `admin` and password `password`.
 
