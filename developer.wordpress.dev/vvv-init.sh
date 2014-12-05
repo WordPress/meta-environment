@@ -1,13 +1,13 @@
 #!/bin/bash
 SITE_DOMAIN="developer.wordpress.dev"
 BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
-SCRIPT_DIR="$BASE_DIR/developer.wordpress.dev"
-SITE_DIR="/srv/www/developer.wordpress.dev"
+SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
+SITE_DIR="/srv/www/$SITE_DOMAIN"
 
 source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
-	printf "\nProvisioning developer.wordpress.dev\n"
+	printf "\nProvisioning $SITE_DOMAIN\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 	wme_import_database   "developer_wordpress_dev" $SCRIPT_DIR
@@ -35,7 +35,7 @@ if [ ! -d $SITE_DIR ]; then
 
 
 else
-	printf "\nUpdating developer.wordpress.dev\n"
+	printf "\nUpdating $SITE_DOMAIN\n"
 
 	svn up $SITE_DIR/wordpress
 	# composer update rmccue/wp-parser # todo no composer.json file

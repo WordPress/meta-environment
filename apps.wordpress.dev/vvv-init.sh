@@ -2,12 +2,12 @@
 SITE_DOMAIN="apps.wordpress.dev"
 BASE_DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
 SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
-SITE_DIR="/srv/www/apps.wordpress.dev"
+SITE_DIR="/srv/www/$SITE_DOMAIN"
 
 source $BASE_DIR/helper-functions.sh
 
 if [ ! -d $SITE_DIR ]; then
-	printf "\nProvisioning apps.wordpress.dev\n"
+	printf "\nProvisioning $SITE_DOMAIN\n"
 
 	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 	wme_import_database   "apps_wordpress_dev" $SCRIPT_DIR
@@ -23,7 +23,7 @@ if [ ! -d $SITE_DIR ]; then
 	cp $SCRIPT_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 
 else
-	printf "\nUpdating apps.wordpress.dev\n"
+	printf "\nUpdating $SITE_DOMAIN\n"
 
 	svn up $SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content/themes/wporg-apps
