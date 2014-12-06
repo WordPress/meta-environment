@@ -1,14 +1,32 @@
 ## High priority
 
 * make db prefixs match production - wpconfig and db backups
-* transition wporg sites to be an actual multi-network, multisite install rather than individual sites
-   - match network/site ids w/ production
-* add translate.wordpress.org - add provision scripts and sample content (after wporg re-organization). integrate w/ global.wporg for permissions
+* Make network/site layout match production, rather than being standalone sites
+	* WordPress.org
+		* Setup core network
+		* Fold existing WME sites in one at a time
+			- Match network/site IDs and db table names w/ production
+			- apps.wordpress.org
+			- developer.wordpress.org
+			- global.wordpress.org
+	* WordPress.net - standalone multisite, or part of multinetwork?
+		* Migrate jobs.wordpress.net. Make network/site IDs and table_prefix match production
 * Add remaining sites in WordPress.org network
+	* WordPress.org (site)    - static content, /translate (integrate w/ global.wporg for permissions), api.wordpress.org
+	* WordPress.org (network) - /showcase, /news
+	* make.wordpress.org
+	* learn.wordpress.org
+	* BuddyPress.org - profiles.wordpress.org plus all the BuddyPress and bbPress stuff
+	* browsehappy.com - single site, or part of multinetwork/multisite?
 
 
 ## Medium priority
 
+* Add a dashboard similar to VVV
+	* Links to all the active sites, organized by network.
+	* Maybe have an visual map of how all the sites are organized
+	* Also link to WME repo and VVV dashboard (for phpmyadmin, etc)
+	* Lives at wp-meta.dev?
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
@@ -19,7 +37,6 @@
 * jobs.wordpress.dev - Automate inserting sample jobs because the ones currently in database will be pruned by the time people provision.
 * wordpresstv.dev - get video uploads working if dev connects to a videopress account?
 * wordpresstv.dev - get subtitle uploads working
-* add a dashboard similar to vvv that lists all the active domains with links? link to wme repo and vvv dashboard. live at wp-meta.dev?
 
 
 ## Low priority
