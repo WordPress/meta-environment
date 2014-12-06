@@ -50,8 +50,8 @@ The goal is to eventually include all of the sites in the network.
   machine has in order to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`,
   locate the line that contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once
   you've done that, run `vagrant halt && vagrant up` to make the change take effect.
-* **WordPressTV.dev video upload errors:** WordPress.TV uses VideoPress, which requires a connection to
-  WordPress.com and a paid VideoPress subscription, so it isn't enabled.
+* **WordPressTV.dev video upload errors:** The WPTV uploader integrates with VideoPress, which requires a connection
+  to WordPress.com and a paid VideoPress subscription, so it isn't enabled.
 
 
 ### Support
