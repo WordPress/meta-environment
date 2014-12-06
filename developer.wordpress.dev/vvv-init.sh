@@ -5,11 +5,11 @@ SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN"
 SITE_DIR="/srv/www/$SITE_DOMAIN"
 
 source $BASE_DIR/helper-functions.sh
+wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 
 if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning $SITE_DOMAIN\n"
 
-	wme_create_nginx_logs "/srv/log/$SITE_DOMAIN"
 	wme_import_database   "developer_wordpress_dev" $SCRIPT_DIR
 
 	# Setup WordPress
