@@ -9,7 +9,6 @@
 
 ## Medium priority
 
-* rename access.log to nginx-access.log, same for errors
 * add a dashboard similar to vvv that lists all the active domains with links? link to wme repo and vvv dashboard. live at wp-meta.dev?
 * segment php logs per site and add to logs dir. related #102-vvv. just ini_set() to overwrite after wp sets it to content/debug.log ? 
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.

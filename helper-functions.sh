@@ -28,8 +28,8 @@ function wme_create_nginx_logs {
 		sudo mkdir $1
 	fi
 
-	sudo touch $1/access.log
-	sudo touch $1/error.log
+	sudo touch $1/nginx-access.log
+	sudo touch $1/nginx-error.log
 }
 
 # Import a MySQL database
