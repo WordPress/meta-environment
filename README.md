@@ -15,11 +15,13 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 ### Supported Sites
 
-* [apps.wordpress.org](http://apps.wordpress.org)
-* [developer.wordpress.org](http://developer.wordpress.org)
-* [global.wordpress.org](http://global.wordpress.org)
-* [jobs.wordpress.net](http://jobs.wordpress.net)
-* [wordcamp.org](http://wordcamp.org)
+The following sites are currently provisioned into VVV. The local domain name is listed in parenthesis. 
+
+* [apps.wordpress.org](http://apps.wordpress.org) *(apps.wordpress.dev)*
+* [developer.wordpress.org](http://developer.wordpress.org) *(developer.wordpress.dev)*
+* [global.wordpress.org](http://global.wordpress.org) *(global.wordpress.dev)*
+* [jobs.wordpress.net](http://jobs.wordpress.net) *(jobs.wordpress.dev)*
+* [wordcamp.org](http://wordcamp.org) *(wordcamp.dev)*
 
 The goal is to eventually support all of the sites in the network.
 
@@ -33,7 +35,7 @@ The goal is to eventually support all of the sites in the network.
    `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www/wporg-sites`
 1. Re-provision VVV with `vagrant provision` if VVV is already running, or `vagrant up --provision` if it's halted.
    The sites will be created in the root of the `www` folder. 
-1. Visit any of the supported sites listed above using the local equivalent of their domain name -- e.g., 
+1. Visit any of the supported sites using the local equivalent of their domain name listed above -- e.g.,
    `wordcamp.org` becomes `wordcamp.dev`. You can login with username `admin` and password `password`.
 
 
