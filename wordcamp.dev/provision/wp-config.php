@@ -1,6 +1,6 @@
 <?php
 
-$table_prefix  = 'wp_';
+$table_prefix  = 'wc_';
 
 define( 'IS_WORDCAMP_NETWORK',  true );
 
