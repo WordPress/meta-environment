@@ -22,6 +22,7 @@ The following sites are currently provisioned into VVV. The local domain name is
 * [global.wordpress.org](http://global.wordpress.org) *(global.wordpress.dev)*
 * [jobs.wordpress.net](http://jobs.wordpress.net) *(jobs.wordpress.dev)*
 * [wordcamp.org](http://wordcamp.org) *(wordcamp.dev)*
+* [wordpress.tv](http://wordpress.tv) *(using wordpresstv.dev)*
 
 The goal is to eventually support all of the sites in the network.
 
@@ -50,6 +51,8 @@ The goal is to eventually support all of the sites in the network.
   to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`, locate the line that
   contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once you've done that,
   run `vagrant halt && vagrant up` to make the change take effect.
+* **WordPressTV.dev video upload errors:** WordPress.TV uses VideoPress, which requires a connection to
+  WordPress.com and a paid VideoPress subscription, so it isn't enabled.
 
 
 ### Contributing
