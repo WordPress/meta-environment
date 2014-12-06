@@ -20,16 +20,17 @@ function wme_pull_wporg_global_footer {
 	sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/' $1/footer.php
 }
 
-# Create Nginx logs
+# Create log stubs
 #
 # $1 - the absolute path to the log folder
-function wme_create_nginx_logs {
+function wme_create_logs {
 	if [ ! -d $1 ]; then
 		sudo mkdir $1
 	fi
 
 	sudo touch $1/nginx-access.log
 	sudo touch $1/nginx-error.log
+	sudo touch $1/php-error.log
 }
 
 # Import a MySQL database
