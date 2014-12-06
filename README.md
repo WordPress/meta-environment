@@ -33,9 +33,10 @@ The goal is to eventually support all of the sites in the network.
    the `vagrant-hostsupdater` plugin then you will need to manually add each of the site's hostnames to your local
    hosts file.
 1. Clone this repository into VVV's `www` directory -- e.g., 
-   `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www/wporg-sites`
+   `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www`. If you choose
+   to name the directory something other than `wordpress-meta-environment`, then you'll need to update the paths in
+   each site's `vvv-nginx.conf` file before you provision VVV in the next step.
 1. Re-provision VVV with `vagrant provision` if VVV is already running, or `vagrant up --provision` if it's halted.
-   The sites will be created in the root of the `www` folder. 
 1. Visit any of the supported sites using the local equivalent of their domain name listed above -- e.g.,
    `wordcamp.org` becomes `wordcamp.dev`. You can login with username `admin` and password `password`.
 
