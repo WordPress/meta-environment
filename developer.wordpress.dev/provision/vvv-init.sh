@@ -1,7 +1,7 @@
 #!/bin/bash
 SITE_DOMAIN="developer.wordpress.dev"
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
-SCRIPT_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
+PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 
 source $BASE_DIR/helper-functions.sh
@@ -10,11 +10,11 @@ wme_create_nginx_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning $SITE_DOMAIN\n"
 
-	wme_import_database   "developer_wordpress_dev" $SCRIPT_DIR
+	wme_import_database   "developer_wordpress_dev" $PROVISION_DIR
 
 	# Setup WordPress
 	wp core download --path=$SITE_DIR/wordpress
-	cp $SCRIPT_DIR/wp-config.php $SITE_DIR
+	cp $PROVISION_DIR/wp-config.php $SITE_DIR
 
 	mkdir $SITE_DIR/content
 	mkdir $SITE_DIR/content/mu-plugins
@@ -25,7 +25,7 @@ if [ ! -d $SITE_DIR ]; then
 	git clone https://github.com/Rarst/wporg-developer $SITE_DIR/content/themes/wporg-developer
 
 	# Setup plugins
-	cp $SCRIPT_DIR/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
+	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/content/mu-plugins/
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
 
 	# todo setup cron job to rerun parser, or just let people run it manually?
