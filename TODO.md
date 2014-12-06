@@ -13,7 +13,6 @@
 
 ## Medium priority
 
-* Check if log dir and files exist before trying to make them. Also call the function regardless of whether site_dir exists or not.
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
