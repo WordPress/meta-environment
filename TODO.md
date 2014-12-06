@@ -1,6 +1,5 @@
 ## High priority
 
-* wordpress.tv - add provision scripts and sample content
 * checkout site into subdir instead of www root
 	* ignore contents of public_html
 	* then move error logs into wporg-sites/apps.wporg.dev/logsj
@@ -14,6 +13,7 @@
 
 ## Medium priority
 
+* Check if log dir and files exist before trying to make them. Also call the function regardless of whether site_dir exists or not.
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
@@ -22,6 +22,8 @@
 * developer.wordpress.dev - remaining provision todos
 * developer.wordpress.dev - move SASS update/watch to cron job (or login script or whatever) instead of provision, b/c provision doesn't run on every boot  
 * jobs.wordpress.dev - Automate inserting sample jobs because the ones currently in database will be pruned by the time people provision.
+* wordpresstv.dev - get video uploads working if dev connects to a videopress account?
+* wordpresstv.dev - get subtitle uploads working
 
 
 ## Low priority
