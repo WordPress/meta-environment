@@ -9,8 +9,6 @@
 
 ## Medium priority
 
-* add a dashboard similar to vvv that lists all the active domains with links? link to wme repo and vvv dashboard. live at wp-meta.dev?
-* segment php logs per site and add to logs dir. related #102-vvv. just ini_set() to overwrite after wp sets it to content/debug.log ? 
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
@@ -21,6 +19,7 @@
 * jobs.wordpress.dev - Automate inserting sample jobs because the ones currently in database will be pruned by the time people provision.
 * wordpresstv.dev - get video uploads working if dev connects to a videopress account?
 * wordpresstv.dev - get subtitle uploads working
+* add a dashboard similar to vvv that lists all the active domains with links? link to wme repo and vvv dashboard. live at wp-meta.dev?
 
 
 ## Low priority
