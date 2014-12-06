@@ -1,9 +1,6 @@
 ## High priority
 
-* checkout site into subdir instead of www root
-	* ignore contents of public_html
-	* then move error logs into wporg-sites/apps.wporg.dev/logs
-* get rid of unnecessary variables site_url script_url
+* rename script_dir to provision_dir
 * make db prefixs match production - wpconfig and db backups
 * transition wporg sites to be an actual multi-network, multisite install rather than individual sites
    - match network/site ids w/ production
@@ -13,6 +10,9 @@
 
 ## Medium priority
 
+* rename access.log to nginx-access.log, same for errors
+* add a dashboard similar to vvv that lists all the active domains with links? link to wme repo and vvv dashboard. live at wp-meta.dev?
+* segment php logs per site and add to logs dir. related #102-vvv. just ini_set() to overwrite after wp sets it to content/debug.log ? 
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
@@ -32,3 +32,4 @@
 * global.wordpress.dev - update `WP_CORE_STABLE_BRANCH` automatically from http://api.wordpress.org/core/version-check/1.7/. Use `current` or `version`? Parse for branch only.
 * jobs.wordpress.dev - Fix CAPTCHA image on Feedback form. Problem is Nginx config doesn't support running PHP scripts inside wp-content.
 * wordcamp.dev - abstract the Nginx that's shared between `wordcamp.dev` and `*.wordcamp.dev` to avoid duplication.
+* rotate logs
