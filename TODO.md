@@ -1,6 +1,5 @@
 ## High priority
 
-* rename script_dir to provision_dir
 * make db prefixs match production - wpconfig and db backups
 * transition wporg sites to be an actual multi-network, multisite install rather than individual sites
    - match network/site ids w/ production
