@@ -48,12 +48,20 @@ The goal is to eventually support all of the sites in the network.
   client and try to run any svn commands, you'll get a *`The client is too old to work with the working copy`*
   error. Unfortunately there is no way to downgrade the repository format, but you can work around the issue by
   either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn from inside the virtual machine.
-* **Developer.WordPress.dev WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual machine has in order
-  to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`, locate the line that
-  contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once you've done that,
-  run `vagrant halt && vagrant up` to make the change take effect.
+* **Developer.WordPress.dev WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
+  machine has in order to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`,
+  locate the line that contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once
+  you've done that, run `vagrant halt && vagrant up` to make the change take effect.
 * **WordPressTV.dev video upload errors:** WordPress.TV uses VideoPress, which requires a connection to
   WordPress.com and a paid VideoPress subscription, so it isn't enabled.
+
+
+### Support
+
+If you run into any problems, check the **Notes** section above. If that doesn't help, feel free to
+[open an issue](https://github.com/iandunn/wordpress-meta-environment/issues) or ping
+[iandunn](https://wordpress.slack.com/team/iandunn) in the #meta channel on
+[WordPress's Slack server](https://make.wordpress.org/chat/).
 
 
 ### Contributing
