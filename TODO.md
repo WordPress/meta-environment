@@ -1,6 +1,5 @@
 ## High priority
 
-* make db prefixs match production - wpconfig and db backups
 * Make network/site layout match production, rather than being standalone sites
 	* WordPress.org
 		* Setup core network
@@ -24,7 +23,7 @@
 
 * Add a dashboard similar to VVV
 	* Links to all the active sites, organized by network.
-	* Maybe have an visual map of how all the sites are organized
+	* Maybe have an visual map of how all the sites are organized. Put it on the repo homepage too.
 	* Also link to WME repo and VVV dashboard (for phpmyadmin, etc)
 	* Lives at wp-meta.dev?
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
