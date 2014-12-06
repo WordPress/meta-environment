@@ -10,6 +10,7 @@
 			- global.wordpress.org
 	* WordPress.net - standalone multisite, or part of multinetwork?
 		* Migrate jobs.wordpress.net. Make network/site IDs and table_prefix match production
+	* Update links in WME dashboard to be organized by network
 * Add remaining sites in WordPress.org network
 	* WordPress.org (site)    - static content, /translate (integrate w/ global.wporg for permissions), api.wordpress.org
 	* WordPress.org (network) - /showcase, /news
@@ -21,11 +22,7 @@
 
 ## Medium priority
 
-* Add a dashboard similar to VVV
-	* Links to all the active sites, organized by network.
-	* Maybe have an visual map of how all the sites are organized. Put it on the repo homepage too.
-	* Also link to WME repo and VVV dashboard (for phpmyadmin, etc)
-	* Lives at wp-meta.dev?
+* Add a visual map to the dashboard showing how all the sites are organized within networks, etc. Put it on the repo homepage too.
 * wordcamp.dev - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpress.dev - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 

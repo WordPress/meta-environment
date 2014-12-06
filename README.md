@@ -13,18 +13,16 @@ You can find more information about contributing to the official WordPress websi
 handbook](http://make.wordpress.org/meta/handbook/).
 
 
-### Supported Sites
+### Available Sites
 
-The following sites are currently provisioned into VVV. The local domain name is listed in parenthesis. 
+* [apps.wordpress.org](http://apps.wordpress.org)
+* [developer.wordpress.org](http://developer.wordpress.org)
+* [global.wordpress.org](http://global.wordpress.org)
+* [jobs.wordpress.net](http://jobs.wordpress.net)
+* [wordcamp.org](http://wordcamp.org)
+* [wordpress.tv](http://wordpress.tv)
 
-* [apps.wordpress.org](http://apps.wordpress.org) *(apps.wordpress.dev)*
-* [developer.wordpress.org](http://developer.wordpress.org) *(developer.wordpress.dev)*
-* [global.wordpress.org](http://global.wordpress.org) *(global.wordpress.dev)*
-* [jobs.wordpress.net](http://jobs.wordpress.net) *(jobs.wordpress.dev)*
-* [wordcamp.org](http://wordcamp.org) *(wordcamp.dev)*
-* [wordpress.tv](http://wordpress.tv) *(wordpresstv.dev)*
-
-The goal is to eventually support all of the sites in the network.
+The goal is to eventually include all of the sites in the network.
 
 
 ### Setup
@@ -37,8 +35,8 @@ The goal is to eventually support all of the sites in the network.
    to name the directory something other than `wordpress-meta-environment`, then you'll need to update the paths in
    each site's `vvv-nginx.conf` file before you provision VVV in the next step.
 1. Re-provision VVV with `vagrant provision` if VVV is already running, or `vagrant up --provision` if it's halted.
-1. Visit any of the supported sites using the local equivalent of their domain name listed above -- e.g.,
-   `wordcamp.org` becomes `wordcamp.dev`. You can login with username `admin` and password `password`.
+1. Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites. You can login to any of them with with username
+   `admin` and password `password`.
 
 
 ### Notes
