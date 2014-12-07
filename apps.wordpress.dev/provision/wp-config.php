@@ -23,7 +23,6 @@ define( 'SCRIPT_DEBUG',          true );
 define( 'WPLANG',                '' );
 define( 'WP_CONTENT_DIR',        __DIR__ . '/wp-content' );
 define( 'WP_CONTENT_URL',        'http://' . preg_replace( '/[^-_.0-9a-z:]/i', '', $_SERVER['HTTP_HOST'] ) . '/wp-content' );
-define( 'WPORGPATH',             WP_CONTENT_DIR . '/themes/' );
 
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
