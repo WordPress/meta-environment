@@ -27,5 +27,6 @@ else
 
 	svn up $SITE_DIR/wordpress
 	svn up $SITE_DIR/content
+	wp plugin update --all --path=$SITE_DIR/wordpress
 
 fi
