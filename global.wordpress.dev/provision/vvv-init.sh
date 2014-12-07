@@ -10,7 +10,7 @@ wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 if [ ! -d $SITE_DIR ]; then
 	printf "\nProvisioning $SITE_DOMAIN\n"
 
-	wme_import_database   "global_wordpress_dev" $PROVISION_DIR
+	wme_import_database "global_wordpress_dev" $PROVISION_DIR
 
 	# Setup WordPress
 	svn co https://core.svn.wordpress.org/trunk $SITE_DIR/wordpress
