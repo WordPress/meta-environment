@@ -37,7 +37,7 @@ if [ ! -d $SITE_DIR ]; then
 else
 	printf "\nUpdating $SITE_DOMAIN\n"
 
-	svn up $SITE_DIR/wordpress
+	wp core update --path=$SITE_DIR/wordpress
 	# composer update rmccue/wp-parser # todo no composer.json file
 	git -C $SITE_DIR/content/themes/wporg-developer pull origin master
 	sudo gem update sass
