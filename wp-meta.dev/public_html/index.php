@@ -18,16 +18,6 @@
 	
 	<h2>Available Sites</h2>
 	<ul>
-		<li><a href="http://apps.wordpress.dev">apps.wordpress.dev</a></li>
-		<li><a href="http://developer.wordpress.dev">developer.wordpress.dev</a></li>
-		<li>
-			<a href="http://global.wordpress.dev">global.wordpress.dev</a>
-
-			<ul>
-				<li><a href="http://es.wordpress.dev">es.wordpress.dev</a></li>
-				<li><a href="http://ja.wordpress.dev">ja.wordpress.dev</a></li>
-			</ul>
-		</li>
 		<li><a href="http://jobs.wordpress.dev">jobs.wordpress.dev</a></li>
 		<li>
 			<a href="http://wordcamp.dev">wordcamp.dev</a>
@@ -37,6 +27,23 @@
 				<li><a href="http://plan.wordcamp.dev">plan.wordcamp.dev</a></li>
 				<li><a href="http://2014.seattle.wordcamp.dev">2014.seattle.wordcamp.dev</a></li>
 				<li><a href="http://wordcamp.dev/wp-admin/network/sites.php">more</a></li>
+			</ul>
+		</li>
+		<li>
+			wordpress.dev
+
+			<ul>
+				<li><a href="http://apps.wordpress.dev">apps.wordpress.dev</a></li>
+				<li><a href="http://developer.wordpress.dev">developer.wordpress.dev</a></li>
+
+				<li>
+					<a href="http://global.wordpress.dev">global.wordpress.dev</a>
+
+					<ul>
+						<li><a href="http://es.wordpress.dev">es.wordpress.dev</a></li>
+						<li><a href="http://ja.wordpress.dev">ja.wordpress.dev</a></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li><a href="http://wordpresstv.dev">wordpresstv.dev</a></li>

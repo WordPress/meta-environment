@@ -2,11 +2,10 @@
 
 * Make network/site layout match production, rather than being standalone sites
 	* WordPress.org
-		* Setup core network
 		* Fold existing WME sites in one at a time
 			- Match network/site IDs and db table names w/ production
-			- apps.wordpress.org
-			- developer.wordpress.org
+			- apps.wordpress.org - won't need to checkout theme anymore
+			- developer.wordpress.org - enable developer-reference plugin? won't need to checkout theme anymore. want ref to run against latest stable instead of core, though. how does production do that?
 			- global.wordpress.org
 	* WordPress.net - standalone multisite, or part of multinetwork?
 		* Migrate jobs.wordpress.net. Make network/site IDs and table_prefix match production
@@ -14,8 +13,8 @@
 * Add remaining sites in WordPress.org network
 	* WordPress.org (site)    - static content, /translate (integrate w/ global.wporg for permissions), api.wordpress.org
 	* WordPress.org (network) - /showcase, /news
-	* make.wordpress.org
-	* learn.wordpress.org
+	* make.wordpress.org - network/sites already setup, but haven't added content or setup theme/plugins, etc. fix make.wordpress.dev/core/handbook
+	* learn.wordpress.org - network/sites already setup, but haven't added content or setup theme/plugins, etc
 	* BuddyPress.org - profiles.wordpress.org plus all the BuddyPress and bbPress stuff
 	* browsehappy.com - single site, or part of multinetwork/multisite?
 

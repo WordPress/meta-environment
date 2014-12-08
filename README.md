@@ -15,11 +15,12 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 ### Available Sites
 
-* [apps.wordpress.org](http://apps.wordpress.org)
-* [developer.wordpress.org](http://developer.wordpress.org)
-* [global.wordpress.org](http://global.wordpress.org)
 * [jobs.wordpress.net](http://jobs.wordpress.net)
 * [wordcamp.org](http://wordcamp.org)
+* wordpress.org
+	* [apps.wordpress.org](http://apps.wordpress.org)
+	* [developer.wordpress.org](http://developer.wordpress.org)
+	* [global.wordpress.org](http://global.wordpress.org)
 * [wordpress.tv](http://wordpress.tv)
 
 The goal is to eventually include all of the sites in the network.
