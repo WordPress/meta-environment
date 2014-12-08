@@ -35,9 +35,9 @@ The goal is to eventually include all of the sites in the network.
    `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www`. If you choose
    to name the directory something other than `wordpress-meta-environment`, then you'll need to update the paths in
    each site's `vvv-nginx.conf` file before you provision VVV in the next step.
-1. Restart and re-provision VVV `vagrant halt && vagrant up --provision`.
-1. Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites. You can login to any of them with with username
-   `admin` and password `password`.
+1. Restart and re-provision VVV with `vagrant halt && vagrant up --provision`.
+1. Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites. You can login to any of them
+   with with username `admin` and password `password`.
 
 
 ### Notes
