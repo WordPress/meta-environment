@@ -1,0 +1,49 @@
+#!/bin/bash
+SITE_DOMAIN="wordpress.dev"
+BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
+PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
+SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
+SVN_PLUGINS=( akismet bbpress debug-bar debug-bar-cron email-post-changes speakerdeck-embed supportflow syntaxhighlighter wordpress-importer )
+WPCLI_PLUGINS="jetpack tinymce-code-element"
+
+source $BASE_DIR/helper-functions.sh
+wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
+
+if [ ! -d $SITE_DIR ]; then
+	printf "\nProvisioning $SITE_DOMAIN\n"
+
+	wme_import_database "wordpress_dev" $PROVISION_DIR
+
+	# Setup WordPress, themes, and plugins
+	svn co https://meta.svn.wordpress.org/sites/trunk/wordpress.org/public_html $SITE_DIR
+	svn co https://core.svn.wordpress.org/trunk                                 $SITE_DIR/wordpress
+	mkdir $SITE_DIR/wp-content/mu-plugins
+	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
+	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
+
+	svn propset svn:externals 'p2 https://wpcom-themes.svn.automattic.com/p2' $SITE_DIR/wp-content/themes
+	svn up $SITE_DIR/wp-content/themes
+	wp plugin install $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
+
+	for i in "${SVN_PLUGINS[@]}"
+	do :
+		svn co https://plugins.svn.wordpress.org/$i/trunk $SITE_DIR/wp-content/plugins/$i
+	done
+
+else
+	printf "\nUpdating $SITE_DOMAIN\n"
+
+	svn up $SITE_DIR/wordpress
+	svn up $SITE_DIR/wp-content
+	wp plugin update $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
+
+	for i in "${SVN_PLUGINS[@]}"
+	do :
+		svn up $SITE_DIR/wp-content/plugins/$i
+	done
+
+fi
+
+# Pull global header/footer
+wme_pull_wporg_global_header $SITE_DIR
+wme_pull_wporg_global_footer $SITE_DIR
