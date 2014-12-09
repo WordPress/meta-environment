@@ -40,7 +40,7 @@
 					<a href="http://global.wordpress.dev">global.wordpress.dev</a>
 
 					<ul>
-						<li><a href="http://es.wordpress.dev">es.wordpressm.dev</a></li>
+						<li><a href="http://es.wordpress.dev">es.wordpress.dev</a></li>
 						<li><a href="http://ja.wordpress.dev">ja.wordpress.dev</a></li>
 					</ul>
 				</li>
