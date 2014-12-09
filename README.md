@@ -47,7 +47,7 @@ The goal is to eventually include all of the sites in the network.
   client and try to run any svn commands, you'll get a *`The client is too old to work with the working copy`*
   error. Unfortunately there is no way to downgrade the repository format, but you can work around the issue by
   either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn from inside the virtual machine.
-* **Developer.WordPress.dev WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
+* **Developer.WordPressorg.dev WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
   machine has in order to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`,
   locate the line that contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once
   you've done that, run `vagrant halt && vagrant up` to make the change take effect.
