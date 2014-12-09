@@ -23,12 +23,15 @@ if [ ! -d $SITE_DIR ]; then
 
 	svn propset svn:externals 'p2 https://wpcom-themes.svn.automattic.com/p2' $SITE_DIR/wp-content/themes
 	svn up $SITE_DIR/wp-content/themes
-	wp plugin install $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
 
 	for i in "${SVN_PLUGINS[@]}"
 	do :
-		svn co https://plugins.svn.wordpress.org/$i/trunk $SITE_DIR/wp-content/plugins/$i
+		echo "$i https://plugins.svn.wordpress.org/$i/trunk" >> $PROVISION_DIR/svn-externals.tmp
 	done
+
+	svn propset svn:externals -F $PROVISION_DIR/svn-externals.tmp $SITE_DIR/wp-content/plugins
+	svn up $SITE_DIR/wp-content/plugins
+	rm -f $PROVISION_DIR/svn-externals.tmp
 
 	# developer.wordpress.dev
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
