@@ -30,6 +30,10 @@ if [ ! -d $SITE_DIR ]; then
 		svn co https://plugins.svn.wordpress.org/$i/trunk $SITE_DIR/wp-content/plugins/$i
 	done
 
+	# developer.wordpress.dev
+	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
+	sudo gem install sass
+
 else
 	printf "\nUpdating $SITE_DOMAIN\n"
 
@@ -42,8 +46,16 @@ else
 		svn up $SITE_DIR/wp-content/plugins/$i
 	done
 
+	# developer.wordpress.dev
+	# composer update rmccue/wp-parser # todo no composer.json file
+	sudo gem update sass
+
 fi
 
 # Pull global header/footer
 wme_pull_wporg_global_header $SITE_DIR
 wme_pull_wporg_global_footer $SITE_DIR
+
+# developer.wordpress.dev
+scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
+scss --no-cache --watch  --style=expanded -q $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets &

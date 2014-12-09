@@ -44,6 +44,12 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpress.dev' ) {
 	define( 'BLOG_ID_CURRENT_SITE', 7 );
 	define( 'SUBDOMAIN_INSTALL',    false );
 
+} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpress.org' ) {
+	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpress.org' );
+	define( 'PATH_CURRENT_SITE', '/' );
+	define( 'SITE_ID_CURRENT_SITE', 5 );
+	define( 'BLOG_ID_CURRENT_SITE', 33 );
+
 } elseif ( $_SERVER['HTTP_HOST'] === 'wordpress.dev' ) {
 	define( 'DOMAIN_CURRENT_SITE',  'wordpress.dev' );
 	define( 'PATH_CURRENT_SITE',    '/' );
