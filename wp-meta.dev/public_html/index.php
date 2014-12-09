@@ -18,7 +18,7 @@
 	
 	<h2>Available Sites</h2>
 	<ul>
-		<li><a href="http://jobs.wordpress.dev">jobs.wordpress.dev</a></li>
+		<li><a href="http://jobs.wordpressnet.dev">jobs.wordpressnet.dev</a></li>
 		<li>
 			<a href="http://wordcamp.dev">wordcamp.dev</a>
 

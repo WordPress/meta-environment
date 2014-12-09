@@ -2,7 +2,7 @@
 
 $table_prefix  = 'wp_';
 
-define( 'DB_NAME',               'jobs_wordpress_dev' );
+define( 'DB_NAME',               'jobs_wordpressnet_dev' );
 define( 'DB_USER',               'wp' );
 define( 'DB_PASSWORD',           'wp' );
 define( 'DB_HOST',               'localhost' );
