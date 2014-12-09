@@ -32,6 +32,7 @@ if [ ! -d $SITE_DIR ]; then
 	svn propset svn:externals -F $PROVISION_DIR/svn-externals.tmp $SITE_DIR/wp-content/plugins
 	svn up $SITE_DIR/wp-content/plugins
 	rm -f $PROVISION_DIR/svn-externals.tmp
+	wp plugin install $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
 
 	# developer.wordpress.dev
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
