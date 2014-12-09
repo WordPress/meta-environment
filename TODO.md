@@ -4,8 +4,8 @@
 	* WordPress.org
 		* Fold existing WME sites in one at a time
 			- Match network/site IDs and db table names w/ production
-			- apps.wordpress.org - won't need to checkout theme anymore
-			- developer.wordpress.org - enable developer-reference plugin? won't need to checkout theme anymore. want ref to run against latest stable instead of core, though. how does production do that?
+			- change wordpress.dev to wordpressorg.dev?
+				- will have to make wordpressnet.dev, so want to be consistent?
 			- global.wordpress.org
 	* WordPress.net - standalone multisite, or part of multinetwork?
 		* Migrate jobs.wordpress.net. Make network/site IDs and table_prefix match production
@@ -27,6 +27,7 @@
 * global.wordpress.dev - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
 * global.wordpress.dev - svn:ignore things you add to wp-content directory to make patching easier. check other sites too.
 * global.wordpress.dev - open source the Rosetta plugin to allow contributions and fix theme notices
+* developer.wordpress.dev - setup has changed now that reference is live? use developer-reference plugin instead of wp-parser? setup handbooks?
 * developer.wordpress.dev - remaining provision todos
 * developer.wordpress.dev - move SASS update/watch to cron job (or login script or whatever) instead of provision, b/c provision doesn't run on every boot  
 * jobs.wordpress.dev - Automate inserting sample jobs because the ones currently in database will be pruned by the time people provision.
