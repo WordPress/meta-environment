@@ -3,6 +3,7 @@ SITE_DOMAIN="wordcamp.dev"
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
+SVN_PLUGINS=( camptix-network-tools email-post-changes tagregator )
 
 source $BASE_DIR/helper-functions.sh
 wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
@@ -18,10 +19,17 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Check out WordCamp.org source code
 	svn co https://meta.svn.wordpress.org/sites/trunk/wordcamp.org/public_html/wp-content/ $SITE_DIR/wp-content
-	svn co https://plugins.svn.wordpress.org/camptix-network-tools/trunk/                  $SITE_DIR/wp-content/plugins/camptix-network-tools
-	svn co https://plugins.svn.wordpress.org/email-post-changes/trunk/                     $SITE_DIR/wp-content/plugins/email-post-changes
-	svn co https://plugins.svn.wordpress.org/tagregator/trunk/                             $SITE_DIR/wp-content/plugins/tagregator
-	git clone https://github.com/Automattic/camptix.git                                    $SITE_DIR/wp-content/plugins/camptix
+
+	for i in "${SVN_PLUGINS[@]}"
+	do :
+		echo "$i https://plugins.svn.wordpress.org/$i/trunk" >> $PROVISION_DIR/svn-externals.tmp
+	done
+
+	svn propset svn:externals -F $PROVISION_DIR/svn-externals.tmp $SITE_DIR/wp-content/plugins
+	svn up $SITE_DIR/wp-content/plugins
+	rm -f $PROVISION_DIR/svn-externals.tmp
+
+	git clone https://github.com/Automattic/camptix.git $SITE_DIR/wp-content/plugins/camptix
 
 	# Setup mu-plugin for local development
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
