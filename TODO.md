@@ -1,13 +1,5 @@
 ## High priority
 
-* whitespace fix
-
-* Make network/site layout match production, rather than being standalone sites
-	* WordPress.org
-		* Fold existing WME sites in one at a time
-			- Match network/site IDs and db table names w/ production
-			- global.wordpress.org - can use switch to `*.wordpressorg.dev` in nginx config now?
-	* Update links in WME dashboard to be organized by network
 * Add remaining sites in WordPress.org network
 	* WordPress.org (site)    - static content (need to open), /translate (integrate w/ global.wporg for permissions), api.wordpress.org
 	* WordPress.org (network) - /showcase, /news

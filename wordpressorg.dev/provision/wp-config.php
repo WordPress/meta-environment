@@ -44,8 +44,8 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'BLOG_ID_CURRENT_SITE', 7 );
 	define( 'SUBDOMAIN_INSTALL',    false );
 
-} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpress.org' ) {
-	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpress.org' );
+} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.org' ) {
+	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpressorg.org' );
 	define( 'PATH_CURRENT_SITE', '/' );
 	define( 'SITE_ID_CURRENT_SITE', 5 );
 	define( 'BLOG_ID_CURRENT_SITE', 33 );
@@ -56,6 +56,16 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SITE_ID_CURRENT_SITE', 1 );
 	define( 'BLOG_ID_CURRENT_SITE', 1 );
 	define( 'SUBDOMAIN_INSTALL',    false );
+
+} else {
+	// global.wordpressorg.dev
+	define( 'WP_LANG_URL',          WP_CONTENT_URL . '/languages' );
+	define( 'WP_DEFAULT_THEME',     'rosetta' );
+	define( 'NOBLOGREDIRECT',       'http://wordpressorg.dev/' );
+	define( 'DEPLOYER_EMAIL',       'foo@example.org' );
+	define( 'SITE_ID_CURRENT_SITE', 6 );
+	define( 'BLOG_ID_CURRENT_SITE', 115 );
+	define( 'SUBDOMAIN_INSTALL',    true );
 }
 
 if ( ! defined( 'ABSPATH' ) ) {

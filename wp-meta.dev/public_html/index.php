@@ -37,11 +37,11 @@
 				<li><a href="http://developer.wordpressorg.dev">developer.wordpressorg.dev</a></li>
 
 				<li>
-					<a href="http://global.wordpress.dev">global.wordpress.dev</a>
+					<a href="http://global.wordpressorg.dev">global.wordpressorg.dev</a>
 
 					<ul>
-						<li><a href="http://es.wordpress.dev">es.wordpress.dev</a></li>
-						<li><a href="http://ja.wordpress.dev">ja.wordpress.dev</a></li>
+						<li><a href="http://es.wordpressorg.dev">es.wordpressorg.dev</a></li>
+						<li><a href="http://ja.wordpressorg.dev">ja.wordpressorg.dev</a></li>
 					</ul>
 				</li>
 			</ul>
