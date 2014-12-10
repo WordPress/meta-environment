@@ -40,6 +40,23 @@ The goal is to eventually include all of the sites in the network.
    with with username `admin` and password `password`.
 
 
+### Updating
+
+When new sites are added to the repository, you'll need to re-provision your local copy in order to obtain the new
+site.
+
+1. If the new site is not part of an existing multisite/multi-network installation, then you can simply run
+`vagrant halt && vagrant up --provision`.
+1. If the new site is part of an existing installation (like `wordpressorg.dev`),
+then you'll need to delete the `public_html` folder and database for that site, and then run
+`vagrant halt && vagrant up --provision`. Don't forget to backup any uncommitted patches that you're working on.
+
+If you're upgrading from an older copy of WME -- prior to December 4, 2014 -- then the best way to upgrade is just
+to start from scratch, since the repository has changed so much. Prior to the 4th, WME was a full fork of Varying
+Vagrant Vagrants, including the virtual machine, rather than just a collection of scripts that runs in an existing
+VVV installation.
+
+
 ### Notes
 
 * **Subversion client version conflicts:** Subversion repositories are checked out using version 1.8 inside the 
