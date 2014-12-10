@@ -10,7 +10,7 @@ source $BASE_DIR/helper-functions.sh
 wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 
 if [ ! -d $SITE_DIR ]; then
-	printf "\nProvisioning $SITE_DOMAIN\n"
+	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
 	wme_import_database "wordcamp_dev" $PROVISION_DIR
 
@@ -40,7 +40,7 @@ if [ ! -d $SITE_DIR ]; then
 
 
 else
-	printf "\nUpdating $SITE_DOMAIN\n"
+	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
 	svn up $SITE_DIR/wp-content
 	svn up $SITE_DIR/wp-content/plugins/camptix-network-tools
