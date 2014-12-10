@@ -18,13 +18,13 @@ if [ ! -d $SITE_DIR ]; then
 	mkdir $SITE_DIR/wp-content/mu-plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
-	wp plugin install si-contact-form --path=$SITE_DIR/wordpress
+	wp plugin install si-contact-form --path=$SITE_DIR/wordpress --allow-root
 
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
 	svn up $SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content
-	wp plugin update --all --path=$SITE_DIR/wordpress
+	wp plugin update --all --path=$SITE_DIR/wordpress --allow-root
 
 fi
