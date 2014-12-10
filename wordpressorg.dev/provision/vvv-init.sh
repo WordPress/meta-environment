@@ -35,14 +35,13 @@ if [ ! -d $SITE_DIR ]; then
 	wp plugin install $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
 
 	# developer.wordpressorg.dev
-	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
+	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/wp-content/plugins/wp-parser --no-dev --keep-vcs
 	sudo gem install sass
 
 	# global.wordpressorg.dev
 	svn propset svn:externals 'rosetta https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content/themes/rosetta/'             $SITE_DIR/wp-content/themes
 	svn up $SITE_DIR/wp-content/themes
 	svn co https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content/mu-plugins/ $SITE_DIR/wp-content/mu-plugins/global_wordpressorg_dev
-
 
 	svn export https://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
 	svn export https://i18n.svn.wordpress.org/ja/rosetta/           --force $SITE_DIR/wp-content/languages
@@ -72,5 +71,5 @@ wme_pull_wporg_global_header $SITE_DIR
 wme_pull_wporg_global_footer $SITE_DIR
 
 # developer.wordpressorg.dev
-scss --no-cache --update --style=expanded    $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets
-scss --no-cache --watch  --style=expanded -q $SITE_DIR/content/themes/wporg-developer/scss:$SITE_DIR/content/themes/wporg-developer/stylesheets &
+scss --no-cache --update --style=expanded    $SITE_DIR/wp-content/themes/wporg-developer/scss:$SITE_DIR/wp-content/themes/wporg-developer/stylesheets
+scss --no-cache --watch  --style=expanded -q $SITE_DIR/wp-content/themes/wporg-developer/scss:$SITE_DIR/wp-content/themes/wporg-developer/stylesheets &
