@@ -15,7 +15,7 @@
 * common                     - Add a visual map to the dashboard showing how all the sites are organized within networks, etc. Put it on the repo homepage too.
 * wordcamp.dev               - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpressorg.dev    - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
-* global.wordpressorg.dev    - download localizations from http://downloads.wordpress.org/translation/core/4.0/ja.zip instead of i18n svn? more consistent and future proof 
+* global.wordpressorg.dev    - download localizations from http://downloads.wordpress.org/translation/core/4.0/{locale}.zip, and automatically determine correct version instead of hardcoding 4.0
 * global.wordpressorg.dev    - svn:ignore things you add to wp-content directory to make patching easier. check other sites too.
 * global.wordpressorg.dev    - open source the Rosetta plugin to allow contributions and fix theme notices
 * developer.wordpressorg.dev - setup has changed now that reference is live? use developer-reference plugin instead of wp-parser? setup handbooks?
