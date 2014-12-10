@@ -31,10 +31,10 @@ The goal is to eventually include all of the sites in the network.
 1. [Setup Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV). If you choose to not install
    the `vagrant-hostsupdater` plugin then you will need to manually add each of the site's hostnames to your local
    hosts file.
-1. Clone this repository into VVV's `www` directory -- e.g., 
-   `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www`. If you choose
-   to name the directory something other than `wordpress-meta-environment`, then you'll need to update the paths in
-   each site's `vvv-nginx.conf` file before you provision VVV in the next step.
+1. Clone this repository as a subdirectory of VVV's `www` folder -- e.g.,
+   `git clone https://github.com/iandunn/wordpress-meta-environment.git varying-vagrant-vagrants/www/wordpress-meta-environment`.
+   If you choose to name the directory something other than `wordpress-meta-environment`, then you'll need to update
+   the paths in each site's `vvv-nginx.conf` file before you provision VVV in the next step.
 1. Restart and re-provision VVV with `vagrant halt && vagrant up --provision`.
 1. Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites. You can login to any of them
    with with username `admin` and password `password`.
