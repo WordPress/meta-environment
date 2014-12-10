@@ -43,8 +43,10 @@ if [ ! -d $SITE_DIR ]; then
 	svn up $SITE_DIR/wp-content/themes
 	svn co https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content/mu-plugins/ $SITE_DIR/wp-content/mu-plugins/global_wordpressorg_dev
 
-	svn export https://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
-	svn export https://i18n.svn.wordpress.org/ja/rosetta/           --force $SITE_DIR/wp-content/languages
+	mkdir $SITE_DIR/wp-content/languages
+	wget https://downloads.wordpress.org/translation/core/4.0/ja.zip -O $SITE_DIR/wp-content/languages/ja.zip
+	unzip $SITE_DIR/wp-content/languages/ja.zip -d $SITE_DIR/wp-content/languages/
+	rm -f $SITE_DIR/wp-content/languages/ja.zip
 	svn export https://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
 	svn export https://i18n.svn.wordpress.org/es_ES/rosetta/        --force $SITE_DIR/wp-content/languages
 
