@@ -4,7 +4,7 @@ BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 SVN_PLUGINS=( akismet bbpress debug-bar debug-bar-cron email-post-changes speakerdeck-embed supportflow syntaxhighlighter wordpress-importer )
-WPCLI_PLUGINS="jetpack tinymce-code-element"
+WPCLI_PLUGINS="jetpack tinymce-code-element wp-multibyte-patch"
 
 source $BASE_DIR/helper-functions.sh
 wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
@@ -37,6 +37,17 @@ if [ ! -d $SITE_DIR ]; then
 	# developer.wordpressorg.dev
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/content/plugins/wp-parser --no-dev --keep-vcs
 	sudo gem install sass
+
+	# global.wordpressorg.dev
+	svn propset svn:externals 'rosetta https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content/themes/rosetta/'             $SITE_DIR/wp-content/themes
+	svn up $SITE_DIR/wp-content/themes
+	svn co https://meta.svn.wordpress.org/sites/trunk/global.wordpress.org/public_html/wp-content/mu-plugins/ $SITE_DIR/wp-content/mu-plugins/global_wordpressorg_dev
+
+
+	svn export https://i18n.svn.wordpress.org/ja/trunk/messages/            $SITE_DIR/wp-content/languages
+	svn export https://i18n.svn.wordpress.org/ja/rosetta/           --force $SITE_DIR/wp-content/languages
+	svn export https://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
+	svn export https://i18n.svn.wordpress.org/es_ES/rosetta/        --force $SITE_DIR/wp-content/languages
 
 else
 	printf "\nUpdating $SITE_DOMAIN\n"
