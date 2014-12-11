@@ -25,12 +25,12 @@ function wme_pull_wporg_global_footer {
 # $1 - the absolute path to the log folder
 function wme_create_logs {
 	if [ ! -d $1 ]; then
-		sudo mkdir $1
+		mkdir $1
 	fi
 
-	sudo touch $1/nginx-access.log
-	sudo touch $1/nginx-error.log
-	sudo touch $1/php-error.log
+	touch $1/nginx-access.log
+	touch $1/nginx-error.log
+	touch $1/php-error.log
 }
 
 # Import a MySQL database
