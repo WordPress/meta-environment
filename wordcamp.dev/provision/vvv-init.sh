@@ -48,7 +48,7 @@ else
 	svn up $SITE_DIR/wp-content/plugins/email-post-changes
 	svn up $SITE_DIR/wp-content/plugins/tagregator
 	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
-	wp core   update --path=$SITE_DIR/wordpress --allow-root
+	wp core   update                --path=$SITE_DIR/wordpress --allow-root
 	wp plugin update $WPCLI_PLUGINS --path=$SITE_DIR/wordpress --allow-root
 	wp theme  update $WPCLI_THEMES  --path=$SITE_DIR/wordpress --allow-root
 
