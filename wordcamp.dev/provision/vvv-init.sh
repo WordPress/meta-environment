@@ -15,7 +15,7 @@ if [ ! -d $SITE_DIR ]; then
 	wme_import_database "wordcamp_dev" $PROVISION_DIR
 
 	# Setup WordPress
-	wp core download --path=$SITE_DIR/wordpress
+	wp core download --path=$SITE_DIR/wordpress --allow-root
 	cp $PROVISION_DIR/wp-config.php $SITE_DIR
 
 	# Check out WordCamp.org source code
@@ -36,7 +36,7 @@ if [ ! -d $SITE_DIR ]; then
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 
 	# Install 3rd-party plugins
-	wp plugin install $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
+	wp plugin install $WPCLI_PLUGINS --path=$SITE_DIR/wordpress --allow-root
 
 
 else
@@ -47,7 +47,7 @@ else
 	svn up $SITE_DIR/wp-content/plugins/email-post-changes
 	svn up $SITE_DIR/wp-content/plugins/tagregator
 	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
-	wp core   update --path=$SITE_DIR/wordpress
-	wp plugin update $WPCLI_PLUGINS --path=$SITE_DIR/wordpress
+	wp core   update --path=$SITE_DIR/wordpress --allow-root
+	wp plugin update $WPCLI_PLUGINS --path=$SITE_DIR/wordpress --allow-root
 
 fi
