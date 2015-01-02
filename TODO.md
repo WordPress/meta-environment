@@ -1,5 +1,9 @@
 ## High priority
 
+* Add Make sites
+	* maybe open source some of the mu-plugins like otto and nacin were talking about
+		* https://wordpress.slack.com/archives/meta/p1418177708000057
+	* ping courtney ivey when they're done
 * Add remaining sites in WordPress.org network
 	* WordPress.org (site)    - static content (need to open), /translate (integrate w/ global.wporg for permissions), api.wordpress.org
 	* WordPress.org (network) - /showcase, /news
@@ -13,6 +17,7 @@
 
 * common                     - svn:ignore plugins installed by wp-cli so `svn stat` isn't cluttered. maybe do that to `SVN_PLUGINS` too instead of externals?
 * common                     - Add a visual map to the dashboard showing how all the sites are organized within networks, etc. Put it on the repo homepage too.
+* wordcamp.dev               - sometimes twentytwelve isn't provisioned
 * wordcamp.dev               - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpressorg.dev    - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
 * global.wordpressorg.dev    - download localizations from http://downloads.wordpress.org/translation/core/4.0/{locale}.zip, and automatically determine correct version instead of hardcoding 4.0
