@@ -27,7 +27,7 @@ function wme_developer_wordpressorg_dev() {
 }
 
 /**
- * globalwordpressorg.dev
+ * global.wordpressorg.dev
  */
 function wme_global_wordpressorg_dev() {
 	// Load mu-plugins in subdirectories
@@ -62,12 +62,16 @@ function wme_global_wordpressorg_dev() {
 				'zip_size_mb' => '6.4',
 				'targz_url'   => 'download.tar.gz',
 				'zip_url'     => 'download.zip',
-				'tar_size_mb' => '5.9'
+				'tar_size_mb' => '5.9',
 			);
 		}
 
 		public function get_releases_breakdown() {
 			return array();
+		}
+		
+		public function get_latest_public_release() {
+			return $this->get_latest_release();
 		}
 	}
 
