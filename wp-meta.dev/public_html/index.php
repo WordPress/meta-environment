@@ -50,6 +50,15 @@
 			</ul>
 		</li>
 		<li><a href="http://wordpresstv.dev">wordpresstv.dev</a></li>
+		<li>
+			<a href="http://buddypressorg.dev">buddypressorg.dev</a>
+
+			<ul>
+				<li><a href="http://codex.buddypressorg.dev">codex.buddypressorg.dev</a></li>
+				<li><a href="http://es.buddypressorg.dev">es.buddypressorg.dev</a></li>
+				<li><a href="http://codex.bbpressorg.dev">codex.bbpressorg.dev</a></li>
+			</ul>
+		</li>
 	</ul>
 	
 	<h2>Resources</h2>
