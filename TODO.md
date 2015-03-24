@@ -9,7 +9,7 @@
 	* WordPress.org (network) - /showcase, /news
 	* make.wordpress.org      - network/sites already setup, but haven't added content or setup theme/plugins, etc. fix make.wordpressorg.dev/core/handbook
 	* learn.wordpress.org     - network/sites already setup, but haven't added content or setup theme/plugins, etc
-	* BuddyPress.org          - profiles.wordpress.org plus all the BuddyPress and bbPress stuff
+	* BuddyPress.org          - add profiles.wordpress.org and bbPress.org
 	* browsehappy.com         - single site, or part of multinetwork/multisite?
 
 

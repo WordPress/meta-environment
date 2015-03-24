@@ -15,6 +15,7 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 ### Available Sites
 
+* [buddypress.org](https://buddypress.org)
 * [jobs.wordpress.net](http://jobs.wordpress.net)
 * [wordcamp.org](http://wordcamp.org)
 * wordpress.org

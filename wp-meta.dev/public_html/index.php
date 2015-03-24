@@ -21,6 +21,15 @@
 	<p>The hostname for each site has been slightly changed. For example, <code>wordcamp.org</code> and <code>wordpress.tv</code> are <code>wordcamp.dev</code> and <code>wordpresstv.dev</code>, respectively.</p>
 
 	<ul>
+		<li>
+			<a href="http://buddypressorg.dev">buddypressorg.dev</a>
+
+			<ul>
+				<li><a href="http://codex.buddypressorg.dev">codex.buddypressorg.dev</a></li>
+				<li><a href="http://es.buddypressorg.dev">es.buddypressorg.dev</a></li>
+				<li><a href="http://codex.bbpressorg.dev">codex.bbpressorg.dev</a></li>
+			</ul>
+		</li>
 		<li><a href="http://jobs.wordpressnet.dev">jobs.wordpressnet.dev</a></li>
 		<li>
 			<a href="http://wordcamp.dev">wordcamp.dev</a>
