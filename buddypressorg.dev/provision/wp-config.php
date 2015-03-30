@@ -30,7 +30,6 @@ define( 'LOGGED_IN_SALT',        '-O8.ClBi]awaLi$!c>3 L(:+Yi)L/fZ|m3DRyu1e-SYM`q
 define( 'NONCE_SALT',            '|mk?Ht,|+:hQ&(+rb&uOxL*bIY&EL]M<@v-?dbxf!PB;&+3A4-/H.2~<q!69X.]| ');
 
 define( 'COOKIEHASH',            md5( 'the future is a pizza' ) );
-define( 'COOKIE_DOMAIN',         '.buddypressorg.dev' );
 define( 'WP_ALLOW_MULTISITE',    true );
 define( 'MULTISITE',             true );
 define( 'SUBDOMAIN_INSTALL',     true );
@@ -53,6 +52,11 @@ if ( $_SERVER['HTTP_HOST'] === 'buddypressorg.dev' ) {
 	define( 'DOMAIN_CURRENT_SITE',  'codex.bbpressorg.dev' );
 }
 
+if ( $_SERVER['HTTP_HOST'] === 'codex.bbpressorg.dev' ) {
+	define( 'COOKIE_DOMAIN', 'codex.bbpressorg.dev' );
+} else {
+	define( 'COOKIE_DOMAIN', '.buddypressorg.dev' );
+}
 
 // Begin sanity warning
 
