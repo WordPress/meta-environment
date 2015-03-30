@@ -58,17 +58,10 @@ if ( $_SERVER['HTTP_HOST'] === 'codex.bbpressorg.dev' ) {
 	define( 'COOKIE_DOMAIN', '.buddypressorg.dev' );
 }
 
+
 // Begin sanity warning
 
-// Serve bbPress.org from BuddyPress.org's file system
-if ( $_SERVER['HTTP_HOST'] === 'bbpressorg.dev' ) {
-
-	// Table prefix for bbpress.org
-	//$table_prefix = 'bb_blog_';
-	define( 'AUTH_COOKIE',        'bb_org'            );
-	define( 'LOGGED_IN_COOKIE',   'bbpress_logged_in' );
-
-} elseif ( $_SERVER['HTTP_HOST'] !== 'profiles.wordpressorg.dev' ) {
+if ( $_SERVER['HTTP_HOST'] !== 'profiles.wordpressorg.dev' ) {
 	define( 'AUTH_COOKIE',      'buddyorg'           );
 	define( 'LOGGED_IN_COOKIE', 'buddyorg_logged_in' );
 }
