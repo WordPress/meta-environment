@@ -39,4 +39,5 @@
 * global.wordpressorg.dev - update `WP_CORE_STABLE_BRANCH` automatically from http://api.wordpress.org/core/version-check/1.7/. Use `current` or `version`? Parse for branch only.
 * jobs.wordpressnet.dev   - Fix CAPTCHA image on Feedback form. Problem is Nginx config doesn't support running PHP scripts inside wp-content.
 * wordcamp.dev            - abstract the Nginx that's shared between `wordcamp.dev` and `*.wordcamp.dev` to avoid duplication.
+* wordcamp.dev            - rename to wordcamporg.dev for consistency with others, even though it doesn't need disambiguation like they do
 * common                  - rotate logs
