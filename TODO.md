@@ -17,6 +17,7 @@
 
 * common                     - svn:ignore plugins installed by wp-cli so `svn stat` isn't cluttered. maybe do that to `SVN_PLUGINS` too instead of externals?
 * common                     - Add a visual map to the dashboard showing how all the sites are organized within networks, etc. Put it on the repo homepage too.
+* wordcamp.dev               - switch sites to new url structure
 * wordcamp.dev               - sometimes twentytwelve isn't provisioned
 * wordcamp.dev               - intercept outbound mail so support@, etc don't get test emails. probably do this for all sites.
 * global.wordpressorg.dev    - implement $GLOBALS['wporg_global_header_options'] options in rendered global WordPress.org header to fix menu, etc
