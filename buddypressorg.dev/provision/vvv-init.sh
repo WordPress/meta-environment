@@ -30,7 +30,7 @@ else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
 	wp core   update --path=$SITE_DIR/wordpress --allow-root
-	wp plugin update --path=$SITE_DIR/wordpress --allow-root --all
+	wp plugin update $WPCLI_PLUGINS --path=$SITE_DIR/wordpress --allow-root
 	svn up $SITE_DIR/wp-content
 	svn up $SITE_DIR/wp-content/plugins/buddypress
 	svn up $SITE_DIR/wp-content/plugins/bbpress
