@@ -80,6 +80,8 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SUBDOMAIN_INSTALL',    true );
 }
 
+define( 'API_WPORGPATH', __DIR__ . '/../../api.wordpress.org/includes/' );
+
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
