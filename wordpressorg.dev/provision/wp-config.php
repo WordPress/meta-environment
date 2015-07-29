@@ -3,6 +3,7 @@
 $table_prefix  = 'wporg_';
 
 define( 'WPORGPATH',             dirname( __FILE__ ) . '/' );
+define( 'API_WPORGPATH',         __DIR__ . '/../../api.wordpress.org/public_html/includes/' );
 define( 'WPORG_SANDBOXED',       true );
 
 define( 'DB_NAME',               'wordpressorg_dev' );
