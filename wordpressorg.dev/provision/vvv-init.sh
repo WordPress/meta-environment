@@ -50,6 +50,11 @@ if [ ! -d $SITE_DIR ]; then
 	svn export https://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
 	svn export https://i18n.svn.wordpress.org/es_ES/rosetta/        --force $SITE_DIR/wp-content/languages
 
+	# Download the translations for the spanish theme directory
+	mkdir $SITE_DIR/wp-content/languages/themes
+	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.mo
+	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.po
+
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
