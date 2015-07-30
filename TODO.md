@@ -5,7 +5,9 @@
 		* https://wordpress.slack.com/archives/meta/p1418177708000057
 	* ping courtney ivey when they're done
 * Add remaining sites in WordPress.org network
-	* WordPress.org (site)    - static content (need to open), /translate (integrate w/ global.wporg for permissions), api.wordpress.org
+	* WordPress.org (site)    - static content (need to open source), /plugins, /support
+	* api.wordpress.org
+	* translate.wordpress.org - integrate w/ global.wporg for permissions
 	* WordPress.org (network) - /showcase, /news
 	* make.wordpress.org      - network/sites already setup, but haven't added content or setup theme/plugins, etc. fix make.wordpressorg.dev/core/handbook
 	* learn.wordpress.org     - network/sites already setup, but haven't added content or setup theme/plugins, etc
