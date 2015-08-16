@@ -55,6 +55,12 @@ if [ ! -d $SITE_DIR ]; then
 	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.mo
 	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.po
 
+	# translate.wordpressorg.dev
+	mkdir $SITE_DIR/translate
+	svn co https://glotpress.svn.wordpress.org/trunk $SITE_DIR/translate/glotpress
+	svn co https://meta.svn.wordpress.org/sites/trunk/translate.wordpress.org/includes/gp-plugins $SITE_DIR/translate/gp-plugins/
+	svn co https://meta.svn.wordpress.org/sites/trunk/translate.wordpress.org/public_html/gp-templates $SITE_DIR/translate/gp-templates/
+
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
@@ -66,6 +72,11 @@ else
 	do :
 		svn up $SITE_DIR/wp-content/plugins/$i
 	done
+
+	# translate.wordpressorg.dev
+	svn up $SITE_DIR/translate/glotpress
+	svn up $SITE_DIR/translate/gp-plugins
+	svn up $SITE_DIR/translate/gp-templates
 
 	# developer.wordpressorg.dev
 	# composer update rmccue/wp-parser # todo no composer.json file
