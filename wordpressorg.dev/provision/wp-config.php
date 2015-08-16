@@ -40,6 +40,10 @@ define( 'NONCE_SALT',             '|mk?Ht,|+:hQ&(+rb&uOxL*bIY&EL]M<@v-?dbxf!PB;&
 define( 'COOKIEHASH',             md5( 'the future is unwritten' ) );
 define( 'COOKIE_DOMAIN',          '.wordpressorg.dev' );
 
+define( 'LOGGED_IN_COOKIE',      'wporgdev_logged_in' );
+define( 'AUTH_COOKIE',           'wporgdev' );
+define( 'SECURE_AUTH_COOKIE',    'wporgdev_sec' );
+
 define( 'MULTISITE',             true );
 
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
