@@ -35,10 +35,14 @@ define( 'NONCE_KEY',              'Npa lMe_;9u`DAAf_c7qnJdev#u|4g|bI^qmSFkJ*hXt,
 define( 'AUTH_SALT',              'q -~]?|>qe:`:uV(ulnJ<bBVy[|@B<DkdRwhx%tWSfGyBrK.d[SvF2Rk(C=R){RI' );
 define( 'SECURE_AUTH_SALT',       '+-,PoVE8!`#?O@Sv`X:Fhy~BzDt]{7}01o9#[_6tv#mLk5e}O[{[=uPZvwT[;V6^' );
 define( 'LOGGED_IN_SALT',         '-O8.ClBi]awaLi$!c>3 L(:+Yi)L/fZ|m3DRyu1e-SYM`q2JZsG@zU|VtZBEqCH<' );
-define( 'NONCE_SALT',             '|mk?Ht,|+:hQ&(+rb&uOxL*bIY&EL]M<@v-?dbxf!PB;&+3A4-/H.2~<q!69X.]| ');
+define( 'NONCE_SALT',             '|mk?Ht,|+:hQ&(+rb&uOxL*bIY&EL]M<@v-?dbxf!PB;&+3A4-/H.2~<q!69X.]|' );
 
 define( 'COOKIEHASH',             md5( 'the future is unwritten' ) );
 define( 'COOKIE_DOMAIN',          '.wordpressorg.dev' );
+
+define( 'LOGGED_IN_COOKIE',      'wporgdev_logged_in' );
+define( 'AUTH_COOKIE',           'wporgdev' );
+define( 'SECURE_AUTH_COOKIE',    'wporgdev_sec' );
 
 define( 'MULTISITE',             true );
 
