@@ -32,13 +32,8 @@ define( 'GP_DEBUG',              true );
 define( 'GP_PLUGINS_PATH',       __DIR__ . '/gp-plugins/' );
 define( 'GP_TMPL_PATH',          __DIR__ . '/gp-templates/' );
 
-/**
- * Custom users and usermeta tables for integration with WordPress user system.
- *
- * You might want to delete your current permissions, since they will point to different
- * users in the custom table. You can use `php scripts/wipe-permissions.php` for that.
- *
- * If you start with fresh permissions, you can add admins via `php scripts/add-admin.php`
- */
-// define('CUSTOM_USER_TABLE', 'wp_users');
-// define('CUSTOM_USER_META_TABLE', 'wp_usermeta');
+define( 'GP_URL',                'http://translate.wordpressorg.dev/' );
+define( 'GP_BASE_URL',           'http://translate.wordpressorg.dev/glotpress/' );
+
+define( 'CUSTOM_USER_TABLE',      'wporg_users' );
+define( 'CUSTOM_USER_META_TABLE', 'wporg_usermeta' );
