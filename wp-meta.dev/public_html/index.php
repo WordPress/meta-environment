@@ -10,12 +10,12 @@
 <body>
 
 	<h1>WordPress Meta Environment</h1>
-	
+
 	<p>
 		All of the sites listed below have been provisioned into your local development environment. You can log in
 		to any of them with username <code>admin</code> and password <code>password</code>.
 	</p>
-	
+
 	<h2>Available Sites</h2>
 
 	<p>The hostname for each site has been slightly changed. For example, <code>wordcamp.org</code> and <code>wordpress.tv</code> are <code>wordcamp.dev</code> and <code>wordpresstv.dev</code>, respectively.</p>
@@ -47,6 +47,7 @@
 			<ul>
 				<li><a href="http://apps.wordpressorg.dev">apps.wordpressorg.dev</a></li>
 				<li><a href="http://developer.wordpressorg.dev">developer.wordpressorg.dev</a></li>
+				<li><a href="http://translate.wordpressorg.dev">translate.wordpressorg.dev</a></li>
 
 				<li>
 					<a href="http://global.wordpressorg.dev">global.wordpressorg.dev</a>
@@ -60,7 +61,7 @@
 		</li>
 		<li><a href="http://wordpresstv.dev">wordpresstv.dev</a></li>
 	</ul>
-	
+
 	<h2>Resources</h2>
 	<ul>
 		<li><a href="https://github.com/iandunn/wordpress-meta-environment">WME homepage</a></li>
