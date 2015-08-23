@@ -10,7 +10,7 @@ wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 if [ ! -d $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
-#	wme_import_database "wordpressorg_dev" $PROVISION_DIR
+	wme_import_database "wordpressorg_dev" $PROVISION_DIR
 
 	mkdir $SITE_DIR
 
