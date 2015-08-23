@@ -82,8 +82,8 @@ else
 fi
 
 # Pull global header/footer
-wme_pull_wporg_global_header $SITE_DIR
-wme_pull_wporg_global_footer $SITE_DIR
+wme_pull_wporg_global_header $SITE_DIR wp_head
+wme_pull_wporg_global_footer $SITE_DIR wp_footer
 
 # developer.wordpressorg.dev
 scss --no-cache --update --style=expanded    $SITE_DIR/wp-content/themes/pub/wporg-developer/scss:$SITE_DIR/wp-content/themes/pub/wporg-developer/stylesheets
