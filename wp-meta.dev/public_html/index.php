@@ -62,6 +62,8 @@
 						<li><a href="http://ja.wordpressorg.dev">ja.wordpressorg.dev</a></li>
 					</ul>
 				</li>
+
+				<li><a href="http://translate.wordpressorg.dev">translate.wordpressorg.dev</a></li>
 			</ul>
 		</li>
 		<li><a href="http://wordpresstv.dev">wordpresstv.dev</a></li>

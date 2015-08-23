@@ -22,6 +22,7 @@ handbook](http://make.wordpress.org/meta/handbook/).
 	* [apps.wordpress.org](http://apps.wordpress.org)
 	* [developer.wordpress.org](http://developer.wordpress.org)
 	* [global.wordpress.org](http://global.wordpress.org)
+	* [translate.wordpress.org](http://translate.wordpress.org)
 * [wordpress.tv](http://wordpress.tv)
 
 The goal is to eventually include all of the sites in the network.
