@@ -46,13 +46,20 @@ if [ ! -d $SITE_DIR ]; then
 
 	mkdir $SITE_DIR/wp-content/languages
 	mkdir $SITE_DIR/wp-content/languages/themes
+	mkdir $SITE_DIR/wp-content/languages/rosetta
 
 	wget https://downloads.wordpress.org/translation/core/$CORE_LATEST_STABLE/ja.zip -O $SITE_DIR/wp-content/languages/ja.zip
 	unzip $SITE_DIR/wp-content/languages/ja.zip -d $SITE_DIR/wp-content/languages/
 	rm -f $SITE_DIR/wp-content/languages/ja.zip
 
-	svn export https://i18n.svn.wordpress.org/es_ES/trunk/messages/ --force $SITE_DIR/wp-content/languages
-	svn export https://i18n.svn.wordpress.org/es_ES/rosetta/        --force $SITE_DIR/wp-content/languages
+	wget https://downloads.wordpress.org/translation/core/$CORE_LATEST_STABLE/es_ES.zip -O $SITE_DIR/wp-content/languages/es_ES.zip
+	unzip $SITE_DIR/wp-content/languages/es_ES.zip -d $SITE_DIR/wp-content/languages/
+	rm -f $SITE_DIR/wp-content/languages/es_ES.zip
+
+	wget https://translate.wordpress.org/projects/meta/rosetta/ja/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/rosetta/rosetta-ja.mo
+	wget https://translate.wordpress.org/projects/meta/rosetta/ja/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/rosetta/rosetta-ja.po
+	wget https://translate.wordpress.org/projects/meta/rosetta/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/rosetta/rosetta-es_ES.mo
+	wget https://translate.wordpress.org/projects/meta/rosetta/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/rosetta/rosetta-es_ES.po
 	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.mo
 	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.po
 
