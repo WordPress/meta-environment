@@ -1,23 +1,29 @@
 #!/bin/bash
 
-# Download the global WordPress.org header into the given directory and insert `wp_head()`
+# Download the global WordPress.org header into the given directory.
 #
 # This is a workaround because the header isn't open-sourced yet
 #
 # $1 - the absolute path to the folder where the header should be placed
+# $2 - the function which should be added to the header
 function wme_pull_wporg_global_header {
 	curl -o $1/header.php https://wordpress.org/header.php
-	sed -i 's/<\/head>/\n<?php wp_head(); ?>\n\n&/' $1/header.php
+	if [ ! -z "$2" ]; then
+		sed -i "s/<\/head>/\n<?php $2(); ?>\n\n&/" $1/header.php
+	fi
 }
 
-# Download the global WordPress.org footer into the given directory and insert `wp_footer()`
+# Download the global WordPress.org footer into the given directory.
 #
 # This is a workaround because the footer isn't open-sourced yet
 #
 # $1 - the absolute path to the folder where the footer should be placed
+# $2 - the function which should be added to the footer
 function wme_pull_wporg_global_footer {
 	curl -o $1/footer.php https://wordpress.org/footer.php
-	sed -i 's/<\/body>/\n<?php wp_footer(); ?>\n\n&/' $1/footer.php
+	if [ ! -z "$2" ]; then
+		sed -i "s/<\/body>/\n<?php $2(); ?>\n\n&/" $1/footer.php
+	fi
 }
 
 # Create log stubs
