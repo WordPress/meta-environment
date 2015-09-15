@@ -52,7 +52,13 @@
 					<a href="http://global.wordpressorg.dev">global.wordpressorg.dev</a>
 
 					<ul>
-						<li><a href="http://es.wordpressorg.dev">es.wordpressorg.dev</a></li>
+						<li>
+							<a href="http://es.wordpressorg.dev">es.wordpressorg.dev</a>
+
+							<ul>
+								<li><a href="http://es.wordpressorg.dev/themes">es.wordpressorg.dev/themes</a></li>
+							</ul>
+						</li>
 						<li><a href="http://ja.wordpressorg.dev">ja.wordpressorg.dev</a></li>
 					</ul>
 				</li>
