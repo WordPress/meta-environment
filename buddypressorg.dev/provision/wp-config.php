@@ -1,4 +1,8 @@
 <?php
+if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+	$_SERVER['HTTP_HOST'] = 'buddypressorg.dev';
+}
+
 $table_prefix  = 'wp_';
 
 define( 'DB_NAME',               'buddypressorg_dev' );
