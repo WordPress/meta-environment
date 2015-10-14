@@ -1,4 +1,7 @@
 <?php
+if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+	$_SERVER['HTTP_HOST'] = 'wordpressorg.dev';
+}
 
 $table_prefix  = 'wporg_';
 
