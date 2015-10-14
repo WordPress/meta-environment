@@ -1,5 +1,9 @@
 <?php
 
+if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+	$_SERVER['HTTP_HOST'] = 'jobs.wordpressnet.dev';
+}
+
 $table_prefix  = 'wp_';
 
 define( 'DB_NAME',               'jobs_wordpressnet_dev' );

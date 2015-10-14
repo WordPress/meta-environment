@@ -1,5 +1,9 @@
 <?php
 
+if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+	$_SERVER['HTTP_HOST'] = 'translate.wordpressorg.dev';
+}
+
 $gp_table_prefix = 'translate_';
 
 define( 'WPORGPATH',             __DIR__ . '/' );

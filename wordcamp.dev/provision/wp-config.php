@@ -1,5 +1,9 @@
 <?php
 
+if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+	$_SERVER['HTTP_HOST'] = 'wordcamp.dev';
+}
+
 $table_prefix  = 'wc_';
 
 define( 'IS_WORDCAMP_NETWORK',  true );
