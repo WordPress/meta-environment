@@ -6,7 +6,7 @@ if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
 
 $table_prefix  = 'wporg_';
 
-define( 'WPORGPATH',             dirname( __FILE__ ) . '/' );
+define( 'WPORGPATH',             __DIR__ . '/' );
 define( 'API_WPORGPATH',         __DIR__ . '/../../api.wordpress.org/public_html/includes/' );
 define( 'WPORG_SANDBOXED',       true );
 
@@ -50,47 +50,52 @@ define( 'SECURE_AUTH_COOKIE',    'wporgdev_sec' );
 
 define( 'MULTISITE',             true );
 
-if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
-	define( 'PATH_CURRENT_SITE',    '/' );
-	define( 'SITE_ID_CURRENT_SITE', 2 );
-	define( 'BLOG_ID_CURRENT_SITE', 4 );
-	define( 'SUBDOMAIN_INSTALL',    false );
-	define( 'WP_DEFAULT_THEME',     'pub/wporg-p2' );
+switch ( $_SERVER['HTTP_HOST'] ) {
+	case 'make.wordpressorg.dev':
+		define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
+		define( 'PATH_CURRENT_SITE',    '/' );
+		define( 'SITE_ID_CURRENT_SITE', 2 );
+		define( 'BLOG_ID_CURRENT_SITE', 4 );
+		define( 'SUBDOMAIN_INSTALL',    false );
+		define( 'WP_DEFAULT_THEME',     'pub/wporg-p2' );
+		break;
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'learn.wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'learn.wordpressorg.dev' );
-	define( 'PATH_CURRENT_SITE',    '/' );
-	define( 'SITE_ID_CURRENT_SITE', 3 );
-	define( 'BLOG_ID_CURRENT_SITE', 7 );
-	define( 'SUBDOMAIN_INSTALL',    false );
+	case 'learn.wordpressorg.dev':
+		define( 'DOMAIN_CURRENT_SITE',  'learn.wordpressorg.dev' );
+		define( 'PATH_CURRENT_SITE',    '/' );
+		define( 'SITE_ID_CURRENT_SITE', 3 );
+		define( 'BLOG_ID_CURRENT_SITE', 7 );
+		define( 'SUBDOMAIN_INSTALL',    false );
+		break;
 
-} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.org' ) {
-	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpressorg.org' );
-	define( 'PATH_CURRENT_SITE', '/' );
-	define( 'SITE_ID_CURRENT_SITE', 5 );
-	define( 'BLOG_ID_CURRENT_SITE', 33 );
+	case 'developer.wordpressorg.org':
+		define( 'DOMAIN_CURRENT_SITE',  'developer.wordpressorg.org' );
+		define( 'PATH_CURRENT_SITE',    '/' );
+		define( 'SITE_ID_CURRENT_SITE', 5 );
+		define( 'BLOG_ID_CURRENT_SITE', 33 );
+		break;
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'wordpressorg.dev' );
-	define( 'PATH_CURRENT_SITE',    '/' );
-	define( 'SITE_ID_CURRENT_SITE', 1 );
-	define( 'BLOG_ID_CURRENT_SITE', 1 );
-	define( 'SUBDOMAIN_INSTALL',    false );
+	case 'wordpressorg.dev':
+		define( 'DOMAIN_CURRENT_SITE',  'wordpressorg.dev' );
+		define( 'PATH_CURRENT_SITE',    '/' );
+		define( 'SITE_ID_CURRENT_SITE', 1 );
+		define( 'BLOG_ID_CURRENT_SITE', 1 );
+		define( 'SUBDOMAIN_INSTALL',    false );
+		break;
 
-} else {
-	// global.wordpressorg.dev
-	define( 'WP_LANG_URL',          WP_CONTENT_URL . '/languages' );
-	define( 'WP_DEFAULT_THEME',     'rosetta' );
-	define( 'NOBLOGREDIRECT',       'http://wordpressorg.dev/' );
-	define( 'DEPLOYER_EMAIL',       'foo@example.org' );
-	define( 'SITE_ID_CURRENT_SITE', 6 );
-	define( 'BLOG_ID_CURRENT_SITE', 115 );
-	define( 'SUBDOMAIN_INSTALL',    true );
+	default:
+		// global.wordpressorg.dev
+		define( 'WP_LANG_URL',          WP_CONTENT_URL . '/languages' );
+		define( 'WP_DEFAULT_THEME',     'rosetta' );
+		define( 'NOBLOGREDIRECT',       'http://wordpressorg.dev/' );
+		define( 'DEPLOYER_EMAIL',       'foo@example.org' );
+		define( 'SITE_ID_CURRENT_SITE', 6 );
+		define( 'BLOG_ID_CURRENT_SITE', 115 );
+		define( 'SUBDOMAIN_INSTALL',    true );
 }
 
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
 
-require_once( ABSPATH . 'wp-settings.php' );
+require_once ABSPATH . 'wp-settings.php';
