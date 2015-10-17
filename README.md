@@ -77,7 +77,7 @@ VVV installation.
 ### Support
 
 If you run into any problems, check the **Notes** section above. If that doesn't help, feel free to
-[open an issue](https://github.com/iandunn/wordpress-meta-environment/issues) or ping
+[open an issue](https://github.com/WordPress/meta-environment/issues) or ping
 [iandunn](https://wordpress.slack.com/team/iandunn) in the #meta channel on
 [WordPress's Slack server](https://make.wordpress.org/chat/).
 
