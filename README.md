@@ -34,7 +34,7 @@ The goal is to eventually include all of the sites in the network.
    the `vagrant-hostsupdater` plugin then you will need to manually add each of the site's hostnames to your local
    hosts file.
 1. Clone this repository as a subdirectory of VVV's `www` folder -- e.g.,
-   `git clone https://github.com/iandunn/wordpress-meta-environment.git vagrant-local/www/wordpress-meta-environment`.
+   `git clone https://github.com/WordPress/meta-environment.git vagrant-local/www/wordpress-meta-environment`.
    If you choose to name the directory something other than `wordpress-meta-environment`, then you'll need to update
    the paths in each site's `vvv-nginx.conf` file before you provision VVV in the next step.
 1. Restart and re-provision VVV with `vagrant halt && vagrant up --provision`.
