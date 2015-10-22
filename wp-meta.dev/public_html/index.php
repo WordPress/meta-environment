@@ -71,7 +71,7 @@
 	
 	<h2>Resources</h2>
 	<ul>
-		<li><a href="https://github.com/iandunn/wordpress-meta-environment">WME homepage</a></li>
+		<li><a href="https://github.com/WordPress/meta-environment">WME homepage</a></li>
 		<li><a href="https://make.wordpress.org/meta/handbook/">Meta Team Handbook</a> - for information on contributing to these sites</li>
 		<li><a href="https://meta.trac.wordpress.org">Meta Trac</a> - find a ticket to work on</li>
 		<li><a href="http://vvv.dev">VVV dashboard</a> - phpMyAdmin, phpinfo(), and other tools/resources</li>
