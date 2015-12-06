@@ -4,7 +4,7 @@ BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 SVN_PLUGINS=( camptix-network-tools email-post-changes tagregator )
-WPCLI_PLUGINS="akismet buddypress bbpress camptix-pagseguro camptix-payfast-gateway core-control debug-bar debug-bar-console debug-bar-cron jetpack wp-multibyte-patch wordpress-importer"
+WPCLI_PLUGINS="akismet buddypress bbpress camptix-pagseguro camptix-payfast-gateway core-control debug-bar debug-bar-console debug-bar-cron jetpack wp-multibyte-patch wordpress-importer json-rest-api"
 WPCLI_THEMES="twentyten"
 
 source $BASE_DIR/helper-functions.sh
