@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 SITE_DOMAIN="translate.wordpressorg.dev"
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"

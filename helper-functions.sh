@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 # Download the global WordPress.org header into the given directory.
 #
