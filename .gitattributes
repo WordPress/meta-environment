@@ -1,0 +1,2 @@
+# Force Unix line endings for all files, to avoid provision failures on Windows systems
+* text eol=lf
