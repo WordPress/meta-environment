@@ -65,8 +65,8 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'BLOG_ID_CURRENT_SITE', 7 );
 	define( 'SUBDOMAIN_INSTALL',    false );
 
-} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.org' ) {
-	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpressorg.org' );
+} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.dev' ) {
+	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpressorg.dev' );
 	define( 'PATH_CURRENT_SITE', '/' );
 	define( 'SITE_ID_CURRENT_SITE', 5 );
 	define( 'BLOG_ID_CURRENT_SITE', 33 );
