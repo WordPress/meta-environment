@@ -66,8 +66,10 @@ if [ ! -d $SITE_DIR ]; then
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
+	svn up $SITE_DIR
 	svn up $SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content
+	svn up $SITE_DIR/wp-content/mu-plugins/global_wordpressorg_dev
 	wp plugin update $WPCLI_PLUGINS --path=$SITE_DIR/wordpress --allow-root
 
 	for i in "${SVN_PLUGINS[@]}"
