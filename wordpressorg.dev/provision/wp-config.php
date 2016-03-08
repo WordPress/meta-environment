@@ -6,32 +6,32 @@ if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
 
 $table_prefix  = 'wporg_';
 
-define( 'WPORGPATH',             dirname( __FILE__ ) . '/' );
-define( 'API_WPORGPATH',         __DIR__ . '/../../api.wordpress.org/public_html/includes/' );
+define( 'WPORGPATH',              dirname( __FILE__ ) . '/' );
+define( 'API_WPORGPATH',          __DIR__ . '/../../api.wordpress.org/public_html/includes/' );
 define( 'GLOTPRESS_LOCALES_PATH', __DIR__ . '/../../translate.wordpressorg.dev/public_html/glotpress/locales/locales.php' );
-define( 'WPORG_SANDBOXED',       true );
+define( 'WPORG_SANDBOXED',        true );
 
-define( 'DB_NAME',               'wordpressorg_dev' );
-define( 'DB_USER',               'wp' );
-define( 'DB_PASSWORD',           'wp' );
-define( 'DB_HOST',               'localhost' );
-define( 'DB_CHARSET',            'utf8' );
-define( 'DB_COLLATE',            '' );
+define( 'DB_NAME',                'wordpressorg_dev' );
+define( 'DB_USER',                'wp' );
+define( 'DB_PASSWORD',            'wp' );
+define( 'DB_HOST',                'localhost' );
+define( 'DB_CHARSET',             'utf8' );
+define( 'DB_COLLATE',             '' );
 
-ini_set( 'log_errors',           'On' );
-ini_set( 'display_errors',       'On' );
-ini_set( 'error_reporting',      E_ALL );
+ini_set( 'log_errors',            'On' );
+ini_set( 'display_errors',        'On' );
+ini_set( 'error_reporting',       E_ALL );
 
-define( 'WP_DEBUG',              true );
-define( 'WP_DEBUG_LOG',          true );
-define( 'WP_DEBUG_DISPLAY',      true );
-define( 'SAVEQUERIES',           true );
-define( 'JETPACK_DEV_DEBUG',     true );
-define( 'SCRIPT_DEBUG',          true );
+define( 'WP_DEBUG',               true );
+define( 'WP_DEBUG_LOG',           true );
+define( 'WP_DEBUG_DISPLAY',       true );
+define( 'SAVEQUERIES',            true );
+define( 'JETPACK_DEV_DEBUG',      true );
+define( 'SCRIPT_DEBUG',           true );
 
-define( 'WPLANG',                '' );
-define( 'WP_CONTENT_DIR',        __DIR__ . '/wp-content' );
-define( 'WP_CONTENT_URL',        'http://' . preg_replace( '/[^-_.0-9a-z:]/i', '', $_SERVER['HTTP_HOST'] ) . '/wp-content' );
+define( 'WPLANG',                 '' );
+define( 'WP_CONTENT_DIR',         __DIR__ . '/wp-content' );
+define( 'WP_CONTENT_URL',         'http://' . preg_replace( '/[^-_.0-9a-z:]/i', '', $_SERVER['HTTP_HOST'] ) . '/wp-content' );
 
 define( 'AUTH_KEY',               'B<=-9r`TXvVa^Y0Y~8JnDye<H~@t3,k:<%My:QtMU|1pH(:7B76f:%O{AqGOMwhj' );
 define( 'SECURE_AUTH_KEY',        '#vZ4tX7{67*.m]kh h[H .by&YAWrGs`Z%6;tyJ-1(@2KKxz6;>VQa^:/$%?9+_?' );
@@ -45,11 +45,11 @@ define( 'NONCE_SALT',             '|mk?Ht,|+:hQ&(+rb&uOxL*bIY&EL]M<@v-?dbxf!PB;&
 define( 'COOKIEHASH',             md5( 'the future is unwritten' ) );
 define( 'COOKIE_DOMAIN',          '.wordpressorg.dev' );
 
-define( 'LOGGED_IN_COOKIE',      'wporgdev_logged_in' );
-define( 'AUTH_COOKIE',           'wporgdev' );
-define( 'SECURE_AUTH_COOKIE',    'wporgdev_sec' );
+define( 'LOGGED_IN_COOKIE',       'wporgdev_logged_in' );
+define( 'AUTH_COOKIE',            'wporgdev' );
+define( 'SECURE_AUTH_COOKIE',     'wporgdev_sec' );
 
-define( 'MULTISITE',             true );
+define( 'MULTISITE',              true );
 
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
@@ -67,8 +67,8 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SUBDOMAIN_INSTALL',    false );
 
 } elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE', 'developer.wordpressorg.dev' );
-	define( 'PATH_CURRENT_SITE', '/' );
+	define( 'DOMAIN_CURRENT_SITE',  'developer.wordpressorg.dev' );
+	define( 'PATH_CURRENT_SITE',    '/' );
 	define( 'SITE_ID_CURRENT_SITE', 5 );
 	define( 'BLOG_ID_CURRENT_SITE', 33 );
 
