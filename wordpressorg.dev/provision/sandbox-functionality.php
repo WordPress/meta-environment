@@ -2,6 +2,9 @@
 
 ini_set( 'error_log', dirname( dirname( ABSPATH ) ) . '/logs/php-error.log' );
 
+define( 'PLUGINS_TABLE_PREFIX',  $table_prefix );
+define( 'WP_CORE_STABLE_BRANCH', '4.5' );
+
 // Include Core themes
 register_theme_directory( ABSPATH . 'wp-content/themes' );
 
@@ -31,7 +34,6 @@ function wme_developer_wordpressorg_dev() {
  */
 function wme_global_wordpressorg_dev() {
 	// Load mu-plugins in subdirectories
-	define( 'WP_CORE_STABLE_BRANCH', '4.0' );
 	require_once( __DIR__ . '/global_wordpressorg_dev/downloads/rosetta-downloads.php' );
 	require_once( __DIR__ . '/global_wordpressorg_dev/roles/rosetta-roles.php' );
 	require_once( __DIR__ . '/global_wordpressorg_dev/showcase/rosetta-showcase.php' );
