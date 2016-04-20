@@ -10,6 +10,8 @@ define( 'WPORGPATH',              dirname( __FILE__ ) . '/' );
 define( 'API_WPORGPATH',          __DIR__ . '/../../api.wordpress.org/public_html/includes/' );
 define( 'GLOTPRESS_LOCALES_PATH', __DIR__ . '/../../translate.wordpressorg.dev/public_html/glotpress/locales/locales.php' );
 define( 'WPORG_SANDBOXED',        true );
+define( 'PLUGINS_TABLE_PREFIX',   $table_prefix );
+define( 'WP_CORE_STABLE_BRANCH',  '4.5' );
 
 define( 'DB_NAME',                'wordpressorg_dev' );
 define( 'DB_USER',                'wp' );
