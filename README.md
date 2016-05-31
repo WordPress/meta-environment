@@ -43,13 +43,15 @@ The goal is to eventually include all of the sites in the network.
 	a different name, then WME will break during the provision stage, unless you also manually edit the Nginx
 	configuration files for each site to reflect the name you chose.
 
-1. Restart and re-provision VVV with `vagrant halt && vagrant up --provision`.
+1. Restart and re-provision VVV
+	1. `cd ..` (to get back to the main `vagrant-local` directory)
+	1. `vagrant halt && vagrant up --provision`
 
 
 You're all set!
 
 * Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites.
-* Log in to any of the with with username `admin` and password `password`.
+* Log in to any of the with with username `admin` and password `password`
 
 
 ### Updating
@@ -59,10 +61,11 @@ order to obtain the new site.
 
 1. `git pull origin master`
 1. If the new site is not part of an existing multisite/multi-network installation, then you can simply run
-`vagrant halt && vagrant up --provision`.
+`vagrant halt && vagrant up --provision`
 1. If the new site is part of an existing installation (like `wordpressorg.dev`),
 then you'll need to delete the `public_html` folder and database for that site, and then run
-`vagrant halt && vagrant up --provision`. Don't forget to backup any uncommitted patches that you're working on.
+`vagrant halt && vagrant up --provision`
+	1. Don't forget to backup any uncommitted patches that you're working on.
 
 If you're upgrading from an older copy of WME -- prior to December 4, 2014 -- then the best way to upgrade is just
 to start from scratch, since the repository has changed so much. Prior to the 4th, WME was a full fork of VVV, including the virtual machine, rather than just a collection of scripts that runs in an existing
