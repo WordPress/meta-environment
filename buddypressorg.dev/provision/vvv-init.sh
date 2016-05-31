@@ -14,6 +14,7 @@ if [ ! -d $SITE_DIR ]; then
 	wme_import_database "buddypressorg_dev" $PROVISION_DIR
 
 	# Set up WordPress
+	mkdir $SITE_DIR
 	wp core download --path=$SITE_DIR/wordpress --allow-root
 	cp $PROVISION_DIR/wp-config.php $SITE_DIR
 

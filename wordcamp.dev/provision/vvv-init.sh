@@ -16,6 +16,7 @@ if [ ! -d $SITE_DIR ]; then
 	wme_import_database "wordcamp_dev" $PROVISION_DIR
 
 	# Setup WordPress
+	mkdir $SITE_DIR
 	wp core download --path=$SITE_DIR/wordpress --allow-root
 	cp $PROVISION_DIR/wp-config.php $SITE_DIR
 
