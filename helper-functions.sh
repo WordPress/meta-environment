@@ -12,6 +12,8 @@ function wme_pull_wporg_global_header {
 	if [ ! -z "$2" ]; then
 		sed -i "s/<\/head>/\n<?php $2(); ?>\n\n&/" $1/header.php
 	fi
+
+	sed -i "s/<body id=\"wordpress-org\"/<body id=\"wordpress-org\" <?php if ( function_exists( 'body_class' ) ) { body_class(); } ?>/" $1/header.php
 }
 
 # Download the global WordPress.org footer into the given directory.
