@@ -51,6 +51,11 @@ define( 'SECURE_AUTH_COOKIE',     'wporgdev_sec' );
 
 define( 'MULTISITE',              true );
 
+define( 'SUNRISE',                true );
+
+define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
+define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
+
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
 	define( 'PATH_CURRENT_SITE',    '/' );

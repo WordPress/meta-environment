@@ -21,6 +21,7 @@ if [ ! -d $SITE_DIR ]; then
 	mkdir $SITE_DIR/wp-content/mu-plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
+	cp $PROVISION_DIR/sunrise.php               $SITE_DIR/wp-content
 
 	svn propset svn:externals 'p2 https://wpcom-themes.svn.automattic.com/p2' $SITE_DIR/wp-content/themes
 	svn up $SITE_DIR/wp-content/themes

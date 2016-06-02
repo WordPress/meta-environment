@@ -185,11 +185,30 @@ function wme_global_wordpressorg_dev() {
 		public function get_releases_breakdown() {
 			return array();
 		}
-		
+
 		public function get_latest_public_release() {
 			return $this->get_latest_release();
 		}
 	}
 
 	$GLOBALS['rosetta'] = new Rosetta_WordPress();
+
+	/**
+	 * Filters the URLs to use the current localized domain name, rather than wordpressorg.dev.
+	 *
+	 * Required for the theme and plugin directory which are available at multiple URLs (internationalized domains).
+	 * This function allows for the one blog (a single blog_id) to be presented at multiple URLs yet have correct
+	 * localized links.
+	 */
+	function wme_rosetta_network_localize_url( $url ) {
+		static $localized_url = null;
+
+		if ( is_null( $localized_url ) ) {
+			$localized_url = 'http://' . preg_replace( '![^a-z.-]+!', '', $_SERVER['HTTP_HOST'] );
+		}
+
+		return preg_replace( '!^[http]+://wordpressorg\.dev!i', $localized_url, $url );
+	}
+	add_filter( 'option_home',    'wme_rosetta_network_localize_url' );
+	add_filter( 'option_siteurl', 'wme_rosetta_network_localize_url' );
 }
