@@ -6,6 +6,17 @@ ini_set( 'error_log', dirname( dirname( ABSPATH ) ) . '/logs/php-error.log' );
 register_theme_directory( ABSPATH . 'wp-content/themes' );
 
 /**
+ * Load sites over HTTP instead of HTTPS
+ *
+ * In the Meta Environment, the sites will only have self-signed certificates, so contributors will get errors
+ * from their browser, which are confusing and inconvenient.
+ */
+function wordcamp_dev_use_http() {
+	remove_action( 'muplugins_loaded', 'wcorg_force_ssl' );
+}
+add_action( 'muplugins_loaded', 'wordcamp_dev_use_http', 9 );
+
+/**
  * Setup quick cron schedules for easy debugging
  *
  * @param array $schedules
