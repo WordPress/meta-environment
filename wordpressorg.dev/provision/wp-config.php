@@ -8,14 +8,12 @@ $table_prefix  = 'wporg_';
 
 define( 'WPORGPATH',              dirname( __FILE__ ) . '/' );
 define( 'API_WPORGPATH',          dirname( dirname( dirname( __DIR__ ) ) ) . '/api.wordpress.org/public_html/includes/' );
-define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/translate.wordpressorg.dev/public_html/glotpress/locales/locales.php' );
 define( 'WPORG_SANDBOXED',        true );
 
 define( 'DB_NAME',                'wordpressorg_dev' );
 define( 'DB_USER',                'wp' );
 define( 'DB_PASSWORD',            'wp' );
 define( 'DB_HOST',                'localhost' );
-define( 'DB_CHARSET',             'utf8' );
 define( 'DB_COLLATE',             '' );
 
 ini_set( 'log_errors',            'On' );
@@ -57,6 +55,7 @@ define( 'WPORG_GLOBAL_NETWORK_ID',       6 );
 define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
 define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
 
+define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
 define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
@@ -86,6 +85,12 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SITE_ID_CURRENT_SITE', 1 );
 	define( 'BLOG_ID_CURRENT_SITE', 1 );
 	define( 'SUBDOMAIN_INSTALL',    false );
+	
+} elseif ( $_SERVER['HTTP_HOST'] === 'translate.wordpressorg.dev' ) {
+	define( 'DB_CHARSET', 'latin1' );
+	define( 'GP_TMPL_PATH',  WPORGPATH . 'wp-content/plugins/wporg-gp-customizations/templates/' );
+	define( 'GP_URL_BASE', '' );
+	$gp_table_prefix = GLOTPRESS_TABLE_PREFIX;
 
 } else {
 	// global.wordpressorg.dev
@@ -96,6 +101,10 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SITE_ID_CURRENT_SITE', 6 );
 	define( 'BLOG_ID_CURRENT_SITE', 115 );
 	define( 'SUBDOMAIN_INSTALL',    true );
+}
+
+if ( ! defined( 'DB_CHARSET' ) ) {
+	define( 'DB_CHARSET', 'utf8' );
 }
 
 if ( ! defined( 'ABSPATH' ) ) {

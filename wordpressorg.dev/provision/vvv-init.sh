@@ -68,6 +68,9 @@ if [ ! -L $SITE_DIR ]; then
 	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.mo
 	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.po
 
+	# translate.wordpressorg.dev
+	git clone https://github.com/GlotPress/GlotPress-WP.git $SITE_DIR/wp-content/plugins/glotpress
+
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
 		/wordpress
@@ -100,6 +103,7 @@ else
 
 	# developer.wordpressorg.dev
 	git -C $SITE_DIR/wp-content/plugins/phpdoc-parser pull
+	git -C $SITE_DIR/wp-content/plugins/glotpress pull
 fi
 
 # Pull global header/footer
