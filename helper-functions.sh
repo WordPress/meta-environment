@@ -7,7 +7,7 @@
 # $1 - the absolute path to the folder where the header should be placed
 # $2 - optionally, the function which should be added to the header
 function wme_pull_wporg_global_header {
-	curl -o $1/header.php https://wordpress.org/header.php
+	curl -o $1/header.php --progress-bar https://wordpress.org/header.php
 
 	if [ ! -z "$2" ]; then
 		sed -i "s/<\/head>/\n<?php $2(); ?>\n\n&/" $1/header.php
@@ -23,7 +23,7 @@ function wme_pull_wporg_global_header {
 # $1 - the absolute path to the folder where the footer should be placed
 # $2 - optionally, the function which should be added to the footer
 function wme_pull_wporg_global_footer {
-	curl -o $1/footer.php https://wordpress.org/footer.php
+	curl -o $1/footer.php --progress-bar https://wordpress.org/footer.php
 
 	if [ ! -z "$2" ]; then
 		sed -i "s/<\/body>/\n<?php $2(); ?>\n\n&/" $1/footer.php
