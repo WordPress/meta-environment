@@ -30,6 +30,6 @@ The goal is to eventually include all of the sites in the network.
 
 ### Documentation
 
-* [Installation and Updates](./docs/installation.md)
+* [Installation and Updates](./docs/install.md)
 * [Troubleshooting and Support](./docs/troubleshooting.md)
 * [Contributing](./docs/contributing.md)
