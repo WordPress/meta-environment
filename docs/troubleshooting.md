@@ -25,9 +25,6 @@ doesn't help, feel free to open a new issue, or ping *iandunn* in the *#meta* ch
 
 * **My IDE (or other tool) doesn't recognize `wp-content` as a Git checkout:** Because `wp-content` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
 
-need troubleshooting tip that if your ide doesn't recognize project as git repo
-then open wme/meta-repository rather than wme/{site}/public_html
-
 
 ## Problems with specific sites
 
