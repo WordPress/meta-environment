@@ -1,12 +1,12 @@
 # Troubleshooting and Support
 
-### Support
-
 If you run into any problems, the first step is to check out the common problems/solutions below,
 and [search for an existing issue](https://github.com/WordPress/meta-environment/issues). If that
 doesn't help, feel free to open a new issue, or ping *iandunn* in the *#meta* channel on
 [WordPress' Slack server](https://make.wordpress.org/chat/).
 
+
+## Problems with the entire environment
 
 * **Nginx configuration file test failed**: If you see an error like this:
 
@@ -22,6 +22,14 @@ doesn't help, feel free to open a new issue, or ping *iandunn* in the *#meta* ch
   either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn from inside the virtual machine.
 
 * **Windows** installations: Adrian Pop has documented some tips for [installing the Meta Environment on Windows](http://test.informagination.ro/wordpress-meta-environment-in-win-10/).
+
+* **My IDE (or other tool) doesn't recognize `wp-content` as a Git checkout:** Because `wp-content` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
+
+need troubleshooting tip that if your ide doesn't recognize project as git repo
+then open wme/meta-repository rather than wme/{site}/public_html
+
+
+## Problems with specific sites
 
 * **Developer.WordPressorg.dev WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
   machine has in order to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`,
