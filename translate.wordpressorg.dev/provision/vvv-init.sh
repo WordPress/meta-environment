@@ -14,17 +14,13 @@ if [ ! -d $SITE_DIR ]; then
 
 	# Setup GlotPress, templates, and plugins
 	svn co https://glotpress.svn.wordpress.org/trunk $SITE_DIR/glotpress
-	svn co https://meta.svn.wordpress.org/sites/trunk/translate.wordpress.org/public_html/gp-templates $SITE_DIR/gp-templates/
-	svn co https://meta.svn.wordpress.org/sites/trunk/translate.wordpress.org/includes/gp-plugins $SITE_DIR/gp-plugins/
+	svn co https://meta.svn.wordpress.org/sites/trunk/translate.wordpress.org/public_html/gp-templates@3264 $SITE_DIR/gp-templates/
+	svn co https://meta.svn.wordpress.org/sites/trunk/translate.wordpress.org/includes/gp-plugins@3264 $SITE_DIR/gp-plugins/
 
 	cp $PROVISION_DIR/gp-config.php $SITE_DIR
 
 else
-	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
-
-	svn up $SITE_DIR/glotpress
-	svn up $SITE_DIR/gp-plugins
-	svn up $SITE_DIR/gp-templates
+	printf "\n#\n# $SITE_DOMAIN cannot be updated right now. See https://github.com/WordPress/meta-environment/issues/54 for details.\n#\n"
 
 fi
 
