@@ -1,2 +1,4 @@
 /*/logs
 /*/public_html
+
+!/wp-meta.dev/public_html
