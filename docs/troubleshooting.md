@@ -23,7 +23,7 @@ doesn't help, feel free to open a new issue, or ping *iandunn* in the *#meta* ch
 
 * **Windows** installations: Adrian Pop has documented some tips for [installing the Meta Environment on Windows](http://test.informagination.ro/wordpress-meta-environment-in-win-10/).
 
-* **My IDE (or other tool) doesn't recognize `wp-content` as a Git checkout:** Because `wp-content` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
+* **My IDE (or other tool) doesn't recognize `public_html` as a Git checkout:** Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
 
 
 ## Problems with specific sites

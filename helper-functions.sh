@@ -33,6 +33,8 @@ function wme_symlink_public_dir {
 
 # Add entries to a .gitignore file
 #
+# todo use .git/info/exclude instead, that's more appropriate for this situation
+#
 # $1 - the site's web root
 function wme_create_gitignore {
 	# Ignore the .gitignore file itself
