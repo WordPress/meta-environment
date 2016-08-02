@@ -39,7 +39,6 @@ if [ ! -L $SITE_DIR ]; then
 
 	# developer.wordpressorg.dev
 	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/wp-content/plugins/wp-parser --no-dev --keep-vcs
-	sudo gem install sass
 
 	# global.wordpressorg.dev
 	cd $SITE_DIR/wp-content/themes
@@ -98,7 +97,13 @@ else
 
 	# developer.wordpressorg.dev
 	# composer update rmccue/wp-parser # todo no composer.json file
-	sudo gem update sass
+	if command -v scss 2>/dev/null; then
+		#sass is good, just update it
+		/usr/bin/env rvm default do gem update sass
+	else
+		#sass didn't install earlier, so try again
+		/usr/bin/env rvm default do gem install sass --no-ri --no-rdoc
+	fi
 
 fi
 
@@ -107,5 +112,4 @@ wme_pull_wporg_global_header $SITE_DIR wp_head
 wme_pull_wporg_global_footer $SITE_DIR wp_footer
 
 # developer.wordpressorg.dev
-scss --no-cache --update --style=expanded    $SITE_DIR/wp-content/themes/pub/wporg-developer/scss:$SITE_DIR/wp-content/themes/pub/wporg-developer/stylesheets
-scss --no-cache --watch  --style=expanded -q $SITE_DIR/wp-content/themes/pub/wporg-developer/scss:$SITE_DIR/wp-content/themes/pub/wporg-developer/stylesheets &
+scss --no-cache --update --style=expanded -q $SITE_DIR/wp-content/themes/pub/wporg-developer/scss:$SITE_DIR/wp-content/themes/pub/wporg-developer/stylesheets
