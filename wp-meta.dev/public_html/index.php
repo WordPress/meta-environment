@@ -32,7 +32,7 @@
 		</li>
 		<li><a href="http://jobs.wordpressnet.dev">jobs.wordpressnet.dev</a></li>
 		<li>
-			<a href="http://wordcamp.dev">wordcamp.dev</a>
+			wordcamp.dev
 
 			<ul>
 				<li><a href="http://central.wordcamp.dev">central.wordcamp.dev</a></li>
