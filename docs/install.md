@@ -20,12 +20,13 @@ If you run into any problems with the instructions below, check out [the Trouble
 1. Restart and re-provision VVV
 	1. `cd ..` (to get back to the main `vagrant-local` directory)
 	1. `vagrant halt && vagrant up --provision`
+	1. This will take roughly 10-30 minutes
 
 
 You're all set!
 
 * Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites.
-* Log in to any of the with with username `admin` and password `password`
+* Log in to any of them with username `admin` and password `password`
 
 
 ## Updating
@@ -33,6 +34,7 @@ You're all set!
 When new sites are added to the repository, you'll need to pull the changes, then re-provision your local copy in
 order to obtain the new site.
 
+1. `cd vagrant.local/www/wordpress-meta-environment`
 1. `git pull origin master`
 1. If the new site is not part of an existing multisite/multi-network installation, then you can simply run
 `vagrant halt && vagrant up --provision`
@@ -41,6 +43,3 @@ then you'll need to delete the `public_html` folder and database for that site, 
 `vagrant halt && vagrant up --provision`
 	1. Don't forget to backup any uncommitted patches that you're working on.
 
-If you're upgrading from an older copy of WME -- prior to December 4, 2014 -- then the best way to upgrade is just
-to start from scratch, since the repository has changed so much. Prior to the 4th, WME was a full fork of VVV, including the virtual machine, rather than just a collection of scripts that runs in an existing
-VVV installation.

@@ -5,6 +5,17 @@ and [search for an existing issue](https://github.com/WordPress/meta-environment
 doesn't help, feel free to open a new issue, or ping *iandunn* in the *#meta* channel on
 [WordPress' Slack server](https://make.wordpress.org/chat/).
 
+Before asking for help, please take a log of the provisioning process,
+
+inside vm
+> bin/reset
+  -- er, don't wanna do that b/c will delete any db changes or patches they're working on
+  -- but without it, provision will only show the update process
+  maybe ok since reset.sh prompts for confirmation first and warns it'll remove stuff?
+outside vm
+> vagrant provision 2>&1 | tee wme-provision.log
+
+ugh wish vagrant or vvv just stored log by default. maybe there's something you can do to make that happen?
 
 ## Problems with the entire environment
 
