@@ -38,7 +38,10 @@ if [ ! -L $SITE_DIR ]; then
 	wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress --allow-root
 
 	# developer.wordpressorg.dev
-	composer create-project rmccue/wp-parser:dev-master $SITE_DIR/wp-content/plugins/wp-parser --no-dev --keep-vcs
+	cd $SITE_DIR/wp-content/plugins
+	git clone git@github.com:WordPress/phpdoc-parser.git
+	cd phpdoc-parser
+	composer install
 
 	# global.wordpressorg.dev
 	cd $SITE_DIR/wp-content/themes
@@ -71,7 +74,7 @@ if [ ! -L $SITE_DIR ]; then
 		/wp-content/languages
 		/wp-content/mu-plugins/global_wordpressorg_dev
 		/wp-content/mu-plugins/sandbox-functionality.php
-		/wp-content/plugins/wp-parser
+		/wp-content/plugins/phpdoc-parser
 		/wp-content/themes/p2
 		/wp-content/themes/rosetta
 		/wp-content/sunrise.php
@@ -96,8 +99,7 @@ else
 	done
 
 	# developer.wordpressorg.dev
-	# composer update rmccue/wp-parser # todo no composer.json file
-
+	git -C $SITE_DIR/wp-content/plugins/phpdoc-parser pull
 fi
 
 # Pull global header/footer
