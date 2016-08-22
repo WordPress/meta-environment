@@ -24,11 +24,14 @@ function wme_clone_meta_repository {
 # and then symlink each site's public_html folder.
 #
 # $1 - the site's root directory
-# $1 - the name of the site's folder in the Meta Environment
-# $2 - the name of the site's folder in the Meta repository
+# $2 - the name of the site's folder in the Meta Environment
+# $3 - the name of the site's folder in the Meta repository
 function wme_symlink_public_dir {
+	PUBLIC_DIR_PATH="$1/meta-repository/$3/public_html/"
+
 	cd "$1/$2"
-	ln -rs "$1/meta-repository/$3/public_html/" public_html
+	ln -rs $PUBLIC_DIR_PATH public_html
+	mkdir -p $PUBLIC_DIR_PATH
 }
 
 # Add entries to a .gitignore file
@@ -116,4 +119,12 @@ function wme_svn_git_migration {
 
 	mv $1 "$1-old-svn-backup"
 	MIGRATED_TO_GIT=true
+}
+
+# Copy of VVV's noroot()
+#
+# We can't just use VVV's version because it's not available when manually running the provision scripts during
+# development.
+function wme_noroot() {
+  sudo -EH -u "vagrant" "$@";
 }

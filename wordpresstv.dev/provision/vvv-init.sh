@@ -20,12 +20,12 @@ if [ ! -L $SITE_DIR ]; then
 	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "wordpress.tv"
 
 	# Setup WordPress and plugins
-	wp core download --version=nightly --path=$SITE_DIR/wordpress
-	mkdir $SITE_DIR/wp-content/mu-plugins
-	mkdir $SITE_DIR/wp-content/plugins
+	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
+	mkdir -p $SITE_DIR/wp-content/mu-plugins
+	mkdir -p $SITE_DIR/wp-content/plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
-	wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
@@ -40,7 +40,7 @@ else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
 	git -C $SITE_DIR pull origin master
-	wp core   update --version=nightly --path=$SITE_DIR/wordpress --allow-root
-	wp plugin update --all             --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp core   update --version=nightly --path=$SITE_DIR/wordpress
+	wme_noroot wp plugin update --all             --path=$SITE_DIR/wordpress
 
 fi

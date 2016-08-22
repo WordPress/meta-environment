@@ -21,7 +21,7 @@ if [ ! -L $SITE_DIR ]; then
 	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "buddypress.org"
 
 	# Set up WordPress
-	wp core download --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp core download --path=$SITE_DIR/wordpress
 	cp $PROVISION_DIR/wp-config.php $SITE_DIR
 
 	# Set up plugins and themes

@@ -23,7 +23,7 @@ if [ ! -L $SITE_DIR ]; then
 	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "wordcamp.org"
 
 	# Setup WordPress
-	wp core download --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp core download --path=$SITE_DIR/wordpress
 	cp $PROVISION_DIR/wp-config.php $SITE_DIR
 
 	for i in "${SVN_PLUGINS[@]}"
@@ -37,8 +37,8 @@ if [ ! -L $SITE_DIR ]; then
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 
 	# Install extra plugins and themes
-	wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress --allow-root
-	wp theme  install ${WPCLI_THEMES[@]}  --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
+	wme_noroot wp theme  install ${WPCLI_THEMES[@]}  --path=$SITE_DIR/wordpress
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
@@ -62,8 +62,8 @@ else
 
 	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
 
-	wp core   update                     --path=$SITE_DIR/wordpress --allow-root
-	wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress --allow-root
-	wp theme  update ${WPCLI_THEMES[@]}  --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp core   update                     --path=$SITE_DIR/wordpress
+	wme_noroot wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
+	wme_noroot wp theme  update ${WPCLI_THEMES[@]}  --path=$SITE_DIR/wordpress
 
 fi

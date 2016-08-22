@@ -22,8 +22,8 @@ if [ ! -L $SITE_DIR ]; then
 	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "wordpress.org"
 
 	# Setup WordPress, themes, and plugins
-	wp core download --version=nightly --path=$SITE_DIR/wordpress
-	mkdir $SITE_DIR/wp-content/mu-plugins
+	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
+	mkdir -p $SITE_DIR/wp-content/mu-plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 	cp $PROVISION_DIR/sunrise.php               $SITE_DIR/wp-content
@@ -35,13 +35,13 @@ if [ ! -L $SITE_DIR ]; then
 		svn co https://plugins.svn.wordpress.org/$i/trunk $SITE_DIR/wp-content/plugins/$i
 	done
 
-	wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
 
 	# developer.wordpressorg.dev
 	cd $SITE_DIR/wp-content/plugins
-	git clone git@github.com:WordPress/phpdoc-parser.git
+	git clone https://github.com/WordPress/phpdoc-parser.git
 	cd phpdoc-parser
-	composer install
+	wme_noroot composer install
 
 	# global.wordpressorg.dev
 	cd $SITE_DIR/wp-content/themes
@@ -89,8 +89,8 @@ else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
 	git -C $SITE_DIR pull origin master
-	wp core   update --version=nightly   --path=$SITE_DIR/wordpress --allow-root
-	wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp core   update --version=nightly   --path=$SITE_DIR/wordpress
+	wme_noroot wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content/themes/p2
 
 	for i in "${SVN_PLUGINS[@]}"
