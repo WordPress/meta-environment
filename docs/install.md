@@ -25,7 +25,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 You're all set!
 
-* Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites.
+* Visit [http://vvv.dev](http://vvv.dev) for links to all the available sites.
 * Log in to any of them with username `admin` and password `password`
 
 
