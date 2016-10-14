@@ -8,7 +8,8 @@ $table_prefix  = 'wporg_';
 
 define( 'WPORGPATH',              dirname( __FILE__ ) . '/' );
 define( 'API_WPORGPATH',          dirname( dirname( dirname( __DIR__ ) ) ) . '/api.wordpress.org/public_html/includes/' );
-define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/translate.wordpressorg.dev/public_html/glotpress/locales/locales.php' );
+define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
+define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 define( 'WPORG_SANDBOXED',        true );
 
 define( 'DB_NAME',                'wordpressorg_dev' );
@@ -84,7 +85,6 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SUBDOMAIN_INSTALL',    false );
 	
 } elseif ( $_SERVER['HTTP_HOST'] === 'translate.wordpressorg.dev' ) {
-	define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 	define( 'DB_CHARSET', 'latin1' );
 	define( 'GP_TMPL_PATH',  WPORGPATH . 'wp-content/plugins/wporg-gp-customizations/templates/' );
 	define( 'GP_URL_BASE', '' );
