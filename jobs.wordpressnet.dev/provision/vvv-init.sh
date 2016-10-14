@@ -6,25 +6,40 @@ SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 
 source $BASE_DIR/helper-functions.sh
 wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
+wme_svn_git_migration $SITE_DIR
 
-if [ ! -d $SITE_DIR ]; then
+if [ ! -L $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
-	wme_import_database "jobs_wordpressnet_dev" $PROVISION_DIR
+	# Don't overwrite existing databases if we're just migrating from SVN to Git
+	if [[ ! $MIGRATED_TO_GIT ]]; then
+		wme_import_database "jobs_wordpressnet_dev" $PROVISION_DIR
+	fi
+
+	wme_clone_meta_repository $BASE_DIR
+	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "jobs.wordpress.net"
 
 	# Setup WordPress and plugins
-	svn co https://core.svn.wordpress.org/trunk                                                 $SITE_DIR/wordpress
-	svn co https://meta.svn.wordpress.org/sites/trunk/jobs.wordpress.net/public_html/wp-content $SITE_DIR/wp-content
-	mkdir $SITE_DIR/wp-content/mu-plugins
+	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
+	mkdir -p $SITE_DIR/wp-content/mu-plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
-	wp plugin install si-contact-form --path=$SITE_DIR/wordpress --allow-root
+	wme_noroot wp plugin install si-contact-form --path=$SITE_DIR/wordpress
+
+	# Ignore external dependencies and Meta Environment tweaks
+	IGNORED_FILES=(
+		/wordpress
+		/wp-content/mu-plugins/sandbox-functionality.php
+		/wp-content/plugins/si-contact-form
+		/wp-config.php
+	)
+	wme_create_gitignore $SITE_DIR
 
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
-	svn up $SITE_DIR/wordpress
-	svn up $SITE_DIR/wp-content
-	wp plugin update --all --path=$SITE_DIR/wordpress --allow-root
+	git -C $SITE_DIR pull origin master
+	wme_noroot wp core   update --version=nightly --path=$SITE_DIR/wordpress
+	wme_noroot wp plugin update --all             --path=$SITE_DIR/wordpress
 
 fi

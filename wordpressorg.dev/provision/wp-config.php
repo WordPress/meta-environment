@@ -7,8 +7,8 @@ if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
 $table_prefix  = 'wporg_';
 
 define( 'WPORGPATH',              dirname( __FILE__ ) . '/' );
-define( 'API_WPORGPATH',          __DIR__ . '/../../api.wordpress.org/public_html/includes/' );
-define( 'GLOTPRESS_LOCALES_PATH', __DIR__ . '/../../translate.wordpressorg.dev/public_html/glotpress/locales/locales.php' );
+define( 'API_WPORGPATH',          dirname( dirname( dirname( __DIR__ ) ) ) . '/api.wordpress.org/public_html/includes/' );
+define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/translate.wordpressorg.dev/public_html/glotpress/locales/locales.php' );
 define( 'WPORG_SANDBOXED',        true );
 
 define( 'DB_NAME',                'wordpressorg_dev' );
