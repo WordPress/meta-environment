@@ -2,24 +2,47 @@
 
 If you run into any problems with the instructions below, check out [the Troubleshooting guide](./troubleshooting.md).
 
+
 ## Initial Setup
 
-1. [Setup Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV).
+1. [Setup Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/docs/en-US/installation/).
 
 	We recommend that you follow the step to install the `vagrant-hostsupdater` plugin, because if you don't then
 	you will need to manually add the hostnames for each WME site to your local hosts file.
 
-1. Clone this repository as a subdirectory of VVV's `www` folder, and name the folder `wordpress-meta-environment`
-	1. `cd vagrant-local/www` (where `vagrant-local` is the name of your VVV folder)
-	1. `git clone https://github.com/WordPress/meta-environment.git wordpress-meta-environment`
+	Make sure you have the latest version of VirtualBox, Vagrant, and VVV.
 
-	**It's important that you clone the repository to a folder named `wordpress-meta-environment`.** If you choose
-	a different name, then WME will break during the provision stage, unless you also manually edit the Nginx
-	configuration files for each site to reflect the name you chose.
+1. Verify that VVV is working
+
+	Open [http://vvv.dev/](http://vvv.dev/) in your browser, and make sure it loads. Then click on one of the links under `Bundled Environments`, and make sure that it loads too.
+
+	If you run into any problems, stop and [fix those](https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/) before trying to install the Meta Environment.
+
+	Once VVV is working, then you can move on to the next step.
+
+1. Check if you have a `vvv-custom.yml` file in the `vagrant-local` folder.
+
+	If you don't, then create one by copying the default `vvv-config.yml` file:
+
+	`cp vvv-config.yml vvv-custom.yml`
+
+	Then uncomment the following lines inside `vvv-custom.yml`:
+
+	```yml
+	#wordpress-meta-environment:
+	#  repo: https://github.com/WordPress/meta-environment.git
+	```
+
+	...so that they look like:
+
+	```yml
+	wordpress-meta-environment:
+	repo: https://github.com/WordPress/meta-environment.git
+	```
 
 1. Restart and re-provision VVV
-	1. `cd ..` (to get back to the main `vagrant-local` directory)
-	1. `vagrant halt && vagrant up --provision`
+	1. `vagrant halt`
+	1. `vagrant up --provision`
 	1. This will take roughly 10-30 minutes
 
 

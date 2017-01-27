@@ -17,6 +17,7 @@ outside vm
 
 ugh wish vagrant or vvv just stored log by default. maybe there's something you can do to make that happen?
 
+
 ## Problems with the entire environment
 
 * **Nginx configuration file test failed**: If you see an error like this:
@@ -25,6 +26,11 @@ ugh wish vagrant or vvv just stored log by default. maybe there's something you 
 	> ==> default: nginx: configuration file /etc/nginx/nginx.conf test failed
 
 	...then make sure that you cloned the WME repository into a folder named `wordpress-meta-environment`, rather than just `meta-environment`, or something arbitrary. If the folder is named anything other than `wordpress-meta-environment`, then the provision process will break. See the `Setup` section above for details.
+
+
+* **Make sure that you cloned the Meta Environment repository to a folder named `wordpress-meta-environment` inside VVV's `www/` directory.**
+
+	If you choose a different name, then WME will break during the provision stage, unless you also manually edit the Nginx configuration files for each site to reflect the name you chose.
 
 * **Subversion client version conflicts:** Subversion repositories are checked out using version 1.8 inside the
   virtual machine, and the 1.8 repository format is not compatible with the svn 1.7 client. If you have an older
@@ -35,6 +41,8 @@ ugh wish vagrant or vvv just stored log by default. maybe there's something you 
 * **Windows** installations: Adrian Pop has documented some tips for [installing the Meta Environment on Windows](http://test.informagination.ro/wordpress-meta-environment-in-win-10/).
 
 * **My IDE (or other tool) doesn't recognize `public_html` as a Git checkout:** Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
+
+* **Databases not created:** If you ran `vagrant destroy` after provisioning, and later re-provisioned, then the symlinks that were created during the first provisioning won't be removed. Those are used to determine whether or not to import the database and install plugins. To fix that, removing the symlinked `public_html` folders, and then run `vagrant provision` again.
 
 
 ## Problems with specific sites
