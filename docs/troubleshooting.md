@@ -36,6 +36,7 @@ ugh wish vagrant or vvv just stored log by default. maybe there's something you 
 
 * **My IDE (or other tool) doesn't recognize `public_html` as a Git checkout:** Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
 
+* **Databases not created:** If you ran `vagrant destroy` after provisioning and then re-provisioned the symlinks created the first time around won't be removed. These are used to determine whether to import the database and install plugins. Removing the symlinked `public_html` folders should fix it.
 
 ## Problems with specific sites
 
