@@ -11,7 +11,15 @@ If you run into any problems with the instructions below, check out [the Trouble
 	
 	Make sure you have the latest version of VVV.
 
-1. In the `vagrant-local` folder edit `vvv-config.yml` and uncomment the line `wordpress-meta-environment: https://github.com/WordPress/meta-environment.git`
+1. In the `vagrant-local` folder edit `vvv-config.yml` and uncomment the following line:
+       
+       ```yml
+       #wordpress-meta-environment: https://github.com/WordPress/meta-environment.git
+       ```
+       to read
+       ```yml
+       wordpress-meta-environment: https://github.com/WordPress/meta-environment.git
+       ```
 
 1. Restart and re-provision VVV
 	1. `vagrant halt && vagrant up --provision`
