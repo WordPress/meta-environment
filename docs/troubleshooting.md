@@ -2,20 +2,7 @@
 
 If you run into any problems, the first step is to check out the common problems/solutions below,
 and [search for an existing issue](https://github.com/WordPress/meta-environment/issues). If that
-doesn't help, feel free to open a new issue, or ping *iandunn* in the *#meta* channel on
-[WordPress' Slack server](https://make.wordpress.org/chat/).
-
-Before asking for help, please take a log of the provisioning process,
-
-inside vm
-> bin/reset
-  -- er, don't wanna do that b/c will delete any db changes or patches they're working on
-  -- but without it, provision will only show the update process
-  maybe ok since reset.sh prompts for confirmation first and warns it'll remove stuff?
-outside vm
-> vagrant provision 2>&1 | tee wme-provision.log
-
-ugh wish vagrant or vvv just stored log by default. maybe there's something you can do to make that happen?
+doesn't help, follow the instructions in the `Support` section at the bottom of this page.
 
 
 ## Problems with the entire environment
@@ -55,3 +42,19 @@ ugh wish vagrant or vvv just stored log by default. maybe there's something you 
 * **WordPressTV.dev video upload errors:** The WPTV uploader integrates with VideoPress, which requires a connection
   to WordPress.com and a paid VideoPress subscription, so it isn't enabled.
 
+
+## Support
+
+If nothing above helped, then feel free to [open a new issue](https://github.com/WordPress/meta-environment/issues/new), or ping `@iandunn` in the `#meta` channel on [WordPress' Slack server](https://make.wordpress.org/chat/).
+
+Before asking for help, please take a log of the provisioning process, to help us troubleshoot the problem. You can do that by running the commands below:
+
+***Warning:*** These commands will remove any changes you've made inside `public_html` directories, so make sure you back up anything you want to save before you run this.
+
+	cd /path/to/your/vagrant.local/www/wordpress-meta-environment
+	vagrant halt
+	rm -rf */public_html
+	git reset --hard HEAD
+	vagrant up --provision 2>&1 | tee wme-provision.log
+
+Then share `wme-provision.log` when asking for help.

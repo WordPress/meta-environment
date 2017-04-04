@@ -37,7 +37,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 	```yml
 	wordpress-meta-environment:
-	repo: https://github.com/WordPress/meta-environment.git
+	  repo: https://github.com/WordPress/meta-environment.git
 	```
 
 1. Restart and re-provision VVV
