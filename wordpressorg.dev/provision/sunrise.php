@@ -23,9 +23,7 @@ add_filter( 'pre_get_site_by_path', 'wporg_themes_on_rosetta_domains', 10, 4 );
 function wporg_plugins_on_rosetta_domains( $site, $domain, $path, $segments ) {
 	// All non-rosetta networks define DOMAIN_CURRENT_SITE in wp-config.php
 
-	// At launch, switch these two if's around.
-	//if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.dev' != $domain && '/plugins/' == substr( $path . '/', 0, 9 ) ) {
-	if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.dev' != $domain && '/plugins-wp/' == substr( $path . '/', 0, 12 ) ) {
+	if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.dev' != $domain && '/plugins/' == substr( $path . '/', 0, 9 ) ) {
 		$site = get_blog_details( WPORG_PLUGIN_DIRECTORY_BLOGID, false );
 		if ( $site ) {
 			$site = clone $site;
