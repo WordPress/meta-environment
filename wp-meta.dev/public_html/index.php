@@ -46,7 +46,6 @@
 			<ul>
 				<li><a href="http://wordpressorg.dev/plugins/">wordpressorg.dev/plugins/</a></li>
 				<li><a href="http://wordpressorg.dev/themes/">wordpressorg.dev/themes/</a></li>
-				<li><a href="http://apps.wordpressorg.dev">apps.wordpressorg.dev</a></li>
 				<li><a href="http://developer.wordpressorg.dev">developer.wordpressorg.dev</a></li>
 
 				<li>
