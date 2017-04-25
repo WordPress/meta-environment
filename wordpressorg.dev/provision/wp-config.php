@@ -53,6 +53,7 @@ define( 'MULTISITE',              true );
 
 define( 'SUNRISE',                true );
 
+define( 'WPORG_GLOBAL_NETWORK_ID',       6 );
 define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
 define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
 
