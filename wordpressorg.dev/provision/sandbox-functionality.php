@@ -8,6 +8,15 @@ define( 'WP_CORE_STABLE_BRANCH', '4.5' );
 // Include Core themes
 register_theme_directory( ABSPATH . 'wp-content/themes' );
 
+// Load global must-use plugins.
+foreach ( scandir( __DIR__ . '/pub' ) as $file ) {
+	if ( '.' === $file[0] ) {
+		continue;
+	}
+
+	require_once __DIR__ . '/pub/' . $file;
+}
+
 // Run site-specific functionality
 switch( $_SERVER['HTTP_HOST'] ) {
 	case 'developer.wordpressorg.dev':
