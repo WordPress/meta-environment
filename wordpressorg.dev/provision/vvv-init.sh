@@ -102,6 +102,7 @@ else
 
 	# developer.wordpressorg.dev
 	git -C $SITE_DIR/wp-content/plugins/phpdoc-parser pull
+	git -C $SITE_DIR/wp-content/plugins/glotpress pull
 fi
 
 # Pull global header/footer
