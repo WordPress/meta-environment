@@ -53,8 +53,11 @@ define( 'MULTISITE',              true );
 
 define( 'SUNRISE',                true );
 
+define( 'WPORG_GLOBAL_NETWORK_ID',       6 );
 define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
 define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
+
+define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
