@@ -8,8 +8,6 @@ $table_prefix  = 'wporg_';
 
 define( 'WPORGPATH',              dirname( __FILE__ ) . '/' );
 define( 'API_WPORGPATH',          dirname( dirname( dirname( __DIR__ ) ) ) . '/api.wordpress.org/public_html/includes/' );
-define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
-define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 define( 'WPORG_SANDBOXED',        true );
 
 define( 'DB_NAME',                'wordpressorg_dev' );
@@ -57,6 +55,7 @@ define( 'WPORG_GLOBAL_NETWORK_ID',       6 );
 define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
 define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
 
+define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
 define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
