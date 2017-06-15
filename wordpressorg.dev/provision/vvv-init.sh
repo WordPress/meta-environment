@@ -87,6 +87,7 @@ if [ ! -L $SITE_DIR ]; then
 	)
 	IGNORED_FILES=( "${IGNORED_FILES[@]}" "${SVN_PLUGINS[@]}" "${WPCLI_PLUGINS[@]}" )
 	wme_create_gitignore $SITE_DIR
+
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
 
