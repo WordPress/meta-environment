@@ -8,32 +8,6 @@ register_theme_directory( ABSPATH . 'wp-content/themes' );
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 /**
- * Retrieve the thumbnail for the given video
- *
- * This is a hacky stub for a WordPress.com VideoPress function.
- *
- * @param string $guid
- * @param string $format
- *
- * @return string
- */
-function video_image_url_by_guid( $guid, $format ) {
-	$cached_video_thumbnail_urls = get_transient( 'wptv_cached_video_thumbnail_urls' );
-
-	if ( empty( $cached_video_thumbnail_urls[ $guid ] ) ) {
-		require_once( WP_PLUGIN_DIR . '/jetpack/modules/videopress/class.videopress-video.php' );
-		$video = new VideoPress_Video( $guid );
-
-		if ( false !== filter_var( $video->poster_frame_uri, FILTER_VALIDATE_URL ) ) {
-			$cached_video_thumbnail_urls[ $guid ] = $video->poster_frame_uri;
-			set_transient( 'wptv_cached_video_thumbnail_urls', $cached_video_thumbnail_urls );
-		}
-	}
-
-	return $cached_video_thumbnail_urls[ $guid ];
-}
-
-/**
  * Override the ID of the user that uploaded videos are assigned to
  *
  * @param int $drafts_author_id
