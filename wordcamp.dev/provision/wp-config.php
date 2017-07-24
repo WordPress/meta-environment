@@ -34,6 +34,7 @@ define( 'PATH_CURRENT_SITE',     '/' );
 define( 'SITE_ID_CURRENT_SITE',  1 );
 define( 'BLOG_ID_CURRENT_SITE',  2 );	// central.wordcamp.dev
 define( 'CLI_HOSTNAME_OVERRIDE', 'wordcamp.dev' );
+define( 'WORDCAMP_ENVIRONMENT',  'development' );
 
 define( 'WPLANG',               '' );
 define( 'WP_CONTENT_DIR',        __DIR__ . '/wp-content' );
