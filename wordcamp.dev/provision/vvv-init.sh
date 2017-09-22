@@ -3,8 +3,8 @@ SITE_DOMAIN="wordcamp.dev"
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
-SVN_PLUGINS=( camptix-network-tools email-post-changes tagregator )
-WPCLI_PLUGINS=( akismet buddypress bbpress camptix-pagseguro camptix-payfast-gateway jetpack json-rest-api wp-multibyte-patch wordpress-importer supportflow polldaddy liveblog camptix-trustpay camptix-trustcard camptix-mercadopago camptix-kdcpay-gateway wp-super-cache wp-super-cache custom-content-width campt-indian-payment-gateway )
+SVN_PLUGINS=( camptix-network-tools email-post-changes tagregator supportflow camptix-pagseguro camptix-payfast-gateway camptix-trustpay camptix-trustcard camptix-mercadopago camptix-kdcpay-gateway campt-indian-payment-gateway )
+WPCLI_PLUGINS=( akismet buddypress bbpress jetpack json-rest-api wp-multibyte-patch wordpress-importer polldaddy liveblog wp-super-cache custom-content-width )
 WPCLI_THEMES=( twentyten twentyeleven twentytwelve twentythirteen )
 
 source $BASE_DIR/helper-functions.sh
