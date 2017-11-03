@@ -50,6 +50,9 @@ if [ ! -L $SITE_DIR ]; then
 	cd phpdoc-parser
 	wme_noroot composer install
 
+	# translate.wordpressorg.dev
+	git clone https://github.com/GlotPress/GlotPress-WP.git $SITE_DIR/wp-content/plugins/glotpress
+
 	# global.wordpressorg.dev
 	cd $SITE_DIR/wp-content/themes
 	ln -sr $BASE_DIR/meta-repository/global.wordpress.org/public_html/wp-content/themes/rosetta rosetta
@@ -74,9 +77,6 @@ if [ ! -L $SITE_DIR ]; then
 		wme_download_pomo "${gplocale}" "meta/p2-breathe" "$SITE_DIR/wp-content/languages/themes/p2-breathe-${locale}"
 		wme_download_pomo "${gplocale}" "meta/o2" "$SITE_DIR/wp-content/languages/themes/o2-${locale}"
 	done
-
-	# translate.wordpressorg.dev
-	git clone https://github.com/GlotPress/GlotPress-WP.git $SITE_DIR/wp-content/plugins/glotpress
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
