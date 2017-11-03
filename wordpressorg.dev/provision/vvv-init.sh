@@ -66,6 +66,7 @@ if [ ! -L $SITE_DIR ]; then
 	wme_noroot wp language core install ${WP_LOCALES[@]} --path=$SITE_DIR/wordpress
 	wme_noroot wp language core update --path=$SITE_DIR/wordpress # Get plugin/theme translations
 
+	printf "Installing translations from translate.wordpress.org..."
 	for locale in "${WP_LOCALES[@]}"
 	do :
 		gplocale=${locale%_*}
@@ -103,6 +104,19 @@ else
 	wme_noroot wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
 	wme_noroot wp language core update              --path=$SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content/themes/p2
+
+	printf "Updating translations from translate.wordpress.org..."
+	for locale in "${WP_LOCALES[@]}"
+	do :
+		gplocale=${locale%_*}
+
+		wme_download_pomo "${gplocale}" "meta/rosetta" "$SITE_DIR/wp-content/languages/plugins/rosetta-${locale}"
+		wme_download_pomo "${gplocale}" "meta/themes" "$SITE_DIR/wp-content/languages/plugins/wporg-themes-${locale}"
+		wme_download_pomo "${gplocale}" "meta/plugins-v3" "$SITE_DIR/wp-content/languages/plugins/wporg-plugins-${locale}"
+		wme_download_pomo "${gplocale}" "meta/forums" "$SITE_DIR/wp-content/languages/themes/wporg-forums-${locale}"
+		wme_download_pomo "${gplocale}" "meta/p2-breathe" "$SITE_DIR/wp-content/languages/themes/p2-breathe-${locale}"
+		wme_download_pomo "${gplocale}" "meta/o2" "$SITE_DIR/wp-content/languages/themes/o2-${locale}"
+	done
 
 	for i in "${SVN_PLUGINS[@]}"
 	do :
