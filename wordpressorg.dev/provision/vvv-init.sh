@@ -13,7 +13,7 @@ PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 SVN_PLUGINS=( akismet bbpress debug-bar debug-bar-cron email-post-changes speakerdeck-embed supportflow syntaxhighlighter wordpress-importer )
 WPCLI_PLUGINS=( jetpack tinymce-code-element wp-multibyte-patch )
-CORE_LATEST_STABLE="4.6"
+WP_LOCALES=( ja es_ES )
 
 wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 wme_svn_git_migration $SITE_DIR
@@ -58,22 +58,22 @@ if [ ! -L $SITE_DIR ]; then
 
 	mkdir $SITE_DIR/wp-content/languages
 	mkdir $SITE_DIR/wp-content/languages/themes
-	mkdir $SITE_DIR/wp-content/languages/rosetta
+	mkdir $SITE_DIR/wp-content/languages/plugins
 
-	wget https://downloads.wordpress.org/translation/core/$CORE_LATEST_STABLE/ja.zip -O $SITE_DIR/wp-content/languages/ja.zip
-	unzip $SITE_DIR/wp-content/languages/ja.zip -d $SITE_DIR/wp-content/languages/
-	rm -f $SITE_DIR/wp-content/languages/ja.zip
+	wme_noroot wp language core install ${WP_LOCALES[@]} --path=$SITE_DIR/wordpress
+	wme_noroot wp language core update --path=$SITE_DIR/wordpress # Get plugin/theme translations
 
-	wget https://downloads.wordpress.org/translation/core/$CORE_LATEST_STABLE/es_ES.zip -O $SITE_DIR/wp-content/languages/es_ES.zip
-	unzip $SITE_DIR/wp-content/languages/es_ES.zip -d $SITE_DIR/wp-content/languages/
-	rm -f $SITE_DIR/wp-content/languages/es_ES.zip
+	for locale in "${WP_LOCALES[@]}"
+	do :
+		gplocale=${locale%_*}
 
-	wget https://translate.wordpress.org/projects/meta/rosetta/ja/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/rosetta/rosetta-ja.mo
-	wget https://translate.wordpress.org/projects/meta/rosetta/ja/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/rosetta/rosetta-ja.po
-	wget https://translate.wordpress.org/projects/meta/rosetta/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/rosetta/rosetta-es_ES.mo
-	wget https://translate.wordpress.org/projects/meta/rosetta/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/rosetta/rosetta-es_ES.po
-	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=mo -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.mo
-	wget https://translate.wordpress.org/projects/meta/themes/es/default/export-translations?format=po -O $SITE_DIR/wp-content/languages/themes/wporg-themes-es_ES.po
+		wme_download_pomo "${gplocale}" "meta/rosetta" "$SITE_DIR/wp-content/languages/plugins/rosetta-${locale}"
+		wme_download_pomo "${gplocale}" "meta/themes" "$SITE_DIR/wp-content/languages/plugins/wporg-themes-${locale}"
+		wme_download_pomo "${gplocale}" "meta/plugins-v3" "$SITE_DIR/wp-content/languages/plugins/wporg-plugins-${locale}"
+		wme_download_pomo "${gplocale}" "meta/forums" "$SITE_DIR/wp-content/languages/themes/wporg-forums-${locale}"
+		wme_download_pomo "${gplocale}" "meta/p2-breathe" "$SITE_DIR/wp-content/languages/themes/p2-breathe-${locale}"
+		wme_download_pomo "${gplocale}" "meta/o2" "$SITE_DIR/wp-content/languages/themes/o2-${locale}"
+	done
 
 	# translate.wordpressorg.dev
 	git clone https://github.com/GlotPress/GlotPress-WP.git $SITE_DIR/wp-content/plugins/glotpress
@@ -101,6 +101,7 @@ else
 	git -C $SITE_DIR pull origin master
 	wme_noroot wp core   update --version=nightly   --path=$SITE_DIR/wordpress
 	wme_noroot wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
+	wme_noroot wp language core update              --path=$SITE_DIR/wordpress
 	svn up $SITE_DIR/wp-content/themes/p2
 
 	for i in "${SVN_PLUGINS[@]}"

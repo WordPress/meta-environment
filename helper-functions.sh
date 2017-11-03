@@ -137,3 +137,17 @@ function wme_provision_site {
 	WME_PROVISION_SITE=`get_config_value "provision_site.${WME_SITE_ESCAPED}" 'true'`
 	echo ${WME_PROVISION_SITE,,}
 }
+
+# Loads mo/mo files from translate.wordpress.org.
+#
+# $1 - Slug of GlotPress locale
+# $2 - Slug of GlotPress project
+# $3 - File path without the PO/MO extension
+function wme_download_pomo {
+	local GPLOCALE=$1
+	local GPPROJECT=$2
+	local OUTPUT=$3
+
+	curl -sfg -o $OUTPUT.po "https://translate.wordpress.org/projects/$GPPROJECT/$GPLOCALE/default/export-translations?filters[status]=current&format=po" || echo "Error downloading ${GPPROJECT}-${GPLOCALE}.po"
+	curl -sfg -o $OUTPUT.mo "https://translate.wordpress.org/projects/$GPPROJECT/$GPLOCALE/default/export-translations?filters[status]=current&format=mo" || echo "Error downloading ${GPPROJECT}-${GPLOCALE}.mo"
+}
