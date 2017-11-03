@@ -1,13 +1,20 @@
 #!/bin/bash
 SITE_DOMAIN="wordpressorg.dev"
+
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
+source $BASE_DIR/helper-functions.sh
+
+if [[ `wme_provision_site "${SITE_DOMAIN}"` == 'false' ]]; then
+	echo "Provisioning of ${SITE_DOMAIN} skipped"
+	return
+fi
+
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 SVN_PLUGINS=( akismet bbpress debug-bar debug-bar-cron email-post-changes speakerdeck-embed supportflow syntaxhighlighter wordpress-importer )
 WPCLI_PLUGINS=( jetpack tinymce-code-element wp-multibyte-patch )
 CORE_LATEST_STABLE="4.6"
 
-source $BASE_DIR/helper-functions.sh
 wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 wme_svn_git_migration $SITE_DIR
 
