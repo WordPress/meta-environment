@@ -128,3 +128,12 @@ function wme_svn_git_migration {
 function wme_noroot() {
   sudo -EH -u "vagrant" "$@";
 }
+
+# Whether a site should be provisioned.
+#
+# $1 - domain of the site
+function wme_provision_site {
+	WME_SITE_ESCAPED=`echo ${1} | sed 's/\./\\\\./g'`
+	WME_PROVISION_SITE=`get_config_value "provision_site.${WME_SITE_ESCAPED}" 'true'`
+	echo ${WME_PROVISION_SITE,,}
+}
