@@ -55,6 +55,9 @@ define( 'WPORG_GLOBAL_NETWORK_ID',       6 );
 define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
 define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
 
+// Disable WordPress Cron, we've got Cavalcade processing jobs instead.
+define( 'DISABLE_WP_CRON', true );
+
 define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
 define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 
@@ -85,7 +88,7 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'SITE_ID_CURRENT_SITE', 1 );
 	define( 'BLOG_ID_CURRENT_SITE', 1 );
 	define( 'SUBDOMAIN_INSTALL',    false );
-	
+
 } elseif ( $_SERVER['HTTP_HOST'] === 'translate.wordpressorg.dev' ) {
 	define( 'DB_CHARSET', 'latin1' );
 	define( 'GP_TMPL_PATH',  WPORGPATH . 'wp-content/plugins/wporg-gp-customizations/templates/' );
