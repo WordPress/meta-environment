@@ -32,6 +32,7 @@ if [ ! -L $SITE_DIR ]; then
 	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
 	mkdir -p $SITE_DIR/wp-content/mu-plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
+	cp $PROVISION_DIR/wp-cli.yml                $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 	cp $PROVISION_DIR/sunrise.php               $SITE_DIR/wp-content
 
