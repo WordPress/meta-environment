@@ -98,16 +98,19 @@ if [ ! -L $SITE_DIR ]; then
 	IGNORED_FILES=(
 		/wordpress
 		/wp-content/languages
-		/wp-content/mu-plugins/cavalcade
+		/wp-content/mu-plugins/cavalcade*
 		/wp-content/mu-plugins/global_wordpressorg_dev
 		/wp-content/mu-plugins/sandbox-functionality.php
 		/wp-content/plugins/phpdoc-parser
+		/wp-content/plugins/glotpress
 		/wp-content/themes/p2
 		/wp-content/themes/rosetta
+		/wp-content/themes/twenty*
 		/wp-content/sunrise.php
 		/footer.php
 		/header.php
 		/wp-config.php
+		/wp-cli.yml
 	)
 	IGNORED_FILES=( "${IGNORED_FILES[@]}" "${SVN_PLUGINS[@]}" "${WPCLI_PLUGINS[@]}" )
 	wme_create_gitignore $SITE_DIR
