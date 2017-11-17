@@ -33,12 +33,23 @@ If you run into any problems with the instructions below, check out [the Trouble
 	#  repo: https://github.com/WordPress/meta-environment.git
 	```
 
-	...so that they look like:
+	...and extend them so that they look like:
 
 	```yml
-	wordpress-meta-environment:
-	  repo: https://github.com/WordPress/meta-environment.git
+	 wordpress-meta-environment:
+      description: "An environment useful for contributions to the WordPress meta team."
+      hosts:
+        - wp-meta.dev
+      custom:
+        provision_site:
+          "buddypressorg.dev": true
+          "jobs.wordpressnet.dev": true
+          "wordcamp.dev": true
+          "wordpressorg.dev": true
+          "wordpresstv.dev": true
 	```
+	
+	This will provision all sites. Use `false` to skip provisioning of specific site.
 
 1. Restart and re-provision VVV
 	1. `vagrant halt`
