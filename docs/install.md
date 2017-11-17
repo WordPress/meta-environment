@@ -14,7 +14,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 1. Verify that VVV is working
 
-	Open [http://vvv.dev/](http://vvv.dev/) in your browser, and make sure it loads. Then click on one of the links under `Bundled Environments`, and make sure that it loads too.
+	Open [http://vvv.test/](http://vvv.test/) in your browser, and make sure it loads. Then click on one of the links under `Bundled Environments`, and make sure that it loads too.
 
 	If you run into any problems, stop and [fix those](https://varyingvagrantvagrants.org/docs/en-US/troubleshooting/) before trying to install the Meta Environment.
 
