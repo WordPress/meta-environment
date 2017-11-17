@@ -32,6 +32,7 @@ if [ ! -L $SITE_DIR ]; then
 	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
 	mkdir -p $SITE_DIR/wp-content/mu-plugins
 	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
+	cp $PROVISION_DIR/wp-cli.yml                $SITE_DIR
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 	cp $PROVISION_DIR/sunrise.php               $SITE_DIR/wp-content
 
@@ -79,19 +80,37 @@ if [ ! -L $SITE_DIR ]; then
 		wme_download_pomo "${gplocale}" "meta/o2" "$SITE_DIR/wp-content/languages/themes/o2-${locale}"
 	done
 
+	# Cavalcade
+	printf "Installing Cavalcade..."
+	git clone https://github.com/humanmade/Cavalcade.git $SITE_DIR/wp-content/mu-plugins/cavalcade
+	cp $PROVISION_DIR/cavalcade.php $SITE_DIR/wp-content/mu-plugins/
+
+	if [[ ! -d "/etc/cavalcade" ]]; then
+		git clone https://github.com/humanmade/Cavalcade-Runner.git /etc/cavalcade
+	else
+		git -C /etc/cavalcade pull
+	fi
+
+	cp "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
+	service cavalcade-wordpressorg restart
+
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
 		/wordpress
 		/wp-content/languages
+		/wp-content/mu-plugins/cavalcade*
 		/wp-content/mu-plugins/global_wordpressorg_dev
 		/wp-content/mu-plugins/sandbox-functionality.php
 		/wp-content/plugins/phpdoc-parser
+		/wp-content/plugins/glotpress
 		/wp-content/themes/p2
 		/wp-content/themes/rosetta
+		/wp-content/themes/twenty*
 		/wp-content/sunrise.php
 		/footer.php
 		/header.php
 		/wp-config.php
+		/wp-cli.yml
 	)
 	IGNORED_FILES=( "${IGNORED_FILES[@]}" "${SVN_PLUGINS[@]}" "${WPCLI_PLUGINS[@]}" )
 	wme_create_gitignore $SITE_DIR
@@ -125,7 +144,16 @@ else
 
 	# developer.wordpressorg.dev
 	git -C $SITE_DIR/wp-content/plugins/phpdoc-parser pull
+
+	# translate.wordpressorg.dev
 	git -C $SITE_DIR/wp-content/plugins/glotpress pull
+
+	# Cavalcade
+	git -C $SITE_DIR/wp-content/mu-plugins/cavalcade pull
+	git -C /etc/cavalcade pull
+	cp "$PROVISION_DIR/cavalcade.php" "$SITE_DIR/wp-content/mu-plugins/"
+	cp "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
+	service cavalcade-wordpressorg restart
 fi
 
 # Pull global header/footer
