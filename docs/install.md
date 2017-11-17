@@ -38,6 +38,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 	```yml
 	 wordpress-meta-environment:
       description: "An environment useful for contributions to the WordPress meta team."
+      repo: https://github.com/WordPress/meta-environment.git
       hosts:
         - wp-meta.dev
       custom:
