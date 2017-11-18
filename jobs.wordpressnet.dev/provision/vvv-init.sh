@@ -4,6 +4,8 @@ SITE_DOMAIN="jobs.wordpressnet.dev"
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 source $BASE_DIR/helper-functions.sh
 
+wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
+
 if [[ `wme_provision_site "${SITE_DOMAIN}"` == 'false' ]]; then
 	echo "Provisioning of ${SITE_DOMAIN} skipped"
 	return
@@ -12,7 +14,6 @@ fi
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 
-wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 wme_svn_git_migration $SITE_DIR
 
 if [ ! -L $SITE_DIR ]; then

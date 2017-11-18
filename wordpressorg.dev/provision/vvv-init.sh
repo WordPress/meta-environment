@@ -4,6 +4,8 @@ SITE_DOMAIN="wordpressorg.dev"
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 source $BASE_DIR/helper-functions.sh
 
+wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
+
 if [[ `wme_provision_site "${SITE_DOMAIN}"` == 'false' ]]; then
 	echo "Provisioning of ${SITE_DOMAIN} skipped"
 	return
@@ -15,7 +17,6 @@ SVN_PLUGINS=( akismet bbpress debug-bar debug-bar-cron email-post-changes speake
 WPCLI_PLUGINS=( jetpack tinymce-code-element wp-multibyte-patch )
 WP_LOCALES=( ja es_ES )
 
-wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
 wme_svn_git_migration $SITE_DIR
 
 if [ ! -L $SITE_DIR ]; then
