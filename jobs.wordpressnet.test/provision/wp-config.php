@@ -1,7 +1,7 @@
 <?php
 
 if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
-	$_SERVER['HTTP_HOST'] = 'jobs.wordpressnet.dev';
+	$_SERVER['HTTP_HOST'] = 'jobs.wordpressnet.test';
 }
 
 $table_prefix  = 'wp_';

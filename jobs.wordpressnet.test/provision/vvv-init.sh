@@ -1,5 +1,5 @@
 #!/bin/bash
-SITE_DOMAIN="jobs.wordpressnet.dev"
+SITE_DOMAIN="jobs.wordpressnet.test"
 
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 source $BASE_DIR/helper-functions.sh
