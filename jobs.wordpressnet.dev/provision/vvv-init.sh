@@ -26,6 +26,7 @@ if [ ! -L $SITE_DIR ]; then
 
 	wme_clone_meta_repository $BASE_DIR
 	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "jobs.wordpress.net"
+	wme_symlink_logs_dir $BASE_DIR $SITE_DOMAIN "jobs.wordpress.net"
 
 	# Setup WordPress and plugins
 	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress

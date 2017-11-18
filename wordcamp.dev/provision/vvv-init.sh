@@ -30,6 +30,7 @@ if [ ! -L $SITE_DIR ]; then
 
 	wme_clone_meta_repository $BASE_DIR
 	wme_symlink_public_dir $BASE_DIR $SITE_DOMAIN "wordcamp.org"
+	wme_symlink_logs_dir $BASE_DIR $SITE_DOMAIN "wordcamp.org"
 
 	# Setup WordPress
 	wme_noroot wp core download --path=$SITE_DIR/wordpress
