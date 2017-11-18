@@ -1,7 +1,7 @@
 <?php
 
 if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
-	$_SERVER['HTTP_HOST'] = 'wordpressorg.dev';
+	$_SERVER['HTTP_HOST'] = 'wordpressorg.test';
 }
 
 $table_prefix  = 'wporg_';
@@ -41,7 +41,7 @@ define( 'LOGGED_IN_SALT',         '-O8.ClBi]awaLi$!c>3 L(:+Yi)L/fZ|m3DRyu1e-SYM`
 define( 'NONCE_SALT',             '|mk?Ht,|+:hQ&(+rb&uOxL*bIY&EL]M<@v-?dbxf!PB;&+3A4-/H.2~<q!69X.]|' );
 
 define( 'COOKIEHASH',             md5( 'the future is unwritten' ) );
-define( 'COOKIE_DOMAIN',          '.wordpressorg.dev' );
+define( 'COOKIE_DOMAIN',          '.wordpressorg.test' );
 
 define( 'LOGGED_IN_COOKIE',       'wporgdev_logged_in' );
 define( 'AUTH_COOKIE',            'wporgdev' );
@@ -62,45 +62,45 @@ define( 'DISABLE_WP_CRON', true );
 define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
 define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 
-if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
+if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.test' );
 	define( 'PATH_CURRENT_SITE',    '/' );
 	define( 'SITE_ID_CURRENT_SITE', 2 );
 	define( 'BLOG_ID_CURRENT_SITE', 4 );
 	define( 'SUBDOMAIN_INSTALL',    false );
 	define( 'WP_DEFAULT_THEME',     'pub/wporg-p2' );
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'learn.wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'learn.wordpressorg.dev' );
+} elseif ( $_SERVER['HTTP_HOST'] === 'learn.wordpressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'learn.wordpressorg.test' );
 	define( 'PATH_CURRENT_SITE',    '/' );
 	define( 'SITE_ID_CURRENT_SITE', 3 );
 	define( 'BLOG_ID_CURRENT_SITE', 7 );
 	define( 'SUBDOMAIN_INSTALL',    false );
 
-} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'developer.wordpressorg.dev' );
+} elseif ( $_SERVER['HTTP_HOST'] == 'developer.wordpressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'developer.wordpressorg.test' );
 	define( 'PATH_CURRENT_SITE',    '/' );
 	define( 'SITE_ID_CURRENT_SITE', 5 );
 	define( 'BLOG_ID_CURRENT_SITE', 33 );
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'wordpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'wordpressorg.dev' );
+} elseif ( $_SERVER['HTTP_HOST'] === 'wordpressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'wordpressorg.test' );
 	define( 'PATH_CURRENT_SITE',    '/' );
 	define( 'SITE_ID_CURRENT_SITE', 1 );
 	define( 'BLOG_ID_CURRENT_SITE', 1 );
 	define( 'SUBDOMAIN_INSTALL',    false );
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'translate.wordpressorg.dev' ) {
+} elseif ( $_SERVER['HTTP_HOST'] === 'translate.wordpressorg.test' ) {
 	define( 'DB_CHARSET', 'latin1' );
 	define( 'GP_TMPL_PATH',  WPORGPATH . 'wp-content/plugins/wporg-gp-customizations/templates/' );
 	define( 'GP_URL_BASE', '' );
 	$gp_table_prefix = GLOTPRESS_TABLE_PREFIX;
 
 } else {
-	// global.wordpressorg.dev
+	// global.wordpressorg.test
 	define( 'WP_LANG_URL',          WP_CONTENT_URL . '/languages' );
 	define( 'WP_DEFAULT_THEME',     'rosetta' );
-	define( 'NOBLOGREDIRECT',       'http://wordpressorg.dev/' );
+	define( 'NOBLOGREDIRECT',       'http://wordpressorg.test/' );
 	define( 'DEPLOYER_EMAIL',       'foo@example.org' );
 	define( 'SITE_ID_CURRENT_SITE', 6 );
 	define( 'BLOG_ID_CURRENT_SITE', 115 );

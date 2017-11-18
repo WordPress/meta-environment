@@ -19,27 +19,27 @@ foreach ( scandir( __DIR__ . '/pub' ) as $file ) {
 
 // Run site-specific functionality
 switch( $_SERVER['HTTP_HOST'] ) {
-	case 'developer.wordpressorg.dev':
+	case 'developer.wordpressorg.test':
 		wme_developer_wordpressorg_dev();
 		break;
 
-	case 'global.wordpressorg.dev':
-	case 'en.wordpressorg.dev':
-	case 'es.wordpressorg.dev':
-	case 'ja.wordpressorg.dev':
+	case 'global.wordpressorg.test':
+	case 'en.wordpressorg.test':
+	case 'es.wordpressorg.test':
+	case 'ja.wordpressorg.test':
 		wme_global_wordpressorg_dev();
 		break;
 }
 
 /**
- * developer.wordpressorg.dev
+ * developer.wordpressorg.test
  */
 function wme_developer_wordpressorg_dev() {
 	add_filter( 'show_admin_bar', '__return_false' );
 }
 
 /**
- * global.wordpressorg.dev
+ * global.wordpressorg.test
  */
 function wme_global_wordpressorg_dev() {
 	// Load mu-plugins in subdirectories
@@ -142,7 +142,7 @@ function wme_global_wordpressorg_dev() {
 			}
 
 			$locale = '';
-			if ( preg_match( "/^([a-z-]+)\.wordpressorg.dev$/", $hostname, $matches ) ) {
+			if ( preg_match( "/^([a-z-]+)\.wordpressorg.test$/", $hostname, $matches ) ) {
 				switch( $matches[1] ) {
 					case 'es' :
 						$locale = 'es_ES';
@@ -203,7 +203,7 @@ function wme_global_wordpressorg_dev() {
 	$GLOBALS['rosetta'] = new Rosetta_WordPress();
 
 	/**
-	 * Filters the URLs to use the current localized domain name, rather than wordpressorg.dev.
+	 * Filters the URLs to use the current localized domain name, rather than wordpressorg.test.
 	 *
 	 * Required for the theme and plugin directory which are available at multiple URLs (internationalized domains).
 	 * This function allows for the one blog (a single blog_id) to be presented at multiple URLs yet have correct
@@ -216,7 +216,7 @@ function wme_global_wordpressorg_dev() {
 			$localized_url = 'http://' . preg_replace( '![^a-z.-]+!', '', $_SERVER['HTTP_HOST'] );
 		}
 
-		return preg_replace( '!^[http]+://wordpressorg\.dev!i', $localized_url, $url );
+		return preg_replace( '!^[http]+://wordpressorg\.test!i', $localized_url, $url );
 	}
 	add_filter( 'option_home',    'wme_rosetta_network_localize_url' );
 	add_filter( 'option_siteurl', 'wme_rosetta_network_localize_url' );

@@ -1,5 +1,5 @@
 #!/bin/bash
-SITE_DOMAIN="wordpressorg.dev"
+SITE_DOMAIN="wordpressorg.test"
 
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 source $BASE_DIR/helper-functions.sh
@@ -47,16 +47,16 @@ if [ ! -L $SITE_DIR ]; then
 
 	wme_noroot wp plugin install ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
 
-	# developer.wordpressorg.dev
+	# developer.wordpressorg.test
 	cd $SITE_DIR/wp-content/plugins
 	git clone https://github.com/WordPress/phpdoc-parser.git
 	cd phpdoc-parser
 	wme_noroot composer install
 
-	# translate.wordpressorg.dev
+	# translate.wordpressorg.test
 	git clone https://github.com/GlotPress/GlotPress-WP.git $SITE_DIR/wp-content/plugins/glotpress
 
-	# global.wordpressorg.dev
+	# global.wordpressorg.test
 	cd $SITE_DIR/wp-content/themes
 	ln -sr $BASE_DIR/meta-repository/global.wordpress.org/public_html/wp-content/themes/rosetta rosetta
 	cd $SITE_DIR/wp-content/mu-plugins
@@ -144,10 +144,10 @@ else
 		svn up $SITE_DIR/wp-content/plugins/$i
 	done
 
-	# developer.wordpressorg.dev
+	# developer.wordpressorg.test
 	git -C $SITE_DIR/wp-content/plugins/phpdoc-parser pull
 
-	# translate.wordpressorg.dev
+	# translate.wordpressorg.test
 	git -C $SITE_DIR/wp-content/plugins/glotpress pull
 
 	# Cavalcade

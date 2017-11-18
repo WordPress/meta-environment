@@ -5,7 +5,7 @@
 function wporg_themes_on_rosetta_domains( $site, $domain, $path, $segments ) {
 	// All non-rosetta networks define DOMAIN_CURRENT_SITE in wp-config.php
 
-	if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.dev' != $domain && '/themes/' == substr( $path . '/', 0, 8 ) ) {
+	if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.test' != $domain && '/themes/' == substr( $path . '/', 0, 8 ) ) {
 		$site = get_blog_details( WPORG_THEME_DIRECTORY_BLOGID, false );
 		if ( $site ) {
 			$site = clone $site;
@@ -23,7 +23,7 @@ add_filter( 'pre_get_site_by_path', 'wporg_themes_on_rosetta_domains', 10, 4 );
 function wporg_plugins_on_rosetta_domains( $site, $domain, $path, $segments ) {
 	// All non-rosetta networks define DOMAIN_CURRENT_SITE in wp-config.php
 
-	if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.dev' != $domain && '/plugins/' == substr( $path . '/', 0, 9 ) ) {
+	if ( ! defined( 'DOMAIN_CURRENT_SITE' ) && 'wordpressorg.test' != $domain && '/plugins/' == substr( $path . '/', 0, 9 ) ) {
 		$site = get_blog_details( WPORG_PLUGIN_DIRECTORY_BLOGID, false );
 		if ( $site ) {
 			$site = clone $site;
