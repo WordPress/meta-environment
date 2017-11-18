@@ -18,55 +18,55 @@
 
 	<h2>Available Sites</h2>
 
-	<p>The hostname for each site has been slightly changed. For example, <code>wordcamp.org</code> and <code>wordpress.tv</code> are <code>wordcamp.dev</code> and <code>wordpresstv.dev</code>, respectively.</p>
+	<p>The hostname for each site has been slightly changed. For example, <code>wordcamp.org</code> and <code>wordpress.tv</code> are <code>wordcamp.test</code> and <code>wordpresstv.test</code>, respectively.</p>
 
 	<ul>
 		<li>
-			<a href="http://buddypressorg.dev">buddypressorg.dev</a>
+			<a href="http://buddypressorg.test">buddypressorg.test</a>
 
 			<ul>
-				<li><a href="http://codex.buddypressorg.dev">codex.buddypressorg.dev</a></li>
-				<li><a href="http://es.buddypressorg.dev">es.buddypressorg.dev</a></li>
-				<li><a href="http://codex.bbpressorg.dev">codex.bbpressorg.dev</a></li>
+				<li><a href="http://codex.buddypressorg.test">codex.buddypressorg.test</a></li>
+				<li><a href="http://es.buddypressorg.test">es.buddypressorg.test</a></li>
+				<li><a href="http://codex.bbpressorg.test">codex.bbpressorg.test</a></li>
 			</ul>
 		</li>
-		<li><a href="http://jobs.wordpressnet.dev">jobs.wordpressnet.dev</a></li>
+		<li><a href="http://jobs.wordpressnet.test">jobs.wordpressnet.test</a></li>
 		<li>
-			wordcamp.dev
+			wordcamp.test
 
 			<ul>
-				<li><a href="http://central.wordcamp.dev">central.wordcamp.dev</a></li>
-				<li><a href="http://2014.seattle.wordcamp.dev">2014.seattle.wordcamp.dev</a></li>
-				<li><a href="http://wordcamp.dev/wp-admin/network/sites.php">more</a></li>
+				<li><a href="http://central.wordcamp.test">central.wordcamp.test</a></li>
+				<li><a href="http://2014.seattle.wordcamp.test">2014.seattle.wordcamp.test</a></li>
+				<li><a href="http://wordcamp.test/wp-admin/network/sites.php">more</a></li>
 			</ul>
 		</li>
 		<li>
-			wordpressorg.dev
+			wordpressorg.test
 
 			<ul>
-				<li><a href="http://wordpressorg.dev/plugins/">wordpressorg.dev/plugins/</a></li>
-				<li><a href="http://wordpressorg.dev/themes/">wordpressorg.dev/themes/</a></li>
-				<li><a href="http://developer.wordpressorg.dev">developer.wordpressorg.dev</a></li>
+				<li><a href="http://wordpressorg.test/plugins/">wordpressorg.test/plugins/</a></li>
+				<li><a href="http://wordpressorg.test/themes/">wordpressorg.test/themes/</a></li>
+				<li><a href="http://developer.wordpressorg.test">developer.wordpressorg.test</a></li>
 
 				<li>
-					<a href="http://global.wordpressorg.dev">global.wordpressorg.dev</a>
+					<a href="http://global.wordpressorg.test">global.wordpressorg.test</a>
 
 					<ul>
 						<li>
-							<a href="http://es.wordpressorg.dev">es.wordpressorg.dev</a>
+							<a href="http://es.wordpressorg.test">es.wordpressorg.test</a>
 
 							<ul>
-								<li><a href="http://es.wordpressorg.dev/themes">es.wordpressorg.dev/themes</a></li>
+								<li><a href="http://es.wordpressorg.test/themes">es.wordpressorg.test/themes</a></li>
 							</ul>
 						</li>
-						<li><a href="http://ja.wordpressorg.dev">ja.wordpressorg.dev</a></li>
+						<li><a href="http://ja.wordpressorg.test">ja.wordpressorg.test</a></li>
 					</ul>
 				</li>
 
-				<li><a href="http://translate.wordpressorg.dev">translate.wordpressorg.dev</a></li>
+				<li><a href="http://translate.wordpressorg.test">translate.wordpressorg.test</a></li>
 			</ul>
 		</li>
-		<li><a href="http://wordpresstv.dev">wordpresstv.dev</a></li>
+		<li><a href="http://wordpresstv.test">wordpresstv.test</a></li>
 	</ul>
 
 	<h2>Resources</h2>
@@ -74,7 +74,7 @@
 		<li><a href="https://github.com/WordPress/meta-environment">Meta Environment homepage</a></li>
 		<li><a href="https://make.wordpress.org/meta/handbook/">Meta Team Handbook</a> - for information on contributing to these sites</li>
 		<li><a href="https://meta.trac.wordpress.org">Meta Trac</a> - find a ticket to work on</li>
-		<li><a href="http://vvv.dev">VVV dashboard</a> - phpMyAdmin, phpinfo(), and other tools/resources</li>
+		<li><a href="http://vvv.test">VVV dashboard</a> - phpMyAdmin, phpinfo(), and other tools/resources</li>
 		<li><a href="https://github.com/Varying-Vagrant-Vagrants/VVV">VVV homepage</a> - for information on working with VVV in general</li>
 	</ul>
 
