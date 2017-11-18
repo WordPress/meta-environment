@@ -1,7 +1,7 @@
 <?php
 
 if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
-	$_SERVER['HTTP_HOST'] = 'wordcamp.dev';
+	$_SERVER['HTTP_HOST'] = 'wordcamp.test';
 }
 
 $table_prefix  = 'wc_';
@@ -29,11 +29,11 @@ define( 'SCRIPT_DEBUG',          true );
 define( 'WP_ALLOW_MULTISITE',    true );
 define( 'MULTISITE',             true );
 define( 'SUBDOMAIN_INSTALL',     true );
-define( 'DOMAIN_CURRENT_SITE',   'wordcamp.dev' );
+define( 'DOMAIN_CURRENT_SITE',   'wordcamp.test' );
 define( 'PATH_CURRENT_SITE',     '/' );
 define( 'SITE_ID_CURRENT_SITE',  1 );
-define( 'BLOG_ID_CURRENT_SITE',  2 );	// central.wordcamp.dev
-define( 'CLI_HOSTNAME_OVERRIDE', 'wordcamp.dev' );
+define( 'BLOG_ID_CURRENT_SITE',  2 );	// central.wordcamp.test
+define( 'CLI_HOSTNAME_OVERRIDE', 'wordcamp.test' );
 define( 'WORDCAMP_ENVIRONMENT',  'development' );
 
 define( 'WPLANG',               '' );
