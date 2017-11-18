@@ -40,16 +40,16 @@ If you run into any problems with the instructions below, check out [the Trouble
       description: "An environment useful for contributions to the WordPress meta team."
       repo: https://github.com/WordPress/meta-environment.git
       hosts:
-        - wp-meta.dev
+        - wp-meta.test
       custom:
         provision_site:
-          "buddypressorg.dev": true
-          "jobs.wordpressnet.dev": true
-          "wordcamp.dev": true
-          "wordpressorg.dev": true
-          "wordpresstv.dev": true
+          "buddypressorg.test": true
+          "jobs.wordpressnet.test": true
+          "wordcamp.test": true
+          "wordpressorg.test": true
+          "wordpresstv.test": true
 	```
-	
+
 	This will provision all sites. Use `false` to skip provisioning of specific site.
 
 1. Restart and re-provision VVV
@@ -59,7 +59,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 You're all set!
 
-* Visit [http://wp-meta.dev](http://wp-meta.dev) for links to all the available sites.
+* Visit [http://wp-meta.test](http://wp-meta.test) for links to all the available sites.
 * Log in to any of them with username `admin` and password `password`
 
 
@@ -72,8 +72,7 @@ order to obtain the new site.
 1. `git pull origin master`
 1. If the new site is not part of an existing multisite/multi-network installation, then you can simply run
 `vagrant reload --provision`
-1. If the new site is part of an existing installation (like `wordpressorg.dev`),
+1. If the new site is part of an existing installation (like `wordpressorg.test`),
 then you'll need to delete the `public_html` folder and database for that site, and then run
 `vagrant reload --provision`
 	1. ⚠️ Don't forget to backup any uncommitted patches that you're working on.
-

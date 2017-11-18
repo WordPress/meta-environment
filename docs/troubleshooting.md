@@ -9,7 +9,7 @@ doesn't help, follow the instructions in the `Support` section at the bottom of 
 
 * **Nginx configuration file test failed**: If you see an error like this:
 
-	> ==> default: nginx: [emerg] open() "/srv/www/meta-environment/buddypressorg.dev/logs/nginx-access.log" failed (2: No such file or directory)
+	> ==> default: nginx: [emerg] open() "/srv/www/meta-environment/buddypressorg.test/logs/nginx-access.log" failed (2: No such file or directory)
 	> ==> default: nginx: configuration file /etc/nginx/nginx.conf test failed
 
 	...then make sure that you cloned the WME repository into a folder named `wordpress-meta-environment`, rather than just `meta-environment`, or something arbitrary. If the folder is named anything other than `wordpress-meta-environment`, then the provision process will break. See the `Setup` section above for details.
@@ -27,19 +27,19 @@ doesn't help, follow the instructions in the `Support` section at the bottom of 
 
 * **Windows** installations: Adrian Pop has documented some tips for [installing the Meta Environment on Windows](http://test.informagination.ro/wordpress-meta-environment-in-win-10/).
 
-* **My IDE (or other tool) doesn't recognize `public_html` as a Git checkout:** Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line. 
+* **My IDE (or other tool) doesn't recognize `public_html` as a Git checkout:** Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line.
 
 * **Databases not created:** If you ran `vagrant destroy` after provisioning, and later re-provisioned, then the symlinks that were created during the first provisioning won't be removed. Those are used to determine whether or not to import the database and install plugins. To fix that, removing the symlinked `public_html` folders, and then run `vagrant provision` again.
 
 
 ## Problems with specific sites
 
-* **Developer.WordPressorg.dev WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
-  machine has in order to run the parser for `developer.wordpress.dev`. To do that, open VVV's `Vagrantfile`,
+* **Developer.WordPressorg.test WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
+  machine has in order to run the parser for `developer.wordpress.test`. To do that, open VVV's `Vagrantfile`,
   locate the line that contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once
   you've done that, run `vagrant halt && vagrant up` to make the change take effect.
 
-* **WordPressTV.dev video upload errors:** The WPTV uploader integrates with VideoPress, which requires a connection
+* **WordPressTV.test video upload errors:** The WPTV uploader integrates with VideoPress, which requires a connection
   to WordPress.com and a paid VideoPress subscription, so it isn't enabled.
 
 
