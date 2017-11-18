@@ -1,7 +1,7 @@
 <?php
 
 if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
-	$_SERVER['HTTP_HOST'] = 'buddypressorg.dev';
+	$_SERVER['HTTP_HOST'] = 'buddypressorg.test';
 }
 
 $table_prefix  = 'wp_';
@@ -44,29 +44,29 @@ define( 'SITE_ID_CURRENT_SITE',  1 );
 define( 'BLOG_ID_CURRENT_SITE',  1 );  // BuddyPress.org
 define( 'BP_ENABLE_MULTIBLOG',   true );
 
-if ( $_SERVER['HTTP_HOST'] === 'buddypressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'buddypressorg.dev' );
+if ( $_SERVER['HTTP_HOST'] === 'buddypressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'buddypressorg.test' );
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'codex.buddypressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'codex.buddypressorg.dev' );
+} elseif ( $_SERVER['HTTP_HOST'] === 'codex.buddypressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'codex.buddypressorg.test' );
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'es.buddypressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE', 'es.buddypressorg.dev' );
+} elseif ( $_SERVER['HTTP_HOST'] === 'es.buddypressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE', 'es.buddypressorg.test' );
 
-} elseif ( $_SERVER['HTTP_HOST'] === 'codex.bbpressorg.dev' ) {
-	define( 'DOMAIN_CURRENT_SITE',  'codex.bbpressorg.dev' );
+} elseif ( $_SERVER['HTTP_HOST'] === 'codex.bbpressorg.test' ) {
+	define( 'DOMAIN_CURRENT_SITE',  'codex.bbpressorg.test' );
 }
 
-if ( $_SERVER['HTTP_HOST'] === 'codex.bbpressorg.dev' ) {
-	define( 'COOKIE_DOMAIN', 'codex.bbpressorg.dev' );
+if ( $_SERVER['HTTP_HOST'] === 'codex.bbpressorg.test' ) {
+	define( 'COOKIE_DOMAIN', 'codex.bbpressorg.test' );
 } else {
-	define( 'COOKIE_DOMAIN', '.buddypressorg.dev' );
+	define( 'COOKIE_DOMAIN', '.buddypressorg.test' );
 }
 
 
 // Begin sanity warning
 
-if ( $_SERVER['HTTP_HOST'] !== 'profiles.wordpressorg.dev' ) {
+if ( $_SERVER['HTTP_HOST'] !== 'profiles.wordpressorg.test' ) {
 	define( 'AUTH_COOKIE',      'buddyorg'           );
 	define( 'LOGGED_IN_COOKIE', 'buddyorg_logged_in' );
 }
