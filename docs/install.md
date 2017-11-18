@@ -53,8 +53,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 	This will provision all sites. Use `false` to skip provisioning of specific site.
 
 1. Restart and re-provision VVV
-	1. `vagrant halt`
-	1. `vagrant up --provision`
+	1. `vagrant reload --provision`
 	1. This will take roughly 10-30 minutes
 
 
@@ -72,9 +71,9 @@ order to obtain the new site.
 1. `cd vagrant.local/www/wordpress-meta-environment`
 1. `git pull origin master`
 1. If the new site is not part of an existing multisite/multi-network installation, then you can simply run
-`vagrant halt && vagrant up --provision`
+`vagrant reload --provision`
 1. If the new site is part of an existing installation (like `wordpressorg.dev`),
 then you'll need to delete the `public_html` folder and database for that site, and then run
-`vagrant halt && vagrant up --provision`
-	1. Don't forget to backup any uncommitted patches that you're working on.
+`vagrant reload --provision`
+	1. ⚠️ Don't forget to backup any uncommitted patches that you're working on.
 
