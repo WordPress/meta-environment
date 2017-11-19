@@ -15,6 +15,7 @@ PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 SVN_PLUGINS=( akismet bbpress debug-bar debug-bar-cron email-post-changes speakerdeck-embed supportflow syntaxhighlighter two-factor wordpress-importer )
 WPCLI_PLUGINS=( jetpack tinymce-code-element wp-multibyte-patch )
+THEMES=( twenty* rosetta p2  )
 WP_LOCALES=( ja es_ES )
 
 wme_svn_git_migration $SITE_DIR
@@ -98,24 +99,19 @@ if [ ! -L $SITE_DIR ]; then
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
-		/wordpress
-		/wp-content/languages
-		/wp-content/mu-plugins/cavalcade*
-		/wp-content/mu-plugins/global_wordpressorg_dev
-		/wp-content/mu-plugins/sandbox-functionality.php
-		/wp-content/plugins/phpdoc-parser
-		/wp-content/plugins/glotpress
-		/wp-content/themes/p2
-		/wp-content/themes/rosetta
-		/wp-content/themes/twenty*
-		/wp-content/sunrise.php
-		/footer.php
-		/header.php
-		/wp-config.php
-		/wp-cli.yml
+		**/wordpress
+		**/wp-content/languages
+		**/wp-content/mu-plugins/cavalcade*
+		**/wp-content/mu-plugins/global_wordpressorg_dev
+		**/wp-content/mu-plugins/sandbox-functionality.php
+		**/wp-content/sunrise.php
+		wordpress.org/footer.php
+		wordpress.org/header.php
+		**/wp-config.php
+		**/wp-cli.yml
 	)
-	IGNORED_FILES=( "${IGNORED_FILES[@]}" "${SVN_PLUGINS[@]}" "${WPCLI_PLUGINS[@]}" )
-	wme_create_gitignore $SITE_DIR
+	IGNORED_FILES=( "${IGNORED_FILES[@]}" "${SVN_PLUGINS[@]}" "${GIT_PLUGINS[@]}" "${WPCLI_PLUGINS[@]}" "${THEMES[@]}" )
+	wme_create_git_exclude "$BASE_DIR/meta-repository"
 
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"

@@ -47,19 +47,15 @@ function wme_symlink_logs_dir {
 	mkdir -p $LOGS_DIR_PATH
 }
 
-# Add entries to a .gitignore file
-#
-# todo use .git/info/exclude instead, that's more appropriate for this situation
+# Add entries to the .git/info/exclude file
 #
 # $1 - the site's web root
-function wme_create_gitignore {
-	# Ignore the .gitignore file itself
-	echo "/.gitignore" >> $1/.gitignore
-
+function wme_create_git_exclude {
 	for i in "${IGNORED_FILES[@]}"
 	do :
-		echo "$i" >> $1/.gitignore
+		echo "$i" >> $1/.git/info/exclude
 	done
+	awk '!a[$0]++' $1/.git/info/exclude > exclude && mv exclude $1/.git/info/exclude
 }
 
 # Download the global WordPress.org header into the given directory.

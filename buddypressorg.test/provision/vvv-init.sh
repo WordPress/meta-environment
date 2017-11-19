@@ -46,12 +46,12 @@ if [ ! -L $SITE_DIR ]; then
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
-		/wordpress
-		/wp-content/mu-plugins/sandbox-functionality.php
-		/wp-config.php
+		**/wordpress
+		**/wp-content/mu-plugins/sandbox-functionality.php
+		**/wp-config.php
 	)
 	IGNORED_FILES=( "${IGNORED_FILES[@]}" "${SVN_PLUGINS[@]}" "${WPCLI_PLUGINS[@]}" )
-	wme_create_gitignore $SITE_DIR
+	wme_create_git_exclude "$BASE_DIR/meta-repository"
 
 else
 	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
