@@ -61,6 +61,7 @@ if [ ! -L $SITE_DIR ]; then
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
+		**/logs
 		**/wordpress
 		**/wp-content/mu-plugins/sandbox-functionality.php
 		**/wp-content/plugins/camptix
