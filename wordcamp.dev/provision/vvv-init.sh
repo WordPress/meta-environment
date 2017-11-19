@@ -14,8 +14,8 @@ fi
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
-SVN_PLUGINS=( camptix-network-tools email-post-changes tagregator )
-WPCLI_PLUGINS=( akismet buddypress bbpress camptix-pagseguro camptix-payfast-gateway jetpack json-rest-api wp-multibyte-patch wordpress-importer )
+SVN_PLUGINS=( camptix-network-tools email-post-changes tagregator supportflow camptix-pagseguro camptix-payfast-gateway camptix-trustpay camptix-trustcard camptix-mercadopago camptix-kdcpay-gateway campt-indian-payment-gateway )
+WPCLI_PLUGINS=( akismet buddypress bbpress jetpack json-rest-api wp-multibyte-patch wordpress-importer polldaddy liveblog wp-super-cache custom-content-width )
 WPCLI_THEMES=( twentyten twentyeleven twentytwelve twentythirteen )
 
 wme_svn_git_migration $SITE_DIR
