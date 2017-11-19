@@ -62,6 +62,12 @@ define( 'DISABLE_WP_CRON', true );
 define( 'GLOTPRESS_LOCALES_PATH', dirname( dirname( dirname( __DIR__ ) ) ) . '/meta-repository/wordpress.org/public_html/wp-content/plugins/glotpress/locales/locales.php' );
 define( 'GLOTPRESS_TABLE_PREFIX', 'translate_' );
 
+$memcached_servers = array(
+	'default' => array(
+		'127.0.0.1:11212',
+	),
+);
+
 if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.dev' ) {
 	define( 'DOMAIN_CURRENT_SITE',  'make.wordpressorg.dev' );
 	define( 'PATH_CURRENT_SITE',    '/' );
