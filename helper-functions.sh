@@ -34,6 +34,19 @@ function wme_symlink_public_dir {
 	mkdir -p $PUBLIC_DIR_PATH
 }
 
+# Symlink each site's log folder to the default log folder.
+#
+# $1 - the site's root directory
+# $2 - the name of the site's folder in the Meta Environment
+# $3 - the name of the site's folder in the Meta repository
+function wme_symlink_logs_dir {
+	LOGS_DIR_PATH="$1/$2/logs"
+
+	cd "$1/meta-repository/$3"
+	ln -rs $LOGS_DIR_PATH logs
+	mkdir -p $LOGS_DIR_PATH
+}
+
 # Add entries to a .gitignore file
 #
 # todo use .git/info/exclude instead, that's more appropriate for this situation
