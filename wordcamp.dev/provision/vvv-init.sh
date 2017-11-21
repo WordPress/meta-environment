@@ -20,6 +20,15 @@ WPCLI_THEMES=( twentyten twentyeleven twentytwelve twentythirteen )
 
 wme_svn_git_migration $SITE_DIR
 
+# Install wkhtmltopdf for wordcamp-docs plugin
+if [ ! -f /usr/local/bin/wkhtmltopdf ];
+then
+	apt-get install -y wkhtmltopdf xvfb
+	echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' | sudo tee /usr/bin/wkhtmltopdf.sh > /dev/null
+	chmod a+x /usr/bin/wkhtmltopdf.sh
+	ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
+fi
+
 if [ ! -L $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
