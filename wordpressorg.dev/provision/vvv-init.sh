@@ -96,6 +96,11 @@ if [ ! -L $SITE_DIR ]; then
 	cp "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	service cavalcade-wordpressorg restart
 
+	# Memcached
+	curl -sfg -o "$SITE_DIR/wp-content/object-cache.php" https://plugins.svn.wordpress.org/memcached/trunk/object-cache.php || echo "Error downloading object-cache.php"
+	cp "$PROVISION_DIR/memcached-wordpressorg.conf" "/etc/memcached-wordpressorg.conf"
+	service memcached restart wordpressorg
+
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
 		/wordpress
@@ -109,6 +114,7 @@ if [ ! -L $SITE_DIR ]; then
 		/wp-content/themes/rosetta
 		/wp-content/themes/twenty*
 		/wp-content/sunrise.php
+		/wp-content/object-cache.php
 		/footer.php
 		/header.php
 		/wp-config.php
@@ -156,6 +162,11 @@ else
 	cp "$PROVISION_DIR/cavalcade.php" "$SITE_DIR/wp-content/mu-plugins/"
 	cp "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	service cavalcade-wordpressorg restart
+
+	# Memcached
+	curl -sfg -o "$SITE_DIR/wp-content/object-cache.php" https://plugins.svn.wordpress.org/memcached/trunk/object-cache.php || echo "Error downloading object-cache.php"
+	cp "$PROVISION_DIR/memcached-wordpressorg.conf" "/etc/memcached-wordpressorg.conf"
+	service memcached restart wordpressorg
 fi
 
 # Pull global header/footer
