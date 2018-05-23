@@ -89,9 +89,7 @@ function wme_pull_wporg_global_footer {
 #
 # $1 - the absolute path to the log folder
 function wme_create_logs {
-	if [ ! -d $1 ]; then
-		mkdir $1
-	fi
+	mkdir -p $1
 
 	touch $1/nginx-access.log
 	touch $1/nginx-error.log
