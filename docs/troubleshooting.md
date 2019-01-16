@@ -7,40 +7,41 @@ doesn't help, follow the instructions in the `Support` section at the bottom of 
 
 ## Problems with the entire environment
 
-* **Nginx configuration file test failed**: If you see an error like this:
+### Subversion client version conflicts
 
-	> ==> default: nginx: [emerg] open() "/srv/www/meta-environment/buddypressorg.test/logs/nginx-access.log" failed (2: No such file or directory)
-	> ==> default: nginx: configuration file /etc/nginx/nginx.conf test failed
+Subversion repositories are checked out using version 1.8 inside the virtual machine, and the 1.8 repository format is not compatible with the svn 1.7 client. If you have an older client and try to run any svn commands, you'll get a *`The client is too old to work with the working copy`* error. Unfortunately there is no way to downgrade the repository format, but you can work around the issue by either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn from inside the virtual machine.
 
-	...then make sure that you cloned the WME repository into a folder named `wordpress-meta-environment`, rather than just `meta-environment`, or something arbitrary. If the folder is named anything other than `wordpress-meta-environment`, then the provision process will break. See the `Setup` section above for details.
+### Windows installations
 
+Adrian Pop has documented some tips for [installing the Meta Environment on Windows](http://test.informagination.ro/wordpress-meta-environment-in-win-10/).
 
-* **Make sure that you cloned the Meta Environment repository to a folder named `wordpress-meta-environment` inside VVV's `www/` directory.**
+### My IDE (or other tool) doesn't recognize `public_html` as a Git checkout
 
-	If you choose a different name, then WME will break during the provision stage, unless you also manually edit the Nginx configuration files for each site to reflect the name you chose.
+Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line.
 
-* **Subversion client version conflicts:** Subversion repositories are checked out using version 1.8 inside the
-  virtual machine, and the 1.8 repository format is not compatible with the svn 1.7 client. If you have an older
-  client and try to run any svn commands, you'll get a *`The client is too old to work with the working copy`*
-  error. Unfortunately there is no way to downgrade the repository format, but you can work around the issue by
-  either, 1) Upgrading your svn client to version 1.8+; or 2) Work with svn from inside the virtual machine.
+### Databases not created
 
-* **Windows** installations: Adrian Pop has documented some tips for [installing the Meta Environment on Windows](http://test.informagination.ro/wordpress-meta-environment-in-win-10/).
-
-* **My IDE (or other tool) doesn't recognize `public_html` as a Git checkout:** Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line.
-
-* **Databases not created:** If you ran `vagrant destroy` after provisioning, and later re-provisioned, then the symlinks that were created during the first provisioning won't be removed. Those are used to determine whether or not to import the database and install plugins. To fix that, removing the symlinked `public_html` folders, and then run `vagrant provision` again.
+If you ran `vagrant destroy` after provisioning, and later re-provisioned, then the symlinks that were created during the first provisioning won't be removed. Those are used to determine whether or not to import the database and install plugins. To fix that, removing the symlinked `public_html` folders, and then run `vagrant provision` again.
 
 
 ## Problems with specific sites
 
-* **Developer.WordPressorg.test WP-Parser memory errors:** You may need to increase the amount of RAM that the virtual
-  machine has in order to run the parser for `developer.wordpress.test`. To do that, open VVV's `Vagrantfile`,
-  locate the line that contains `v.customize ["modifyvm", :id, "--memory", 512]`, and change `512` to `1024`. Once
-  you've done that, run `vagrant halt && vagrant up` to make the change take effect.
+### Developer.WordPressorg.test WP-Parser memory errors
 
-* **WordPressTV.test video upload errors:** The WPTV uploader integrates with VideoPress, which requires a connection
-  to WordPress.com and a paid VideoPress subscription, so it isn't enabled.
+You may need to increase the amount of RAM that the virtual machine has in order to run the parser for `developer.wordpress.test`. To do that, open VVV's `vvv-custom.yml` and look for the `vm_config` section that looks like this:
+
+```yaml
+vm_config:
+  memory: 2048
+  cores: 2
+  # provider: vmware_workstation
+```
+
+And increase the `2048` value. If this section isn't in your `vvv-custom.yml` file, add it. Then, reprovision for the change to take effect with the `vagrant reload` command.
+
+### WordPressTV.test video upload errors
+
+The WPTV uploader integrates with VideoPress, which requires a connection to WordPress.com and a paid VideoPress subscription, so it isn't enabled.
 
 
 ## Support
