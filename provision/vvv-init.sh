@@ -5,10 +5,10 @@
 
 echo "Beginning WP Meta Environment provisioning"
 
-source ../buddypressorg.test/provision/vvv-init.sh
-source ../jobs.wordpressnet.test/provision/vvv-init.sh
-source ../wordcamp.test/provision/vvv-init.sh
-source ../wordpressorg.test/provision/vvv-init.sh
-source ../wordpresstv.test/provision/vvv-init.sh
+(../buddypressorg.test/provision/vvv-init.sh)
+(../jobs.wordpressnet.test/provision/vvv-init.sh )
+(../wordcamp.test/provision/vvv-init.sh)
+(../wordpressorg.test/provision/vvv-init.sh)
+(../wordpresstv.test/provision/vvv-init.sh)
 
 echo "Completed WP Meta Environment provisioning"
