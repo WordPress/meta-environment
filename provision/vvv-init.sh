@@ -15,13 +15,8 @@ then
 	ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
 fi
 
-echo "Setting up buddypressorg.test"
 (../buddypressorg.test/provision/vvv-init.sh)
-
-echo "Setting up jobs.wordpressnet.test"
 (../jobs.wordpressnet.test/provision/vvv-init.sh )
-
-echo "Setting up buddypress.org"
 (../wordcamp.test/provision/vvv-init.sh)
 (../wordpressorg.test/provision/vvv-init.sh)
 (../wordpresstv.test/provision/vvv-init.sh)
