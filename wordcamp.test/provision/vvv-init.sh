@@ -20,15 +20,6 @@ WPCLI_THEMES=( twentyten twentyeleven twentytwelve twentythirteen )
 
 wme_svn_git_migration $SITE_DIR
 
-# Install wkhtmltopdf for wordcamp-docs plugin
-if [ ! -f /usr/local/bin/wkhtmltopdf ];
-then
-	apt-get install -y wkhtmltopdf xvfb
-	echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' | sudo tee /usr/bin/wkhtmltopdf.sh > /dev/null
-	chmod a+x /usr/bin/wkhtmltopdf.sh
-	ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
-fi
-
 if [ ! -L $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
@@ -44,13 +35,6 @@ if [ ! -L $SITE_DIR ]; then
 	# Setup WordPress
 	wme_noroot wp core download --path=$SITE_DIR/wordpress
 	cp $PROVISION_DIR/wp-config.php $SITE_DIR
-
-	for i in "${SVN_PLUGINS[@]}"
-	do :
-		svn co https://plugins.svn.wordpress.org/$i/trunk $SITE_DIR/wp-content/plugins/$i
-	done
-
-	git clone https://github.com/Automattic/camptix.git $SITE_DIR/wp-content/plugins/camptix
 
 	# Setup mu-plugin for local development
 	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
@@ -74,19 +58,27 @@ else
 
 	git -C $SITE_DIR pull origin master
 
-	for i in "${SVN_PLUGINS[@]}"
-	do :
+	wme_noroot wp core   update                     --path=$SITE_DIR/wordpress
+	wme_noroot wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
+	wme_noroot wp theme  update ${WPCLI_THEMES[@]}  --path=$SITE_DIR/wordpress
+fi
+
+
+for i in "${SVN_PLUGINS[@]}"
+do :
+	if [ ! -L "$SITE_DIR/wp-content/plugins/$i" ]; then
+		svn co https://plugins.svn.wordpress.org/$i/trunk "$SITE_DIR/wp-content/plugins/$i"
+	else
 		(
 			cd "${SITE_DIR}/wp-content/plugins/$i" &&
 			svn cleanup &&
 			svn up
 		)
-	done
+	fi
+done
 
+if [ ! -L "$SITE_DIR/wp-content/plugins/camptix" ]; then
+	git clone https://github.com/Automattic/camptix.git $SITE_DIR/wp-content/plugins/camptix
+else
 	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
-
-	wme_noroot wp core   update                     --path=$SITE_DIR/wordpress
-	wme_noroot wp plugin update ${WPCLI_PLUGINS[@]} --path=$SITE_DIR/wordpress
-	wme_noroot wp theme  update ${WPCLI_THEMES[@]}  --path=$SITE_DIR/wordpress
-
 fi
