@@ -76,7 +76,11 @@ else
 
 	for i in "${SVN_PLUGINS[@]}"
 	do :
-		svn up $SITE_DIR/wp-content/plugins/$i
+		(
+			cd "${SITE_DIR}/wp-content/plugins/$i" &&
+			svn cleanup &&
+			svn up
+		)
 	done
 
 	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
