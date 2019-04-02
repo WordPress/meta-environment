@@ -18,12 +18,8 @@ function make_site_get_network_sites() {
 register_theme_directory( ABSPATH . 'wp-content/themes' );
 
 // Load global must-use plugins.
-foreach ( scandir( __DIR__ . '/pub' ) as $file ) {
-	if ( ( '.' === $file[0] ) || is_dir( $file ) ) {
-		continue;
-	}
-
-	require_once __DIR__ . '/pub/' . $file;
+foreach ( glob(__DIR__."pub/*.php") as $filename ) {
+	require_once $filename;
 }
 
 // Run site-specific functionality
