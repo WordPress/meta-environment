@@ -19,7 +19,7 @@ register_theme_directory( ABSPATH . 'wp-content/themes' );
 
 // Load global must-use plugins.
 foreach ( scandir( __DIR__ . '/pub' ) as $file ) {
-	if ( '.' === $file[0] ) {
+	if ( ( '.' === $file[0] ) || is_dir( $file ) ) {
 		continue;
 	}
 
