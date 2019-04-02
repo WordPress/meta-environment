@@ -20,7 +20,7 @@ WPCLI_THEMES=( twentyten twentyeleven twentytwelve twentythirteen )
 
 wme_svn_git_migration $SITE_DIR
 
-if [ ! -L $SITE_DIR ]; then
+if [ ! -d $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
 	# Don't overwrite existing databases if we're just migrating from SVN to Git
@@ -66,7 +66,7 @@ fi
 
 for i in "${SVN_PLUGINS[@]}"
 do :
-	if [ ! -L "$SITE_DIR/wp-content/plugins/$i" ]; then
+	if [ ! -d "$SITE_DIR/wp-content/plugins/$i" ]; then
 		svn co https://plugins.svn.wordpress.org/$i/trunk "$SITE_DIR/wp-content/plugins/$i"
 	else
 		(
@@ -77,7 +77,7 @@ do :
 	fi
 done
 
-if [ ! -L "$SITE_DIR/wp-content/plugins/camptix" ]; then
+if [ ! -d "$SITE_DIR/wp-content/plugins/camptix" ]; then
 	git clone https://github.com/Automattic/camptix.git $SITE_DIR/wp-content/plugins/camptix
 else
 	git -C $SITE_DIR/wp-content/plugins/camptix pull origin master
