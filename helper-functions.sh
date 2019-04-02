@@ -89,6 +89,7 @@ function wme_pull_wporg_global_footer {
 #
 # $1 - the absolute path to the log folder
 function wme_create_logs {
+	echo "Creating log files in ${1}"
 	mkdir -p $1
 
 	touch $1/nginx-access.log
@@ -101,9 +102,12 @@ function wme_create_logs {
 # $1 - the name of the database
 # $2 - the absolute path to the folder where the $1.sql file is stored
 function wme_import_database {
+	echo "Creating database ${1}"
 	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS $1;"
 	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON $1.* TO wp@localhost IDENTIFIED BY 'wp';"
-	mysql -u root --password=root $1 < $2/$1.sql
+	echo "Importing database ${2}/${1}.sql"
+	mysql -u root --password=root $1 < "${2}/${1}.sql"
+	echo "Finished database import operations for ${1}"
 }
 
 # Warn users that we moved their cheese during the upgrade from SVN to Git
