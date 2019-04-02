@@ -20,7 +20,7 @@ WPCLI_THEMES=( twentyten twentyeleven twentytwelve twentythirteen )
 
 wme_svn_git_migration $SITE_DIR
 
-if [ ! -d $SITE_DIR ]; then
+if [ ! -L $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
 	# Don't overwrite existing databases if we're just migrating from SVN to Git
