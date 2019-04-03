@@ -33,10 +33,10 @@ if [ ! -L $SITE_DIR ]; then
 	# Setup WordPress, themes, and plugins
 	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
 	mkdir -p $SITE_DIR/wp-content/mu-plugins
-	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
-	cp $PROVISION_DIR/wp-cli.yml                $SITE_DIR
-	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
-	cp $PROVISION_DIR/sunrise.php               $SITE_DIR/wp-content
+	cp -f $PROVISION_DIR/wp-config.php             $SITE_DIR
+	cp -f $PROVISION_DIR/wp-cli.yml                $SITE_DIR
+	cp -f $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
+	cp -f $PROVISION_DIR/sunrise.php               $SITE_DIR/wp-content
 
 	svn co https://wpcom-themes.svn.automattic.com/p2 $SITE_DIR/wp-content/themes/p2
 
@@ -85,7 +85,7 @@ if [ ! -L $SITE_DIR ]; then
 	# Cavalcade
 	printf "Installing Cavalcade..."
 	git clone https://github.com/humanmade/Cavalcade.git $SITE_DIR/wp-content/mu-plugins/cavalcade
-	cp $PROVISION_DIR/cavalcade.php $SITE_DIR/wp-content/mu-plugins/
+	cp -f $PROVISION_DIR/cavalcade.php $SITE_DIR/wp-content/mu-plugins/
 
 	if [[ ! -d "/etc/cavalcade" ]]; then
 		git clone https://github.com/humanmade/Cavalcade-Runner.git /etc/cavalcade
@@ -93,7 +93,7 @@ if [ ! -L $SITE_DIR ]; then
 		git -C /etc/cavalcade pull
 	fi
 
-	cp "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
+	cp -f "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	service cavalcade-wordpressorg restart
 
 	# Ignore external dependencies and Meta Environment tweaks
@@ -153,8 +153,8 @@ else
 	# Cavalcade
 	git -C $SITE_DIR/wp-content/mu-plugins/cavalcade pull
 	git -C /etc/cavalcade pull
-	cp "$PROVISION_DIR/cavalcade.php" "$SITE_DIR/wp-content/mu-plugins/"
-	cp "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
+	cp -f "$PROVISION_DIR/cavalcade.php" "$SITE_DIR/wp-content/mu-plugins/"
+	cp -f "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	service cavalcade-wordpressorg restart
 fi
 
