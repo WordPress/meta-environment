@@ -106,7 +106,7 @@ function wme_import_database {
 	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS $1;"
 	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON $1.* TO wp@localhost IDENTIFIED BY 'wp';"
 	echo "Importing database ${2}/${1}.sql"
-	mysql -u root --password=root $1 < $2/$1.sql
+	mysql -u root --password=root $1 < "${2}/${1}.sql"
 	echo "Finished database import operations for ${1}"
 }
 
