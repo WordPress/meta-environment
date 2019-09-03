@@ -14,7 +14,7 @@ fi
 PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
 SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
 SVN_PLUGINS=( buddypress bbpress )
-WPCLI_PLUGINS=( akismet bbpress-no-admin camptix debug-bar email-post-changes syntaxhighlighter )
+WPCLI_PLUGINS=( akismet bbpress-no-admin debug-bar email-post-changes syntaxhighlighter )
 
 wme_svn_git_migration $SITE_DIR
 
