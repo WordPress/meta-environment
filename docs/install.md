@@ -26,28 +26,25 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 	`cp vvv-config.yml vvv-custom.yml`
 
-	Then uncomment the following lines inside `vvv-custom.yml`:
+	Then change `true` to `false` on the `skip_provisioning` option inside `vvv-custom.yml`:
 
 	```yml
 	#wordpress-meta-environment:
-	#  repo: https://github.com/WordPress/meta-environment.git
-	```
-
-	...and extend them so that they look like:
-
-	```yml
-	 wordpress-meta-environment:
-      description: "An environment useful for contributions to the WordPress meta team."
-      repo: https://github.com/WordPress/meta-environment.git
-      hosts:
-        - wp-meta.test
-      custom:
-        provision_site:
-          "buddypressorg.test": true
-          "jobs.wordpressnet.test": true
-          "wordcamp.test": true
-          "wordpressorg.test": true
-          "wordpresstv.test": true
+	# The following commented out site configuration will create a environment useful
+	  # for contributions to the WordPress meta team, .e.g WordCamps, .org, etc:
+	  wordpress-meta-environment:
+	    skip_provisioning: true # disabled by default, this takes a long time to provision
+	    description: "An environment useful for contributions to the WordPress meta team."
+	    repo: https://github.com/WordPress/meta-environment.git
+	    hosts:
+	      - wp-meta.test
+	    custom:
+	      provision_site:
+	        "buddypressorg.test": true
+	        "jobs.wordpressnet.test": true
+	        "wordcamp.test": true
+	        "wordpressorg.test": true
+	        "wordpresstv.test": true
 	```
 
 	This will provision all sites. Use `false` to skip provisioning of specific site.
