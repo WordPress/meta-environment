@@ -57,6 +57,9 @@ define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
 define( 'WPORG_TRANSLATE_BLOGID',        351 );
 define( 'WPORG_SUPPORT_FORUMS_BLOGID',    368 );
 
+define( 'WP_CORE_LATEST_RELEASE',        "5.4" );
+define( 'RECOMMENDED_PHP',         		 7.1 );
+
 
 // Disable WordPress Cron, we've got Cavalcade processing jobs instead.
 define( 'DISABLE_WP_CRON', true );
