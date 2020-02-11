@@ -94,7 +94,7 @@ if ( $_SERVER['HTTP_HOST'] === 'make.wordpressorg.test' ) {
 	define( 'SITE_ID_CURRENT_SITE', 1 );
 	define( 'BLOG_ID_CURRENT_SITE', 1 );
 	define( 'SUBDOMAIN_INSTALL',    false );
-	define( 'WP_DEFAULT_THEME',     'pub/wporg' );
+	define( 'WP_DEFAULT_THEME',     'pub/wporg-main' );
 
 } elseif ( $_SERVER['HTTP_HOST'] === 'translate.wordpressorg.test' ) {
 	define( 'DB_CHARSET', 'latin1' );
