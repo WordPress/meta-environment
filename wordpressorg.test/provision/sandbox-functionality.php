@@ -10,9 +10,9 @@ define( 'WP_CORE_STABLE_BRANCH', '4.5' );
  * is yet not open sourced.
  * See https://github.com/WordPress/meta-environment/issues/114
  */
-function make_site_get_network_sites() {
-    return array();
-}
+// function make_site_get_network_sites() {
+//     return array();
+// }
 
 // Include Core themes
 register_theme_directory( ABSPATH . 'wp-content/themes' );
