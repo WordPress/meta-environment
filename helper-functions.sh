@@ -72,6 +72,13 @@ function wme_pull_wporg_global_header {
 
 	sed -i "s/<\/head>/\n<?php\nif ( function_exists( 'gp_head' ) ) {\n\tgp_head();\n} else {\n\twp_head();\n}\n?>\n\n&/" $1/header.php
 	sed -i "s/<body id=\"wordpress-org\"/<body id=\"wordpress-org\" <?php if ( function_exists( 'body_class' ) ) { body_class(); } ?>/" $1/header.php
+
+	# Replace the links to point locally
+	# Match: //wordpress.org -> //wordpressorg.test
+	sed -i -e 's/\/\/wordpress.org/\/\/wordpressorg.test/g' $1/header.php
+
+	# Match: make.wordpress.org -> make.wordpressorg.test
+	sed -i -e 's/make.wordpress.org/make.wordpressorg.test/g' $1/header.php
 }
 
 # Download the global WordPress.org footer into the given directory.
@@ -83,6 +90,12 @@ function wme_pull_wporg_global_footer {
 	curl -so $1/footer.php https://wordpress.org/footer.php
 
 	sed -i "s/<\/body>/\n<?php\nif ( function_exists( 'gp_footer' ) ) {\n\tgp_footer();\n} else {\n\twp_footer();\n}\n?>\n\n&/" $1/footer.php
+
+	# Replace the links to point locally
+	# Match: //wordpress.org -> //wordpressorg.test
+	sed -i -e 's/\/\/wordpress.org/\/\/wordpressorg.test/g' $1/footer.php
+	# Match: .wordpress.org -> .wordpressorg.test
+	sed -i -e 's/.wordpress.org/.wordpressorg.test/g' $1/footer.php
 }
 
 # Create log stubs
