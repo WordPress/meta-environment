@@ -5,15 +5,6 @@ ini_set( 'error_log', dirname( dirname( ABSPATH ) ) . '/logs/php-error.log' );
 define( 'PLUGINS_TABLE_PREFIX',  $table_prefix );
 define( 'WP_CORE_STABLE_BRANCH', '4.5' );
 
-/**
- * Handle undefined function error for make_site_get_network_sites() which
- * is yet not open sourced.
- * See https://github.com/WordPress/meta-environment/issues/114
- */
-// function make_site_get_network_sites() {
-//     return array();
-// }
-
 // Include Core themes
 register_theme_directory( ABSPATH . 'wp-content/themes' );
 

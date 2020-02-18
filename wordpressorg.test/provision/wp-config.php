@@ -55,9 +55,10 @@ define( 'WPORG_GLOBAL_NETWORK_ID',       6 );
 define( 'WPORG_THEME_DIRECTORY_BLOGID',  35 );
 define( 'WPORG_PLUGIN_DIRECTORY_BLOGID', 367 );
 define( 'WPORG_TRANSLATE_BLOGID',        351 );
-define( 'WPORG_SUPPORT_FORUMS_BLOGID',    368 );
+define( 'WPORG_SUPPORT_FORUMS_BLOGID',   368 );
 
-define( 'WP_CORE_LATEST_RELEASE',        "5.4" );
+// Used for /download
+define( 'WP_CORE_LATEST_RELEASE',        '5.4' );
 define( 'RECOMMENDED_PHP',         		 7.1 );
 
 
