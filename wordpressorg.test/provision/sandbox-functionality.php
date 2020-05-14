@@ -9,7 +9,7 @@ define( 'WP_CORE_STABLE_BRANCH', '4.5' );
 register_theme_directory( ABSPATH . 'wp-content/themes' );
 
 // Load global must-use plugins.
-foreach ( glob( __DIR__ . "pub/*.php" ) as $filename ) {
+foreach ( glob( __DIR__ . "/pub/*.php" ) as $filename ) {
 	require_once( $filename );
 }
 
