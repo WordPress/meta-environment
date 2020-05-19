@@ -20,11 +20,11 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 	Once VVV is working, then you can move on to the next step.
 
-1. Check if you have a `vvv-custom.yml` file in the `vagrant-local` folder.
+1. Check if you have a `config/config.yml` file in the `vagrant-local` folder.
 
-	If you don't, then create one by copying the default `vvv-config.yml` file:
+	If you don't, then create one by copying the default `config/default-config.yml` file:
 
-	`cp vvv-config.yml vvv-custom.yml`
+	`cp config/default-config.yml config/config.yml`
 
 	Then change `true` to `false` on the `skip_provisioning` option inside `vvv-custom.yml`:
 
