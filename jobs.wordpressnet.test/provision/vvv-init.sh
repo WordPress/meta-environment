@@ -30,10 +30,9 @@ if [ ! -L $SITE_DIR ]; then
 
 	# Setup WordPress and plugins
 	wme_noroot wp core download --version=nightly --path=$SITE_DIR/wordpress
-	mkdir -p $SITE_DIR/wp-content/mu-plugins
-	cp $PROVISION_DIR/wp-config.php             $SITE_DIR
-	cp $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
-	wme_noroot wp plugin install si-contact-form --path=$SITE_DIR/wordpress
+	wme_noroot mkdir -p $SITE_DIR/wp-content/mu-plugins
+	wme_noroot cp -f $PROVISION_DIR/wp-config.php             $SITE_DIR
+	wme_noroot cp -f $PROVISION_DIR/sandbox-functionality.php $SITE_DIR/wp-content/mu-plugins/
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
