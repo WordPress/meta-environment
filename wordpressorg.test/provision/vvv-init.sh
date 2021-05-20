@@ -93,6 +93,7 @@ if [ ! -L $SITE_DIR ]; then
 		git -C /etc/cavalcade pull
 	fi
 
+	mkdir -p "/etc/init/"
 	cp -f "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	service cavalcade-wordpressorg restart
 
@@ -154,6 +155,7 @@ else
 	git -C $SITE_DIR/wp-content/mu-plugins/cavalcade pull
 	git -C /etc/cavalcade pull
 	cp -f "$PROVISION_DIR/cavalcade.php" "$SITE_DIR/wp-content/mu-plugins/"
+	mkdir -p "/etc/init"
 	cp -f "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	service cavalcade-wordpressorg restart
 fi
