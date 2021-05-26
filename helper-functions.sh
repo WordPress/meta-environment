@@ -9,12 +9,12 @@
 function wme_clone_meta_repository {
 	local REPOSITORY_DIR="$1/meta-repository"
 
-	if [ -d $REPOSITORY_DIR ]; then
+	if [ -d "${REPOSITORY_DIR}" ]; then
 		return 0
 	fi
 
-	git clone git://meta.git.wordpress.org/ $REPOSITORY_DIR
-	git -C $REPOSITORY_DIR config diff.noprefix true
+	git clone git://meta.git.wordpress.org/ "${REPOSITORY_DIR}"
+	git -C "${REPOSITORY_DIR}" config diff.noprefix true
 }
 
 # Symlink each site's public_html folder to the corresponding Meta repository
@@ -30,8 +30,8 @@ function wme_symlink_public_dir {
 	PUBLIC_DIR_PATH="$1/meta-repository/$3/public_html/"
 
 	cd "$1/$2"
-	ln -rs $PUBLIC_DIR_PATH public_html
-	mkdir -p $PUBLIC_DIR_PATH
+	ln -rs "${PUBLIC_DIR_PATH}" public_html
+	mkdir -p "${PUBLIC_DIR_PATH}"
 }
 
 # Symlink each site's log folder to the default log folder.
@@ -43,8 +43,8 @@ function wme_symlink_logs_dir {
 	LOGS_DIR_PATH="$1/$2/logs"
 
 	cd "$1/meta-repository/$3"
-	ln -rs $LOGS_DIR_PATH logs
-	mkdir -p $LOGS_DIR_PATH
+	ln -rs "${LOGS_DIR_PATH}" logs
+	mkdir -p "${LOGS_DIR_PATH}"
 }
 
 # Add entries to a .gitignore file
@@ -58,7 +58,7 @@ function wme_create_gitignore {
 
 	for i in "${IGNORED_FILES[@]}"
 	do :
-		echo "$i" >> $1/.gitignore
+		echo "$i" >> "$1/.gitignore"
 	done
 }
 
@@ -68,17 +68,17 @@ function wme_create_gitignore {
 #
 # $1 - the absolute path to the folder where the header should be placed
 function wme_pull_wporg_global_header {
-	curl -so $1/header.php https://wordpress.org/header.php
+	curl -so "$1/header.php" https://wordpress.org/header.php
 
-	sed -i "s/<\/head>/\n<?php\nif ( function_exists( 'gp_head' ) ) {\n\tgp_head();\n} else {\n\twp_head();\n}\n?>\n\n&/" $1/header.php
-	sed -i "s/<body id=\"wordpress-org\"/<body id=\"wordpress-org\" <?php if ( function_exists( 'body_class' ) ) { body_class(); } ?>/" $1/header.php
+	sed -i "s/<\/head>/\n<?php\nif ( function_exists( 'gp_head' ) ) {\n\tgp_head();\n} else {\n\twp_head();\n}\n?>\n\n&/" "$1/header.php"
+	sed -i "s/<body id=\"wordpress-org\"/<body id=\"wordpress-org\" <?php if ( function_exists( 'body_class' ) ) { body_class(); } ?>/" "$1/header.php"
 
 	# Replace the links to point locally
 	# Match: //wordpress.org -> //wordpressorg.test
-	sed -i -e 's/\/\/wordpress.org/\/\/wordpressorg.test/g' $1/header.php
+	sed -i -e 's/\/\/wordpress.org/\/\/wordpressorg.test/g' "$1/header.php"
 
 	# Match: make.wordpress.org -> make.wordpressorg.test
-	sed -i -e 's/make.wordpress.org/make.wordpressorg.test/g' $1/header.php
+	sed -i -e 's/make.wordpress.org/make.wordpressorg.test/g' "$1/header.php"
 }
 
 # Download the global WordPress.org footer into the given directory.
@@ -87,15 +87,15 @@ function wme_pull_wporg_global_header {
 #
 # $1 - the absolute path to the folder where the footer should be placed
 function wme_pull_wporg_global_footer {
-	curl -so $1/footer.php https://wordpress.org/footer.php
+	curl -so "$1/footer.php" https://wordpress.org/footer.php
 
 	sed -i "s/<\/body>/\n<?php\nif ( function_exists( 'gp_footer' ) ) {\n\tgp_footer();\n} else {\n\twp_footer();\n}\n?>\n\n&/" $1/footer.php
 
 	# Replace the links to point locally
 	# Match: //wordpress.org -> //wordpressorg.test
-	sed -i -e 's/\/\/wordpress.org/\/\/wordpressorg.test/g' $1/footer.php
+	sed -i -e 's/\/\/wordpress.org/\/\/wordpressorg.test/g' "$1/footer.php"
 	# Match: .wordpress.org -> .wordpressorg.test
-	sed -i -e 's/.wordpress.org/.wordpressorg.test/g' $1/footer.php
+	sed -i -e 's/.wordpress.org/.wordpressorg.test/g' "$1/footer.php"
 }
 
 # Create log stubs
@@ -103,11 +103,11 @@ function wme_pull_wporg_global_footer {
 # $1 - the absolute path to the log folder
 function wme_create_logs {
 	echo "Creating log files in ${1}"
-	mkdir -p $1
+	mkdir -p "$1"
 
-	touch $1/nginx-access.log
-	touch $1/nginx-error.log
-	touch $1/php-error.log
+	touch "$1/nginx-access.log"
+	touch "$1/nginx-error.log"
+	touch "$1/php-error.log"
 }
 
 # Import a MySQL database
@@ -119,7 +119,7 @@ function wme_import_database {
 	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS $1;"
 	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON $1.* TO wp@localhost IDENTIFIED BY 'wp';"
 	echo "Importing database ${2}/${1}.sql"
-	mysql -u root --password=root $1 < "${2}/${1}.sql"
+	mysql -u root --password=root "$1" < "${2}/${1}.sql"
 	echo "Finished database import operations for ${1}"
 }
 
@@ -138,7 +138,7 @@ function wme_svn_git_migration {
 	echo "If you're working on any unfinished patches, please copy them from the backup folder."
 	echo -e "For help contributing with Git, see https://make.wordpress.org/meta/handbook/documentation/contributing-with-git/\n"
 
-	mv $1 "$1-old-svn-backup"
+	mv "$1" "$1-old-svn-backup"
 	MIGRATED_TO_GIT=true
 }
 
@@ -156,7 +156,7 @@ function wme_noroot() {
 function wme_provision_site {
 	WME_SITE_ESCAPED=`echo ${1} | sed 's/\./\\\\./g'`
 	WME_PROVISION_SITE=`get_config_value "provision_site.${WME_SITE_ESCAPED}" 'true'`
-	echo ${WME_PROVISION_SITE,,}
+	echo "${WME_PROVISION_SITE,,}"
 }
 
 # Loads mo/mo files from translate.wordpress.org.
@@ -165,10 +165,10 @@ function wme_provision_site {
 # $2 - Slug of GlotPress project
 # $3 - File path without the PO/MO extension
 function wme_download_pomo {
-	local GPLOCALE=$1
-	local GPPROJECT=$2
-	local OUTPUT=$3
+	local GPLOCALE="$1"
+	local GPPROJECT="$2"
+	local OUTPUT="$3"
 
-	curl -sfg -o $OUTPUT.po "https://translate.wordpress.org/projects/$GPPROJECT/$GPLOCALE/default/export-translations?filters[status]=current&format=po" || echo "Error downloading ${GPPROJECT}-${GPLOCALE}.po"
-	curl -sfg -o $OUTPUT.mo "https://translate.wordpress.org/projects/$GPPROJECT/$GPLOCALE/default/export-translations?filters[status]=current&format=mo" || echo "Error downloading ${GPPROJECT}-${GPLOCALE}.mo"
+	curl -sfg -o "${OUTPUT}.po" "https://translate.wordpress.org/projects/${GPPROJECT}/${GPLOCALE}/default/export-translations?filters[status]=current&format=po" || echo "Error downloading ${GPPROJECT}-${GPLOCALE}.po"
+	curl -sfg -o "${OUTPUT}.mo" "https://translate.wordpress.org/projects/${GPPROJECT}/${GPLOCALE}/default/export-translations?filters[status]=current&format=mo" || echo "Error downloading ${GPPROJECT}-${GPLOCALE}.mo"
 }
