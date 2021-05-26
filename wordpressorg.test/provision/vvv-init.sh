@@ -19,10 +19,18 @@ WP_LOCALES=( ja es_ES )
 
 wme_svn_git_migration $SITE_DIR
 
+# Updates or installs the Cavalcade plugin and service
 function wme_wporg_setup_cavalcade() {
-	# Cavalcade
-	printf "Installing Cavalcade..."
-	wme_noroot git clone https://github.com/humanmade/Cavalcade.git "${SITE_DIR}/wp-content/mu-plugins/cavalcade"
+	printf " * Installing Cavalcade"
+	if [[ -d "${SITE_DIR}/wp-content/mu-plugins/cavalcade" ]]; then
+		pushd "${SITE_DIR}/wp-content/mu-plugins/cavalcade"
+		git pull
+		popd
+	else
+		wme_noroot mkdir -p "${SITE_DIR}/wp-content/mu-plugins"
+		wme_noroot git clone https://github.com/humanmade/Cavalcade.git "${SITE_DIR}/wp-content/mu-plugins/cavalcade"
+	fi
+
 	wme_noroot cp -f "${PROVISION_DIR}/cavalcade.php" "${SITE_DIR}/wp-content/mu-plugins/"
 
 	if [[ -d "/etc/cavalcade" ]]; then
@@ -37,9 +45,9 @@ function wme_wporg_setup_cavalcade() {
 	mkdir -p "/etc/init/"
 	cp -f "${PROVISION_DIR}/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
 	if service cavalcade-wordpressorg restart; then
-		printf "cavalcade service restarted"
+		printf " ✔ Cavalcade service restarted"
 	else
-		printf "cavalcade service did not restart"
+		printf " x Cavalcade service did not restart"
 	fi
 }
 
