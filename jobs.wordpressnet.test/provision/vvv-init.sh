@@ -2,29 +2,29 @@
 SITE_DOMAIN="jobs.wordpressnet.test"
 
 BASE_DIR=$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )
-source $BASE_DIR/helper-functions.sh
+source "${BASE_DIR}/helper-functions.sh"
 
-wme_create_logs "$BASE_DIR/$SITE_DOMAIN/logs"
+wme_create_logs "${BASE_DIR}/${SITE_DOMAIN}/logs"
 
 if [[ `wme_provision_site "${SITE_DOMAIN}"` == 'false' ]]; then
 	echo "Provisioning of ${SITE_DOMAIN} skipped"
 	return
 fi
 
-PROVISION_DIR="$BASE_DIR/$SITE_DOMAIN/provision"
-SITE_DIR="$BASE_DIR/$SITE_DOMAIN/public_html"
+PROVISION_DIR="${BASE_DIR}/${SITE_DOMAIN}/provision"
+SITE_DIR="${BASE_DIR}/${SITE_DOMAIN}/public_html"
 
 wme_svn_git_migration "${SITE_DIR}"
 
-if [ ! -L $SITE_DIR ]; then
-	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
+if [ ! -L "$SITE_DIR" ]; then
+	printf "\n#\n# Provisioning ${SITE_DOMAIN}\n#\n"
 
 	# Don't overwrite existing databases if we're just migrating from SVN to Git
-	if [[ ! $MIGRATED_TO_GIT ]]; then
+	if [[ ! "$MIGRATED_TO_GIT" ]]; then
 		wme_import_database "jobs_wordpressnet_dev" "${PROVISION_DIR}"
 	fi
 
-	wme_clone_meta_repository $BASE_DIR
+	wme_clone_meta_repository "${BASE_DIR}"
 	wme_symlink_public_dir "${BASE_DIR}" "${SITE_DOMAIN}" "jobs.wordpress.net"
 	wme_symlink_logs_dir "${BASE_DIR}" "${SITE_DOMAIN}" "jobs.wordpress.net"
 
@@ -41,10 +41,10 @@ if [ ! -L $SITE_DIR ]; then
 		/wp-content/plugins/si-contact-form
 		/wp-config.php
 	)
-	wme_create_gitignore $SITE_DIR
+	wme_create_gitignore "$SITE_DIR"
 
 else
-	printf "\n#\n# Updating $SITE_DOMAIN\n#\n"
+	printf "\n#\n# Updating ${SITE_DOMAIN}\n#\n"
 
 	git -C "${SITE_DIR}" pull origin master
 	wme_noroot wp core   update --version=nightly --path="${SITE_DIR}/wordpress"
