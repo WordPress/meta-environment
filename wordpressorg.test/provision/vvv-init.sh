@@ -19,6 +19,38 @@ WP_LOCALES=( ja es_ES )
 
 wme_svn_git_migration $SITE_DIR
 
+# Updates or installs the Cavalcade plugin and service
+function wme_wporg_setup_cavalcade() {
+	printf " * Installing Cavalcade"
+	if [[ -d "${SITE_DIR}/wp-content/mu-plugins/cavalcade" ]]; then
+		pushd "${SITE_DIR}/wp-content/mu-plugins/cavalcade"
+		git pull
+		popd
+	else
+		wme_noroot mkdir -p "${SITE_DIR}/wp-content/mu-plugins"
+		wme_noroot git clone https://github.com/humanmade/Cavalcade.git "${SITE_DIR}/wp-content/mu-plugins/cavalcade"
+	fi
+
+	wme_noroot cp -f "${PROVISION_DIR}/cavalcade.php" "${SITE_DIR}/wp-content/mu-plugins/"
+
+	if [[ -d "/etc/cavalcade" ]]; then
+		pushd "/etc/cavalcade"
+		git pull
+		popd
+	else
+		mkdir -p "/etc/cavalcade"
+		git clone https://github.com/humanmade/Cavalcade-Runner.git "/etc/cavalcade"
+	fi
+
+	mkdir -p "/etc/init/"
+	cp -f "${PROVISION_DIR}/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
+	if service cavalcade-wordpressorg restart; then
+		printf " ✔ Cavalcade service restarted"
+	else
+		printf " x Cavalcade service did not restart"
+	fi
+}
+
 if [ ! -L $SITE_DIR ]; then
 	printf "\n#\n# Provisioning $SITE_DOMAIN\n#\n"
 
@@ -82,20 +114,7 @@ if [ ! -L $SITE_DIR ]; then
 		wme_download_pomo "${gplocale}" "meta/o2" "$SITE_DIR/wp-content/languages/themes/o2-${locale}"
 	done
 
-	# Cavalcade
-	printf "Installing Cavalcade..."
-	git clone https://github.com/humanmade/Cavalcade.git $SITE_DIR/wp-content/mu-plugins/cavalcade
-	cp -f $PROVISION_DIR/cavalcade.php $SITE_DIR/wp-content/mu-plugins/
-
-	if [[ ! -d "/etc/cavalcade" ]]; then
-		git clone https://github.com/humanmade/Cavalcade-Runner.git /etc/cavalcade
-	else
-		git -C /etc/cavalcade pull
-	fi
-
-	mkdir -p "/etc/init/"
-	cp -f "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
-	service cavalcade-wordpressorg restart
+	wme_wporg_setup_cavalcade
 
 	# Ignore external dependencies and Meta Environment tweaks
 	IGNORED_FILES=(
@@ -151,13 +170,7 @@ else
 	# translate.wordpressorg.test
 	git -C $SITE_DIR/wp-content/plugins/glotpress pull
 
-	# Cavalcade
-	git -C $SITE_DIR/wp-content/mu-plugins/cavalcade pull
-	git -C /etc/cavalcade pull
-	cp -f "$PROVISION_DIR/cavalcade.php" "$SITE_DIR/wp-content/mu-plugins/"
-	mkdir -p "/etc/init"
-	cp -f "$PROVISION_DIR/cavalcade-wordpressorg.conf" "/etc/init/cavalcade-wordpressorg.conf"
-	service cavalcade-wordpressorg restart
+	wme_wporg_setup_cavalcade
 fi
 
 # Pull global header/footer
