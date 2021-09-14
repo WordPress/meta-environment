@@ -26,7 +26,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 	`cp config/default-config.yml config/config.yml`
 
-	Then change `true` to `false` on the `skip_provisioning` option inside `vvv-custom.yml`:
+	Then change `true` to `false` on the `skip_provisioning` option inside `config.yml`:
 
 	```yml
 	#wordpress-meta-environment:
@@ -50,6 +50,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 	This will provision all sites. Use `false` to skip provisioning of specific site.
 
 1. Restart and re-provision VVV
+	1. `vagrant halt`
 	1. `vagrant reload --provision`
 	1. This will take roughly 10-30 minutes
 
