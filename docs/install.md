@@ -7,7 +7,7 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 1. [Setup Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/docs/en-US/installation/).
 
-	We recommend that you follow the step to install the `vagrant-hostsupdater` plugin, because if you don't then
+	We recommend that you follow the step to install the `vagrant-goodhost` plugin, because if you don't then
 	you will need to manually add the hostnames for each WME site to your local hosts file.
 
 	Make sure you have the latest version of VirtualBox, Vagrant, and VVV.
@@ -20,13 +20,11 @@ If you run into any problems with the instructions below, check out [the Trouble
 
 	Once VVV is working, then you can move on to the next step.
 
-1. Check if you have a `config/config.yml` file in the `vagrant-local` folder.
+1. Open the `config/config.yml` file in the `vvv-local` folder in a text editor.
 
-	If you don't, then create one by copying the default `config/default-config.yml` file:
+	If you don't have a `config/config.yml` file, run `vagrant status` and it will create it for you.
 
-	`cp config/default-config.yml config/config.yml`
-
-	Then change `true` to `false` on the `skip_provisioning` option inside `config.yml`:
+	Then change `true` to `false` on the `skip_provisioning` option inside `config/config.yml`:
 
 	```yml
 	#wordpress-meta-environment:
@@ -47,17 +45,20 @@ If you run into any problems with the instructions below, check out [the Trouble
 	        "wordpresstv.test": true
 	```
 
-	This will provision all sites. Use `false` to skip provisioning of specific site.
+	This will provision all sites. Use `false` to skip provisioning of specific site. For example:
+	
+	```yml
+		        "buddypressorg.test": true
+	```
 
-1. Restart and re-provision VVV
-	1. `vagrant reload --provision`
+1. Re-provision VVV
+	1. `vagrant up --provision`
 	1. This will take roughly 10-30 minutes
-
 
 You're all set!
 
 * Visit [http://wp-meta.test](http://wp-meta.test) for links to all the available sites.
-* Log in to any of them with username `admin` and password `password`
+* Log in to any of them with username `admin` and password `password`.
 
 
 ## Updating
@@ -65,11 +66,11 @@ You're all set!
 When new sites are added to the repository, you'll need to pull the changes, then re-provision your local copy in
 order to obtain the new site.
 
-1. `cd vagrant.local/www/wordpress-meta-environment`
+1. `cd vvv-local/www/wordpress-meta-environment`
 1. `git pull origin master`
 1. If the new site is not part of an existing multisite/multi-network installation, then you can simply run
-`vagrant reload --provision`
+`vagrant up --provision`
 1. If the new site is part of an existing installation (like `wordpressorg.test`),
 then you'll need to delete the `public_html` folder and database for that site, and then run
-`vagrant reload --provision`
+`vagrant up --provision`
 	1. ⚠️ Don't forget to backup any uncommitted patches that you're working on.
