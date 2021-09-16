@@ -5,7 +5,7 @@ up a local development environment that is already provisioned with everything y
 The environment will contain all of the open-source code that runs each supported site, as well as some sample data
 that mimics the production site.
 
-WME is built on top of [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV) (VVV), and works by
+WME is built on top of [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), and works by
 provisioning the WordPress.org sites into an existing VVV installation. You can find a lot of documentation and
 resources for working with VVV on its homepage.
 
