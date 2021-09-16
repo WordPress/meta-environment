@@ -2,13 +2,11 @@
 
 If you run into any problems with the instructions below, check out [the Troubleshooting guide](./troubleshooting.md).
 
-
 ## Initial Setup
 
-1. [Setup Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/docs/en-US/installation/).
+1. [Setup VVV](https://varyingvagrantvagrants.org/docs/en-US/installation/).
 
-	We recommend that you follow the step to install the `vagrant-goodhost` plugin, because if you don't then
-	you will need to manually add the hostnames for each WME site to your local hosts file.
+	We strongly recommend that you do not skip the `vagrant plugin install --local` step to install the `vagrant-goodhost` plugin, because if you don't then you will need to manually add the hostnames for each meta environment site to your local hosts file.
 
 	Make sure you have the latest version of VirtualBox, Vagrant, and VVV.
 
