@@ -17,18 +17,18 @@ Adrian Pop has documented some tips for [installing the Meta Environment on Wind
 
 ### My IDE (or other tool) doesn't recognize `public_html` as a Git checkout
 
-Because `public_html` is a symlink, you may need to open `vagrant.local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vagrant.local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line.
+Because `public_html` is a symlink, you may need to open `vvv-local/www/wordpress-meta-environment/meta-repository/{site}/public_html` as the project root, instead of `vvv-local/www/wordpress-meta-environment/{site}/public_html`. Another option is to use Git from the command line.
 
 ### Databases not created
 
-If you ran `vagrant destroy` after provisioning, and later re-provisioned, then the symlinks that were created during the first provisioning won't be removed. Those are used to determine whether or not to import the database and install plugins. To fix that, removing the symlinked `public_html` folders, and then run `vagrant provision` again.
+If you ran `vagrant destroy` after provisioning, and later re-provisioned, then the symlinks that were created during the first provisioning won't be removed. Those are used to determine whether or not to import the database and install plugins. To fix that, removing the symlinked `public_html` folders, and then run `vagrant up --provision` again.
 
 
 ## Problems with specific sites
 
 ### Developer.WordPressorg.test WP-Parser memory errors
 
-You may need to increase the amount of RAM that the virtual machine has in order to run the parser for `developer.wordpress.test`. To do that, open VVV's `vvv-custom.yml` and look for the `vm_config` section that looks like this:
+You may need to increase the amount of RAM that the virtual machine has in order to run the parser for `developer.wordpress.test`. To do that, open VVV's `config/config.yml` and look for the `vm_config` section that looks like this:
 
 ```yaml
 vm_config:
@@ -37,7 +37,7 @@ vm_config:
   # provider: vmware_workstation
 ```
 
-And increase the `2048` value. If this section isn't in your `vvv-custom.yml` file, add it. Then, reprovision for the change to take effect with the `vagrant reload` command.
+And increase the `2048` value. If this section isn't in your `config/config.yml` file, add it. Then, reprovision for the change to take effect with the `vagrant up --provision` command.
 
 ### WordPressTV.test video upload errors
 
@@ -52,10 +52,12 @@ Before asking for help, please take a log of the provisioning process, to help u
 
 ***Warning:*** These commands will remove any changes you've made inside `public_html` directories, so make sure you back up anything you want to save before you run this.
 
-	cd /path/to/your/vagrant.local/www/wordpress-meta-environment
-	vagrant halt
-	rm -rf */public_html
-	git reset --hard HEAD
-	vagrant up --provision 2>&1 | tee wme-provision.log
+```sh
+cd /path/to/your/vvv-local/www/wordpress-meta-environment
+vagrant halt
+rm -rf */public_html
+git reset --hard HEAD
+vagrant up --provision 2>&1 | tee wme-provision.log
+```
 
 Then share `wme-provision.log` when asking for help.
