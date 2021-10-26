@@ -4,6 +4,9 @@
 # so that VVV doesn't have to do a folder search to find them.
 
 echo "Beginning WordPress Meta Environment provisioning"
+echo " ! Warning: Some sites have mgrated to new projects, check the documentation for the meta environment"
+echo " ! The meta environment project is deprecated and being replaced, things may not work as expected."
+echo " "
 
 BASE_DIR="$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd ) )"
 
