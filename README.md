@@ -29,3 +29,9 @@ The goal is to eventually include all of the sites in the network.
 * [Installation and Updates](./docs/install.md)
 * [Troubleshooting and Support](./docs/troubleshooting.md)
 * [Contributing](./docs/contributing.md)
+
+### Related
+
+* [HelpHub](https://github.com/WordPress/HelpHub)
+* [.org Learn](https://github.com/WordPress/learn)
+* [.org News Theme](https://github.com/WordPress/wporg-news-2021)
