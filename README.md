@@ -1,6 +1,20 @@
 # WordPress Meta Environment ( Deprecated )
 
-The current goal is to convert these into separate repositories that use WP Env. _Support for this project is limited._
+⚠️ This repository is deprecated. Most newer projects have their own Docker/wp-env environments inside their Git repositories. Most contributors will have an easier time using these instead of the Meta Environment:
+
+* [learn.w.org](https://github.com/WordPress/learn)
+* [w.org/patterns](https://github.com/WordPress/pattern-directory/)
+* [make.w.org/five-for-the-future](https://github.com/WordPress/five-for-the-future)
+* [w.org/support](https://github.com/WordPress/HelpHub)
+* [wordcamp.org](https://github.com/WordPress/wordcamp.org)
+* [w.org/gutenberg](https://github.com/WordPress/wporg-gutenberg)
+* [w.org/themes](https://github.com/WordPress/theme-directory-env)
+* [w.org/news](https://github.com/WordPress/wporg-news-2021)
+* [gutenberg.run](https://github.com/WordPress/gutenberg.run)
+
+However, this repository may be the only way to provision some older sites. _Support for that is limited, though, and you're encouraged to try a newer repository first._
+
+The current goal is to convert these into separate repositories that use WP Env.
 
 ## Documentation
 
@@ -23,15 +37,9 @@ handbook](http://make.wordpress.org/meta/handbook/).
 
 * [buddypress.org](https://buddypress.org)
 * [jobs.wordpress.net](http://jobs.wordpress.net)
-* x [wordcamp.org](http://wordcamp.org) ( deprecated, use https://github.com/WordPress/wordcamp.org instead )
+* ~~[wordcamp.org](http://wordcamp.org)~~ _( deprecated, see above )_
 * wordpress.org
 	* [developer.wordpress.org](http://developer.wordpress.org)
 	* [global.wordpress.org](http://global.wordpress.org)
 	* [translate.wordpress.org](http://translate.wordpress.org)
 * [wordpress.tv](http://wordpress.tv)
-
-## Related
-
-* [HelpHub](https://github.com/WordPress/HelpHub)
-* [.org Learn](https://github.com/WordPress/learn)
-* [.org News Theme](https://github.com/WordPress/wporg-news-2021)
