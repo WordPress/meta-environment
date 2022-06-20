@@ -5,6 +5,7 @@
 * [learn.w.org](https://github.com/WordPress/learn)
 * [w.org/patterns](https://github.com/WordPress/pattern-directory/)
 * [make.w.org/five-for-the-future](https://github.com/WordPress/five-for-the-future)
+* [translate.w.org](https://github.com/WordPress/translate-w-org-env/)
 * [w.org/support](https://github.com/WordPress/HelpHub)
 * [wordcamp.org](https://github.com/WordPress/wordcamp.org)
 * [w.org/gutenberg](https://github.com/WordPress/wporg-gutenberg)
@@ -41,5 +42,5 @@ handbook](http://make.wordpress.org/meta/handbook/).
 * wordpress.org
 	* [developer.wordpress.org](http://developer.wordpress.org)
 	* [global.wordpress.org](http://global.wordpress.org)
-	* [translate.wordpress.org](http://translate.wordpress.org)
+	* ~~[translate.wordpress.org](http://translate.wordpress.org)~~ _( deprecated, see above )_
 * [wordpress.tv](http://wordpress.tv)
